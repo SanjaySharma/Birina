@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:id="@+id/cleanerParent"
+   >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+
+
+        <TextView
+            android:id="@+id/textRestore"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTop="@android:drawable/ic_menu_delete"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="@string/clear_junk"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            />
+
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/textRestore"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/rounded_white"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/clean_now"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

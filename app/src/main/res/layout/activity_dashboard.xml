@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginperant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/main_nackground"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:weightSum="10"
+    >
+
+    <include layout="@layout/cleaner_layout"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        >
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        >
+
+        <TextView
+            android:id="@+id/textAntivirus"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTop="@mipmap/ic_antivirus"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/antivirus"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black_bg"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/textTrap"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTop="@mipmap/ic_trap"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/trap"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black_bg"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/textBackup"
+            android:layout_below="@id/textAntivirus"
+
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTop="@mipmap/ic_backup1"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/backup"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black_bg"
+
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/textRestore"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTop="@mipmap/ic_restore1"
+            android:layout_below="@id/textTrap"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/restore"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black_bg"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            />
+    </RelativeLayout>
+
+
+
+</LinearLayout>
