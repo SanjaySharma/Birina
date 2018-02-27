@@ -15,4 +15,8 @@
     <dimen name="local_video_size">90dp</dimen>
     <dimen name="local_video_margin">16dp</dimen>
 
+    <!--antivirus-->
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="rippleRadius">64dp</dimen>
+
 </resources>

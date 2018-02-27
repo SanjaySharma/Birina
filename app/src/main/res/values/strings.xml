@@ -103,6 +103,9 @@
     <!--
 sanjay
     -->
+
+    <!--login module variable-->
+
     <string name="si_no">SI Number</string>
     <string name="connection_manager_fail">We apologize, a technical error has occurred. Please check your internet connection.</string>
 
@@ -110,13 +113,19 @@ sanjay
     <string name="fill_mobile_number">Please fill mobile number</string>
     <string name="fill_si_number">Please fill si number</string>
 
+
+    <!--Dashboard module variable-->
+
     <string name="antivirus">Antivirus</string>
-    <string name="trap">Trap</string>
+    <string name="trap">Track</string>
     <string name="backup">Backup</string>
     <string name="restore">Restore</string>
-
-    <string name="clear_junk">Clear Junk</string>
-
+    <string name="clear_junk">Clear Cache</string>
     <string name="clean_now">Clean now</string>
+
+
+    <!--antivirus module variable-->
+    <string name="scanning_msg">Safety Scanning </string>
+    <string name="scanning_complete">Device is sequre</string>
 
 </resources>

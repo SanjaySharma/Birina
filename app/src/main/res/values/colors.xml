@@ -37,4 +37,6 @@
     <color name="gray_stroke">#c2c2c2</color>
     <color name="black_sub_header">#8a8a8a</color>
     <color name="myWindowBackground">#dedede</color>
+
+    <color name="rippelColor">#0099CC</color>
 </resources>

@@ -41,11 +41,6 @@
 
 
 
-        <activity
-            android:name="com.example.birina.junkcleaner.activity.CleanerActivity"
-            android:screenOrientation="portrait"
-            >
-        </activity>
 
         <activity
             android:name="com.example.birina.dashboard.DeshBoardActivity"
@@ -75,8 +70,15 @@
 
 
 <!--
-Clean activity
+Clean cache
 -->
+
+
+        <activity
+            android:name="com.example.birina.junkcleaner.activity.CleanerActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
 
         <activity
             android:name="com.example.birina.junkcleaner.activity.SettingsActivity"
@@ -103,6 +105,18 @@ Clean activity
         <service
             android:name="com.example.birina.junkcleaner.model.CleanerService"
             android:exported="false" />
+
+        <!--**********************************************************-->
+
+
+        <!--antivirus-->
+
+
+        <activity
+            android:name="com.example.birina.antivirus.AntivirusActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
 
     </application>
 

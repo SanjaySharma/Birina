@@ -16,6 +16,8 @@ public class CleanerActivity extends AppCompatActivity {
         setContentView(R.layout.cleaner_activity);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.clear_junk);
+
     }
 
 

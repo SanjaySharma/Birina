@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.birina.R;
+import com.example.birina.antivirus.AntivirusActivity;
 import com.example.birina.junkcleaner.activity.CleanerActivity;
 import com.example.birina.login.LoginPresenter;
 import com.example.birina.login.LoginPresenterImp;
@@ -76,6 +77,7 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
     private void setUpClickEvents(){
 
         findViewById(R.id.cleanerParent).setOnClickListener(this);
+        findViewById(R.id.textAntivirus).setOnClickListener(this);
     }
 
 
@@ -87,6 +89,10 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
            case R.id.cleanerParent:
                startCleanerActivity();
                break;
+
+            case R.id.textAntivirus:
+                startAntivirusActivity();
+                break;
         }
     }
 
@@ -94,5 +100,11 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
 
     private void startCleanerActivity(){
         startActivity(new Intent(DeshBoardActivity.this, CleanerActivity.class));
+    }
+
+
+
+    private void startAntivirusActivity(){
+        startActivity(new Intent(DeshBoardActivity.this, AntivirusActivity.class));
     }
 }
