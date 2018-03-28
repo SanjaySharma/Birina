@@ -12,8 +12,6 @@
     app:rb_scale="6">
 
 
-
-
         <TextView
             android:id="@+id/textScanningComplete"
             android:drawablePadding="@dimen/_15sdp"

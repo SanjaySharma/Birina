@@ -9,10 +9,14 @@ import android.view.View;
 
 import com.example.birina.R;
 import com.example.birina.antivirus.AntivirusActivity;
+import com.example.birina.backup.BackupActivity;
 import com.example.birina.junkcleaner.activity.CleanerActivity;
 import com.example.birina.login.LoginPresenter;
 import com.example.birina.login.LoginPresenterImp;
 import com.example.birina.login.LoginView;
+import com.example.birina.restore.RestoreActivity;
+import com.example.birina.track.TrackActivity;
+import com.example.birina.track.disabledevice.MainActivity;
 import com.example.birina.util.Constant;
 
 
@@ -78,6 +82,9 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
 
         findViewById(R.id.cleanerParent).setOnClickListener(this);
         findViewById(R.id.textAntivirus).setOnClickListener(this);
+        findViewById(R.id.textTrap).setOnClickListener(this);
+        findViewById(R.id.textBackup).setOnClickListener(this);
+        findViewById(R.id.textRestoreData).setOnClickListener(this);
     }
 
 
@@ -93,6 +100,18 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
             case R.id.textAntivirus:
                 startAntivirusActivity();
                 break;
+
+            case R.id.textTrap:
+                startTrackActivity();
+                break;
+
+            case R.id.textBackup:
+                startBackUpActivity();
+                break;
+
+            case R.id.textRestoreData:
+                startRestoreActivity();
+                break;
         }
     }
 
@@ -106,5 +125,17 @@ public class DeshBoardActivity extends AppCompatActivity implements LoginView, V
 
     private void startAntivirusActivity(){
         startActivity(new Intent(DeshBoardActivity.this, AntivirusActivity.class));
+    }
+
+    private void startTrackActivity(){
+        startActivity(new Intent(DeshBoardActivity.this, TrackActivity.class));
+    }
+
+    private void startBackUpActivity(){
+        startActivity(new Intent(DeshBoardActivity.this, BackupActivity.class));
+    }
+
+    private void startRestoreActivity(){
+        startActivity(new Intent(DeshBoardActivity.this, RestoreActivity.class));
     }
 }

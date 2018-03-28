@@ -40,6 +40,7 @@ public class AntivirusActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.antivirus);
 
+
         mRippleBackground =(RippleBackground)findViewById(R.id.content);
         mScanningCompleteText = (TextView) findViewById(R.id.textScanningComplete);
         mScanningCompleteText.setVisibility(View.GONE);

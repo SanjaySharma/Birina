@@ -13,72 +13,91 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.PHONE_STATE_STATE" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
 
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/main_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
-
-        <activity android:name="com.example.birina.login.LoginActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
+
         </activity>
 
+        <activity android:name="com.example.birina.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+
+            </intent-filter>
+        </activity>
 
 
         <activity
             android:name="com.example.birina.dashboard.DeshBoardActivity"
-            android:screenOrientation="portrait"
-             >
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
 
         <activity
-            android:name="com.example.birina.alarm.StartLockScreen"
-            android:theme="@style/Theme.Transparent" >
-     </activity>
+            android:name="com.example.birina.track.simalert.StartLockScreen"
+            android:theme="@style/Theme.Transparent"></activity>
 
-        <service android:name="com.example.birina.alarm.SaveMyAppsService" >
-        </service>
+        <service android:name="com.example.birina.track.simalert.SaveMyAppsService"></service>
 
-        <service android:name="com.example.birina.alarm.SimChangeService" >
-        </service>
+        <service android:name="com.example.birina.track.simalert.SimChangeService"></service>
 
 
-        <receiver android:name="com.example.birina.alarm.receiver.SimChangeReciver">
+        <receiver android:name="com.example.birina.track.simalert.receiver.SimChangeReciver">
             <intent-filter>
-                <action android:name="android.intent.action.SIM_STATE_CHANGED"/>
+                <action android:name="android.intent.action.SIM_STATE_CHANGED" />
             </intent-filter>
         </receiver>
 
 
-
-<!--
-Clean cache
--->
+        <!--
+        Clean cache
+        -->
 
 
         <activity
             android:name="com.example.birina.junkcleaner.activity.CleanerActivity"
-            android:screenOrientation="portrait"
-            >
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name="com.example.birina.junkcleaner.activity.SettingsActivity"
@@ -114,9 +133,113 @@ Clean cache
 
         <activity
             android:name="com.example.birina.antivirus.AntivirusActivity"
-            android:screenOrientation="portrait"
-            >
-        </activity>
+            android:screenOrientation="portrait"></activity>
+
+
+        <!--****************************Track declaration********************-->
+
+
+        <activity
+            android:name="com.example.birina.track.disabledevice.MainActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name="com.example.birina.track.TrackActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.example.birina.track.disabledevice.LockscreenActivity"></activity>
+
+        <service android:name="com.example.birina.track.disabledevice.service.LockscreenService"></service>
+        <service android:name="com.example.birina.track.disabledevice.service.LockscreenViewService"></service>
+
+
+        <service
+            android:name="com.example.birina.track.disabledevice.service.MyAccessibilityService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/my_accessibility_service" />
+        </service>
+
+        <receiver
+            android:name="com.example.birina.track.disabledevice.LockBootReciver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+
+            </intent-filter>
+
+        </receiver>
+
+
+        <!--   <receiver android:name=".SmsReceiver">
+               <intent-filter>
+                   <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+               </intent-filter>
+           </receiver>-->
+
+
+        <!--**********************Track declaration finished**************************-->
+
+
+        <!--Backup And Restore declaration-->
+        <activity
+            android:name=".backup.BackupActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".restore.RestoreActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+        <!--TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT-->
+
+
+        <!-- BroadcastReceiver that listens for incoming SMS messages -->
+        <receiver
+            android:name="com.example.birina.login.SmsReceiver"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_DELIVER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- BroadcastReceiver that listens for incoming MMS messages -->
+        <receiver
+            android:name="com.example.birina.login.MmsReceiver"
+            android:permission="android.permission.BROADCAST_WAP_PUSH">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
+                <data android:mimeType="application/vnd.wap.mms-message" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- Service that delivers messages from the phone "quick response" -->
+        <service
+            android:name="com.example.birina.login.HeadlessSmsSendService"
+            android:exported="true"
+            android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+            </intent-filter>
+        </service>
+
 
     </application>
 

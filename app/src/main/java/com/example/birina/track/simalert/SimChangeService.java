@@ -1,4 +1,4 @@
-package com.example.birina.alarm;
+package com.example.birina.track.simalert;
 
 import android.Manifest;
 import android.app.PendingIntent;
@@ -13,12 +13,6 @@ import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
-import static android.provider.Telephony.Mms.Part.FILENAME;
 
 /**
  * Created by Admin on 2/20/2018.

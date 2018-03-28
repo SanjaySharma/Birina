@@ -1,0 +1,32 @@
+
+{
+  "mobile": "9599385903",
+  "contact": [
+    {
+      "emails": [
+        {
+          "address": "ajarya55t@yahoo.in",
+          "type": "Other"
+        }
+      ],
+      "id": "1",
+      "name": "amar jarya",
+      "numbers": [
+        {
+          "number": "+917987697490",
+          "type": "Mobile"
+        }
+      ]
+    }
+  ],
+  "sms": [
+    {
+      "msg": "",
+      "readState": "",
+      "id": "",
+      "address": "",
+      "folderName": "",
+      "time": ""
+    }
+  ]
+}

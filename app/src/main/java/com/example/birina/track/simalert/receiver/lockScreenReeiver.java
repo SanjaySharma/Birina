@@ -1,13 +1,10 @@
-package com.example.birina.alarm.receiver;
+package com.example.birina.track.simalert.receiver;
 
-import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import android.widget.Toast;
-
-import com.example.birina.alarm.LockScreenAppActivity;
+import com.example.birina.track.simalert.LockScreenAppActivity;
 
 
 public class lockScreenReeiver extends BroadcastReceiver  {

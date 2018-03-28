@@ -1,10 +1,8 @@
-package com.example.birina.alarm;
+package com.example.birina.track.simalert;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.ActivityManager;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -12,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
-import android.view.KeyEvent;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -21,9 +17,6 @@ import android.widget.ToggleButton;
 import com.example.birina.R;
 
 import java.io.FileOutputStream;
-import java.util.List;
-
-import static android.provider.Telephony.Mms.Part.FILENAME;
 
 public class LockScreenAppActivity extends Activity {
 	TextView mTextView;
@@ -34,7 +27,7 @@ public class LockScreenAppActivity extends Activity {
 	int simstatus;
 	String msisdn;
 	final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-	private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

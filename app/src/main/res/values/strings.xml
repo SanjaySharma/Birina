@@ -126,6 +126,32 @@ sanjay
 
     <!--antivirus module variable-->
     <string name="scanning_msg">Safety Scanning </string>
-    <string name="scanning_complete">Device is sequre</string>
+    <string name="scanning_complete">Device is secure</string>
+
+
+    <!--track module variable-->
+    <string name="track_otp">OTP</string>
+
+    <string name="track_mobile">Mobile</string>
+    <string name="track_password">Track password</string>
+
+    <string name="track_msg">It seems your tracking is activated and you have already set mobile number and password.\nIf you want to reset
+        mobile number or password click on reset link.</string>
+
+    <string name="btn_reset"><u>Reset?</u></string>
+
+    <string name="fill_pwd_number">Please enter tracking code</string>
+    <string name="fill_otp">Please enter OTP</string>
+
+    <string name="service_desc">Accessibility service</string>
+
+
+    <!--ggg-->
+
+    <string name="response_null">Response is null</string>
+    <string name="backup_created">Backup created successfull</string>
+    <string name="restore_success">Restore Backup successfull</string>
+    <string name="restore_failed">Restore Backup failed</string>
+    <string name="backup_failed">Backup failed</string>
 
 </resources>

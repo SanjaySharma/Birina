@@ -63,7 +63,6 @@
         <TextView
             android:id="@+id/textBackup"
             android:layout_below="@id/textAntivirus"
-
             android:drawablePadding="@dimen/_5sdp"
             android:drawableTop="@mipmap/ic_backup1"
             android:layout_width="@dimen/_100sdp"
@@ -72,7 +71,6 @@
             android:text="@string/backup"
             android:textSize="@dimen/_10sdp"
             android:textColor="@color/black_bg"
-
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:paddingBottom="@dimen/_10sdp"
@@ -81,7 +79,7 @@
 
 
         <TextView
-            android:id="@+id/textRestore"
+            android:id="@+id/textRestoreData"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableTop="@mipmap/ic_restore1"
             android:layout_below="@id/textTrap"

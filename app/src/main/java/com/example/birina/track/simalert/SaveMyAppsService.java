@@ -1,4 +1,4 @@
-package com.example.birina.alarm;
+package com.example.birina.track.simalert;
 
 import android.app.ActivityManager;
 import android.app.Service;

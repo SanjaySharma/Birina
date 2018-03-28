@@ -39,4 +39,5 @@
     <color name="myWindowBackground">#dedede</color>
 
     <color name="rippelColor">#0099CC</color>
+    <color name="lock_background_color">#222222</color>
 </resources>

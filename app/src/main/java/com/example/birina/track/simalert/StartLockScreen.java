@@ -1,10 +1,7 @@
-package com.example.birina.alarm;
+package com.example.birina.track.simalert;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 public class StartLockScreen extends Activity {
 /*	 KeyguardManager.KeyguardLock k1;

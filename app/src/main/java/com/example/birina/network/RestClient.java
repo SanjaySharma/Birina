@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
+import java.lang.reflect.Modifier;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -36,8 +38,11 @@ public class RestClient {
         OkHttpClient client = httpClient.build();
 
 
-        Gson gson = new GsonBuilder()
-                .create();
+        Gson gson = new GsonBuilder().setLenient().create();
+
+       /* Gson gson = new GsonBuilder()
+                .create();*/
+
 
 
         Retrofit retrofit =   new Retrofit.Builder()

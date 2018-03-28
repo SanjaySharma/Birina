@@ -8,6 +8,7 @@
    >
 
     <RelativeLayout
+        android:id="@+id/cleareCacheParent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -33,8 +34,8 @@
 
 
 
-        <Button
-            android:id="@+id/btn_login"
+        <TextView
+            android:id="@+id/clean_now"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_below="@+id/textRestore"
@@ -43,8 +44,10 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/clean_now"
             android:textAllCaps="false"
+            android:focusable="false"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
             android:layout_marginBottom="@dimen/_10sdp"/>
 
 
