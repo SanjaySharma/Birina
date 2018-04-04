@@ -1,4 +1,4 @@
-package com.example.bsecure.backup.model;
+package com.birina.bsecure.backup.model;
 
 import com.google.gson.annotations.SerializedName;
 

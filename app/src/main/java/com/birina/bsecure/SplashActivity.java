@@ -1,11 +1,11 @@
-package com.example.bsecure;
+package com.birina.bsecure;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.bsecure.login.LoginActivity;
+import com.birina.bsecure.login.LoginActivity;
 
 
 public class SplashActivity extends AppCompatActivity {

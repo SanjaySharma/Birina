@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.model;
+package com.birina.bsecure.junkcleaner.model;
 
 import android.Manifest;
 import android.app.Service;
@@ -21,7 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;

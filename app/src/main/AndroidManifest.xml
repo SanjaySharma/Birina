@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.birina">
+    package="com.birina.bsecure">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -43,7 +43,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name="com.birina.bsecure.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +53,7 @@
 
         </activity>
 
-        <activity android:name="com.example.birina.login.LoginActivity">
+        <activity android:name="com.birina.bsecure.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
@@ -71,10 +71,64 @@
 
 
         <activity
-            android:name="com.example.birina.dashboard.DeshBoardActivity"
+            android:name="com.birina.bsecure.dashboard.DeshBoardActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+
+        <!--
+        Clean cache
+        -->
+
+
+        <activity
+            android:name="com.birina.bsecure.junkcleaner.activity.CleanerActivity"
             android:screenOrientation="portrait"></activity>
 
         <activity
+            android:name="com.birina.bsecure.junkcleaner.activity.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings"
+            android:parentActivityName="com.birina.bsecure.junkcleaner.activity.CleanerActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.birina.bsecure.junkcleaner.activity.CleanerActivity" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+
+        </activity>
+
+        <receiver android:name="com.birina.bsecure.junkcleaner.model.BroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.birina.bsecure.junkcleaner.model.CleanerService"
+            android:exported="false" />
+
+        <!--**********************************************************-->
+
+
+        <!--antivirus-->
+
+
+        <activity
+            android:name="com.birina.bsecure.antivirus.AntivirusActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+        <!--****************************Track declaration********************-->
+
+<!--
+
+
+
+     <activity
             android:name="com.example.birina.track.simalert.StartLockScreen"
             android:theme="@style/Theme.Transparent"></activity>
 
@@ -89,54 +143,6 @@
             </intent-filter>
         </receiver>
 
-
-        <!--
-        Clean cache
-        -->
-
-
-        <activity
-            android:name="com.example.birina.junkcleaner.activity.CleanerActivity"
-            android:screenOrientation="portrait"></activity>
-
-        <activity
-            android:name="com.example.birina.junkcleaner.activity.SettingsActivity"
-            android:exported="false"
-            android:label="@string/settings"
-            android:parentActivityName="com.example.birina.junkcleaner.activity.CleanerActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.birina.junkcleaner.activity.CleanerActivity" />
-
-            <intent-filter>
-                <category android:name="android.intent.category.PREFERENCE" />
-            </intent-filter>
-
-        </activity>
-
-        <receiver android:name="com.example.birina.junkcleaner.model.BroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name="com.example.birina.junkcleaner.model.CleanerService"
-            android:exported="false" />
-
-        <!--**********************************************************-->
-
-
-        <!--antivirus-->
-
-
-        <activity
-            android:name="com.example.birina.antivirus.AntivirusActivity"
-            android:screenOrientation="portrait"></activity>
-
-
-        <!--****************************Track declaration********************-->
 
 
         <activity
@@ -178,7 +184,7 @@
 
             </intent-filter>
 
-        </receiver>
+        </receiver>-->
 
 
         <!--   <receiver android:name=".SmsReceiver">
@@ -193,20 +199,18 @@
 
         <!--Backup And Restore declaration-->
         <activity
-            android:name=".backup.BackupActivity"
+            android:name="com.birina.bsecure.backup.BackupActivity"
             android:screenOrientation="portrait"></activity>
 
         <activity
-            android:name=".restore.RestoreActivity"
+            android:name="com.birina.bsecure.restore.RestoreActivity"
             android:screenOrientation="portrait"></activity>
 
-
-        <!--TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT-->
 
 
         <!-- BroadcastReceiver that listens for incoming SMS messages -->
         <receiver
-            android:name="com.example.birina.login.SmsReceiver"
+            android:name="com.birina.bsecure.login.SmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
@@ -215,7 +219,7 @@
 
         <!-- BroadcastReceiver that listens for incoming MMS messages -->
         <receiver
-            android:name="com.example.birina.login.MmsReceiver"
+            android:name="com.birina.bsecure.login.MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
             <intent-filter>
                 <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
@@ -226,7 +230,7 @@
 
         <!-- Service that delivers messages from the phone "quick response" -->
         <service
-            android:name="com.example.birina.login.HeadlessSmsSendService"
+            android:name="com.birina.bsecure.login.HeadlessSmsSendService"
             android:exported="true"
             android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
             <intent-filter>
@@ -239,6 +243,8 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </service>
+
+        <!--*****************Backup And Restore declaration finish************************************-->
 
 
     </application>

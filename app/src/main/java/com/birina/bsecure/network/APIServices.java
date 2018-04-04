@@ -1,10 +1,10 @@
-package com.example.bsecure.network;
+package com.birina.bsecure.network;
 
-import com.example.bsecure.backup.model.BackupResponse;
-import com.example.bsecure.backup.model.Request;
-import com.example.bsecure.login.model.LogInRequestModel;
-import com.example.bsecure.login.model.LogInResponseModel;
-import com.example.bsecure.restore.model.RestoreRequest;
+import com.birina.bsecure.backup.model.BackupResponse;
+import com.birina.bsecure.backup.model.Request;
+import com.birina.bsecure.login.model.LogInRequestModel;
+import com.birina.bsecure.login.model.LogInResponseModel;
+import com.birina.bsecure.restore.model.RestoreRequest;
 
 
 import retrofit2.Call;

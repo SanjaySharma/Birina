@@ -1,4 +1,4 @@
-package com.example.bsecure.util;
+package com.birina.bsecure.util;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 
 /**

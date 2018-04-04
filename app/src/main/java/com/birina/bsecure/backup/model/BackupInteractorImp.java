@@ -1,7 +1,7 @@
-package com.example.bsecure.backup.model;
+package com.birina.bsecure.backup.model;
 
-import com.example.bsecure.network.RestClient;
-import com.example.bsecure.network.ServerEntity;
+import com.birina.bsecure.network.RestClient;
+import com.birina.bsecure.network.ServerEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

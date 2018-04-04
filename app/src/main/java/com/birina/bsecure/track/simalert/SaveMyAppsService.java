@@ -1,4 +1,4 @@
-package com.example.bsecure.track.simalert;
+package com.birina.bsecure.track.simalert;
 
 import android.app.ActivityManager;
 import android.app.Service;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.example.bsecure.LockActivity;
+import com.birina.bsecure.LockActivity;
 
 import java.util.List;
 import java.util.concurrent.Executors;

@@ -1,20 +1,20 @@
-package com.example.bsecure.restore
+package com.birina.bsecure.restore
 
 import android.Manifest
 import android.app.Activity
 import android.content.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bsecure.R
+import com.birina.bsecure.R
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.bsecure.backup.model.Request
-import com.example.bsecure.restore.model.RestoreRequest
-import com.example.bsecure.util.BirinaPrefrence
-import com.example.bsecure.util.ContactUtility
+import com.birina.bsecure.backup.model.Request
+import com.birina.bsecure.restore.model.RestoreRequest
+import com.birina.bsecure.util.BirinaPrefrence
+import com.birina.bsecure.util.ContactUtility
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -24,9 +24,9 @@ import android.provider.Telephony
 import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
-import com.example.bsecure.antivirus.shimmer.Shimmer
-import com.example.bsecure.util.BirinaUtility
-import com.example.bsecure.util.Constant
+import com.birina.bsecure.antivirus.shimmer.Shimmer
+import com.birina.bsecure.util.BirinaUtility
+import com.birina.bsecure.util.Constant
 import kotlinx.android.synthetic.main.activity_restore.*
 import java.util.ArrayList
 
@@ -53,7 +53,7 @@ class RestoreActivity : AppCompatActivity(), RestoreContract.View {
 
     internal var mShimmer: Shimmer? = null
     internal var mRestoreCompleteTxt: TextView? = null
-    private var mRestoreMsgText: com.example.bsecure.antivirus.shimmer.ShimmerTextView? = null
+    private var mRestoreMsgText: com.birina.bsecure.antivirus.shimmer.ShimmerTextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package com.example.bsecure.util;
+package com.birina.bsecure.util;
 
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
@@ -13,7 +13,7 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.v4.content.CursorLoader;
 import android.util.Log;
 
-import com.example.bsecure.backup.model.Request;
+import com.birina.bsecure.backup.model.Request;
 
 import java.util.ArrayList;
 import java.util.Date;

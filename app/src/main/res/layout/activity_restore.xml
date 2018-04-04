@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.birina.backup.BackupActivity">
+    android:background="@color/colorPrimary"
+    tools:context="com.birina.bsecure.restore.RestoreActivity">
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -13,35 +14,36 @@
         android:padding="10dp"
         android:visibility="visible"
         android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/widget_progressbar"
         />
 
     <TextView
-        android:id="@+id/textScanningComplete"
+        android:id="@+id/textRestoreComplete"
         android:drawablePadding="@dimen/_15sdp"
         android:drawableTop="@mipmap/scan_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_centerInParent="true"
-        android:text="@string/scanning_complete"
+        android:text="@string/restore_complete"
         android:textSize="@dimen/_20sdp"
         android:textColor="@color/white"
-        android:visibility="gone"
+        android:visibility="invisible"
 
         />
 
 
 
-    <com.example.birina.antivirus.shimmer.ShimmerTextView
+    <com.birina.bsecure.antivirus.shimmer.ShimmerTextView
         android:textColor="#444"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/foundDevice"
-        android:text="@string/scanning_msg"
+        android:id="@+id/restore_msg"
+        android:layout_below="@id/progressBar1"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:text="@string/restore_msg"
         android:textSize="@dimen/_20sdp"
-        android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/_20sdp"
 
         />
 

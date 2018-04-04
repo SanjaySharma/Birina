@@ -1,9 +1,9 @@
-package com.example.bsecure.restore;
+package com.birina.bsecure.restore;
 
-import com.example.bsecure.backup.model.Request;
-import com.example.bsecure.restore.model.RestoreInteractorImp;
-import com.example.bsecure.restore.model.RestoreIntractor;
-import com.example.bsecure.restore.model.RestoreRequest;
+import com.birina.bsecure.backup.model.Request;
+import com.birina.bsecure.restore.model.RestoreInteractorImp;
+import com.birina.bsecure.restore.model.RestoreIntractor;
+import com.birina.bsecure.restore.model.RestoreRequest;
 
 /**
  * Created by narendra on 27/02/18.

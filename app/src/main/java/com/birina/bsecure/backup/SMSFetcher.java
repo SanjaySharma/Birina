@@ -1,4 +1,4 @@
-package com.example.bsecure.backup;
+package com.birina.bsecure.backup;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.bsecure.backup.model.Request;
-import com.example.bsecure.util.Constant;
+import com.birina.bsecure.backup.model.Request;
+import com.birina.bsecure.util.Constant;
 
 import java.util.ArrayList;
 import java.util.List;

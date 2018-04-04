@@ -1,4 +1,4 @@
-package com.example.bsecure.track.simalert.receiver;
+package com.birina.bsecure.track.simalert.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

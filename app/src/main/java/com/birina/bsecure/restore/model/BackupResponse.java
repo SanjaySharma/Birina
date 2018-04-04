@@ -1,4 +1,4 @@
-package com.example.bsecure.restore.model;
+package com.birina.bsecure.restore.model;
 
 /**
  * Created by narendra on 08/03/18.

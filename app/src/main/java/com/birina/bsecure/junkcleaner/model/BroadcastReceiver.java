@@ -1,11 +1,11 @@
-package com.example.bsecure.junkcleaner.model;
+package com.birina.bsecure.junkcleaner.model;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 
 public class BroadcastReceiver extends android.content.BroadcastReceiver {

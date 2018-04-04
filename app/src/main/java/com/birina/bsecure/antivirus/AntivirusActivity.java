@@ -1,4 +1,4 @@
-package com.example.bsecure.antivirus;
+package com.birina.bsecure.antivirus;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
-import com.example.bsecure.R;
-import com.example.bsecure.antivirus.shimmer.Shimmer;
+import com.birina.bsecure.R;
+import com.birina.bsecure.antivirus.shimmer.Shimmer;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,7 +21,7 @@ import java.util.Random;
 public class AntivirusActivity extends AppCompatActivity {
 
     private TextView  mProgressText, mScanningCompleteText;
-    private com.example.bsecure.antivirus.shimmer.ShimmerTextView mScanningText;
+    private com.birina.bsecure.antivirus.shimmer.ShimmerTextView mScanningText;
     AnimatorSet mAnimatorSet;
     RippleBackground mRippleBackground;
 
@@ -48,7 +48,7 @@ public class AntivirusActivity extends AppCompatActivity {
           mHandler=new Handler();
           mRand = new Random();
 
-        mScanningText =(com.example.bsecure.antivirus.shimmer.ShimmerTextView) findViewById(R.id.foundDevice);
+        mScanningText =(com.birina.bsecure.antivirus.shimmer.ShimmerTextView) findViewById(R.id.foundDevice);
 
         mProgressText =(TextView)findViewById(R.id.centerImage);
 

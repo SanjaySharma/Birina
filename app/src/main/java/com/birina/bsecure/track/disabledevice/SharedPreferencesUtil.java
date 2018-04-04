@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice;
+package com.birina.bsecure.track.disabledevice;
 
 import android.content.Context;
 import android.content.SharedPreferences;

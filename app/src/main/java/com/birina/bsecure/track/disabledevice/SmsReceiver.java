@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice;
+package com.birina.bsecure.track.disabledevice;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
-import com.example.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.BirinaPrefrence;
 
 /**
  * Created by Admin on 3/19/2018.

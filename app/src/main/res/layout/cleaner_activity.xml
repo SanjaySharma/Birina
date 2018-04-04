@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.birina.junkcleaner.activity.CleanerActivity">
+    tools:context="com.birina.bsecure.junkcleaner.activity.CleanerActivity">
 
     <fragment
         android:id="@+id/cleaner_fragment"
-        class="com.example.birina.junkcleaner.fragment.CleanerFragment"
+        class="com.birina.bsecure.junkcleaner.fragment.CleanerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

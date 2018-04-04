@@ -1,4 +1,4 @@
-package com.example.bsecure.login.model;
+package com.birina.bsecure.login.model;
 
 
 /**

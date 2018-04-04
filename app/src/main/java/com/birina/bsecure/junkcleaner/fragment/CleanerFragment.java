@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.fragment;
+package com.birina.bsecure.junkcleaner.fragment;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -33,12 +33,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bsecure.R;
-import com.example.bsecure.junkcleaner.model.AppsListItem;
-import com.example.bsecure.junkcleaner.model.CleanerService;
-import com.example.bsecure.junkcleaner.model.adapter.AppsListAdapter;
-import com.example.bsecure.junkcleaner.widget.DividerDecoration;
-import com.example.bsecure.junkcleaner.widget.RecyclerView;
+import com.birina.bsecure.R;
+import com.birina.bsecure.junkcleaner.model.AppsListItem;
+import com.birina.bsecure.junkcleaner.model.CleanerService;
+import com.birina.bsecure.junkcleaner.model.adapter.AppsListAdapter;
+import com.birina.bsecure.junkcleaner.widget.DividerDecoration;
+import com.birina.bsecure.junkcleaner.widget.RecyclerView;
 
 
 import java.util.List;

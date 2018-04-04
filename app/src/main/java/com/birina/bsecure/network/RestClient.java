@@ -1,4 +1,4 @@
-package com.example.bsecure.network;
+package com.birina.bsecure.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice.service;
+package com.birina.bsecure.track.disabledevice.service;
 
 import android.app.KeyguardManager;
 import android.app.Service;
@@ -10,9 +10,9 @@ import android.os.IBinder;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.example.bsecure.track.disabledevice.LockscreenActivity;
-import com.example.bsecure.track.disabledevice.LockscreenUtil;
-import com.example.bsecure.util.Constant;
+import com.birina.bsecure.track.disabledevice.LockscreenActivity;
+import com.birina.bsecure.track.disabledevice.LockscreenUtil;
+import com.birina.bsecure.util.Constant;
 
 
 public class LockscreenService extends Service {

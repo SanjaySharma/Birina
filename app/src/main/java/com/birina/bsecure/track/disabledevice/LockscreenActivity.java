@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice;
+package com.birina.bsecure.track.disabledevice;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,10 +15,10 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
-import com.example.bsecure.R;
-import com.example.bsecure.track.disabledevice.service.LockscreenViewService;
-import com.example.bsecure.track.disabledevice.service.MyAccessibilityService;
-import com.example.bsecure.util.Constant;
+import com.birina.bsecure.R;
+import com.birina.bsecure.track.disabledevice.service.LockscreenViewService;
+import com.birina.bsecure.track.disabledevice.service.MyAccessibilityService;
+import com.birina.bsecure.util.Constant;
 
 
 public class LockscreenActivity extends Activity {

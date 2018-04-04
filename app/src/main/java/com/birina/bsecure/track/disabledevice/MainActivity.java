@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice;
+package com.birina.bsecure.track.disabledevice;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.widget.CompoundButton;
 
-import com.example.bsecure.R;
-import com.example.bsecure.util.Constant;
+import com.birina.bsecure.R;
+import com.birina.bsecure.util.Constant;
 
 
 public class MainActivity extends ActionBarActivity {

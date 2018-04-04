@@ -1,4 +1,4 @@
-package com.example.bsecure.dashboard;
+package com.birina.bsecure.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.bsecure.R;
-import com.example.bsecure.antivirus.AntivirusActivity;
-import com.example.bsecure.backup.BackupActivity;
-import com.example.bsecure.junkcleaner.activity.CleanerActivity;
-import com.example.bsecure.login.LoginPresenter;
-import com.example.bsecure.login.LoginPresenterImp;
-import com.example.bsecure.login.LoginView;
-import com.example.bsecure.restore.RestoreActivity;
+import com.birina.bsecure.R;
+import com.birina.bsecure.antivirus.AntivirusActivity;
+import com.birina.bsecure.backup.BackupActivity;
+import com.birina.bsecure.junkcleaner.activity.CleanerActivity;
+import com.birina.bsecure.login.LoginPresenter;
+import com.birina.bsecure.login.LoginPresenterImp;
+import com.birina.bsecure.login.LoginView;
+import com.birina.bsecure.restore.RestoreActivity;
 
 
 public class DeshBoardActivity extends AppCompatActivity implements LoginView, View.OnClickListener {

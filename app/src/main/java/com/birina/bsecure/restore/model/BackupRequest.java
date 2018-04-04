@@ -1,6 +1,6 @@
-package com.example.bsecure.restore.model;
+package com.birina.bsecure.restore.model;
 
-import com.example.bsecure.backup.model.Request;
+import com.birina.bsecure.backup.model.Request;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
 public class BackupRequest {
 
     private String mobile;
-    private List<com.example.bsecure.backup.model.Request.ContactBean> contactList;
-    private List<com.example.bsecure.backup.model.Request.SmsBean> smsList;
+    private List<com.birina.bsecure.backup.model.Request.ContactBean> contactList;
+    private List<com.birina.bsecure.backup.model.Request.SmsBean> smsList;
 
-    public List<com.example.bsecure.backup.model.Request.SmsBean> getSmsList() {
+    public List<com.birina.bsecure.backup.model.Request.SmsBean> getSmsList() {
         return smsList;
     }
 
-    public void setSmsList(List<com.example.bsecure.backup.model.Request.SmsBean> smsList) {
+    public void setSmsList(List<com.birina.bsecure.backup.model.Request.SmsBean> smsList) {
         this.smsList = smsList;
     }
 
@@ -30,7 +30,7 @@ public class BackupRequest {
         this.mobile = mobile;
     }
 
-    public List<com.example.bsecure.backup.model.Request.ContactBean> getContactList() {
+    public List<com.birina.bsecure.backup.model.Request.ContactBean> getContactList() {
         return contactList;
     }
 

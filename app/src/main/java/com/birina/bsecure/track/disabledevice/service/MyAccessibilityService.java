@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice.service;
+package com.birina.bsecure.track.disabledevice.service;
 
 import android.accessibilityservice.AccessibilityService;
 import android.view.accessibility.AccessibilityEvent;

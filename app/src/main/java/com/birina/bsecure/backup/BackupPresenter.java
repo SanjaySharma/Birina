@@ -1,8 +1,8 @@
-package com.example.bsecure.backup;
+package com.birina.bsecure.backup;
 
-import com.example.bsecure.backup.model.BackupInteractorImp;
-import com.example.bsecure.backup.model.BackupIntractor;
-import com.example.bsecure.backup.model.Request;
+import com.birina.bsecure.backup.model.BackupInteractorImp;
+import com.birina.bsecure.backup.model.BackupIntractor;
+import com.birina.bsecure.backup.model.Request;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

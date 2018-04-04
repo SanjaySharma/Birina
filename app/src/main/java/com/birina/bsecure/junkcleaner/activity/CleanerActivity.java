@@ -1,10 +1,10 @@
-package com.example.bsecure.junkcleaner.activity;
+package com.birina.bsecure.junkcleaner.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 
 public class CleanerActivity extends AppCompatActivity {

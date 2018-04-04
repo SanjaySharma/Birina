@@ -1,4 +1,4 @@
-package com.example.bsecure
+package com.birina.bsecure
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Birina</string>
+    <string name="app_name">B-Secure</string>
 
 
     <!-- Globals -->
@@ -149,9 +149,18 @@ sanjay
     <!--ggg-->
 
     <string name="response_null">Response is null</string>
-    <string name="backup_created">Backup created successfull</string>
-    <string name="restore_success">Restore Backup successfull</string>
-    <string name="restore_failed">Restore Backup failed</string>
-    <string name="backup_failed">Backup failed</string>
+    <string name="backup_complete">Backup created successful</string>
+    <string name="backup_msg"> Backup in progress.</string>
+
+    <string name="restore_success">Restore contact successful</string>
+    <string name="contact_not_available">It seems data not available. Please try again later</string>
+
+    <string name="backup_failed">It seems there is some technical problem. Please try again later</string>
+
+
+    <!--restore module variable-->
+    <string name="restore_msg"> Data Restoring in progress </string>
+    <string name="restore_complete"> Data restore successfully</string>
+
 
 </resources>

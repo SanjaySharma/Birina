@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.model.adapter;
+package com.birina.bsecure.junkcleaner.model.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.bsecure.R;
-import com.example.bsecure.junkcleaner.model.AppsListItem;
-import com.example.bsecure.junkcleaner.widget.LinearColorBar;
+import com.birina.bsecure.R;
+import com.birina.bsecure.junkcleaner.model.AppsListItem;
+import com.birina.bsecure.junkcleaner.widget.LinearColorBar;
 
 import java.util.ArrayList;
 import java.util.Collections;

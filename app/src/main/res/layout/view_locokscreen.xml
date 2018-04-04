@@ -35,7 +35,7 @@
 
     </RelativeLayout>
 
-    <com.example.birina.track.disabledevice.LockScreenView
+    <com.birina.bsecure.track.disabledevice.LockScreenView
         android:id="@+id/lockscreen_forground_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -83,7 +83,7 @@
             android:textColor="#444"
             android:textSize="30sp" />
 
-    </com.example.birina.track.disabledevice.LockScreenView>
+    </com.birina.bsecure.track.disabledevice.LockScreenView>
 
 </RelativeLayout>
 

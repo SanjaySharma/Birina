@@ -1,4 +1,4 @@
-package com.example.bsecure.track.simalert;
+package com.birina.bsecure.track.simalert;
 
 import android.Manifest;
 import android.app.PendingIntent;

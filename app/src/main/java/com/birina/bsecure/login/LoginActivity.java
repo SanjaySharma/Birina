@@ -1,4 +1,4 @@
-package com.example.bsecure.login;
+package com.birina.bsecure.login;
 
 
 import android.content.Intent;
@@ -12,17 +12,17 @@ import android.widget.EditText;
 
 import android.widget.Toast;
 
-import com.example.bsecure.Base.BaseActivity;
+import com.birina.bsecure.Base.BaseActivity;
 
-import com.example.bsecure.R;
-import com.example.bsecure.dashboard.DeshBoardActivity;
-import com.example.bsecure.login.model.LogInRequestModel;
-import com.example.bsecure.login.model.LogInResponseModel;
-import com.example.bsecure.network.RestClient;
-import com.example.bsecure.util.BirinaPrefrence;
-import com.example.bsecure.util.ConnectionManager;
-import com.example.bsecure.util.Constant;
-import com.example.bsecure.util.Validation;
+import com.birina.bsecure.R;
+import com.birina.bsecure.dashboard.DeshBoardActivity;
+import com.birina.bsecure.login.model.LogInRequestModel;
+import com.birina.bsecure.login.model.LogInResponseModel;
+import com.birina.bsecure.network.RestClient;
+import com.birina.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.ConnectionManager;
+import com.birina.bsecure.util.Constant;
+import com.birina.bsecure.util.Validation;
 
 import retrofit2.Response;
 import rx.Observable;

@@ -19,7 +19,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="?attr/colorAccent" />
 
-    <com.example.birina.junkcleaner.widget.LinearColorBar
+    <com.birina.bsecure.junkcleaner.widget.LinearColorBar
         android:id="@+id/color_bar"
         android:layout_width="match_parent"
         android:layout_height="16sp"

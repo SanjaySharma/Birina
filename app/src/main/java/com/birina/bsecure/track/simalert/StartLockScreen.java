@@ -1,4 +1,4 @@
-package com.example.bsecure.track.simalert;
+package com.birina.bsecure.track.simalert;
 
 import android.app.Activity;
 import android.os.Bundle;

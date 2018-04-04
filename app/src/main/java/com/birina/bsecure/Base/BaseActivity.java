@@ -1,4 +1,4 @@
-package com.example.bsecure.Base;
+package com.birina.bsecure.Base;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.bsecure.util.BirinaProgressDialog;
+import com.birina.bsecure.util.BirinaProgressDialog;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.example.bsecure.track.simalert;
+package com.birina.bsecure.track.simalert;
 
 import android.Manifest;
 import android.app.Activity;
@@ -14,7 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 import java.io.FileOutputStream;
 

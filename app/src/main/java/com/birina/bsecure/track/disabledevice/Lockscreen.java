@@ -1,10 +1,10 @@
-package com.example.bsecure.track.disabledevice;
+package com.birina.bsecure.track.disabledevice;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.bsecure.track.disabledevice.service.LockscreenService;
-import com.example.bsecure.track.disabledevice.service.LockscreenViewService;
+import com.birina.bsecure.track.disabledevice.service.LockscreenService;
+import com.birina.bsecure.track.disabledevice.service.LockscreenViewService;
 
 
 public class Lockscreen {

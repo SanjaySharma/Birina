@@ -1,4 +1,4 @@
-package com.example.bsecure.backup.model;
+package com.birina.bsecure.backup.model;
 
 import android.support.annotation.NonNull;
 

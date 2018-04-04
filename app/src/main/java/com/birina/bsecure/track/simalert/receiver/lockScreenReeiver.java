@@ -1,10 +1,10 @@
-package com.example.bsecure.track.simalert.receiver;
+package com.birina.bsecure.track.simalert.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.bsecure.track.simalert.LockScreenAppActivity;
+import com.birina.bsecure.track.simalert.LockScreenAppActivity;
 
 
 public class lockScreenReeiver extends BroadcastReceiver  {

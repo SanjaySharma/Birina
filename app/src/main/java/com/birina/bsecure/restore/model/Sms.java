@@ -1,4 +1,4 @@
-package com.example.bsecure.restore.model;
+package com.birina.bsecure.restore.model;
 
 public class Sms {
     private String _id;

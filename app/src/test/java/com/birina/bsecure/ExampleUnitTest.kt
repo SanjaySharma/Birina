@@ -1,4 +1,4 @@
-package com.example.bsecure
+package com.birina.bsecure
 
 import org.junit.Test
 

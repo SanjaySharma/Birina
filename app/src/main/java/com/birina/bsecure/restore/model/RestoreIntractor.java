@@ -1,6 +1,6 @@
-package com.example.bsecure.restore.model;
+package com.birina.bsecure.restore.model;
 
-import com.example.bsecure.backup.model.Request;
+import com.birina.bsecure.backup.model.Request;
 
 /**
  * Created by narendra on 27/02/18.

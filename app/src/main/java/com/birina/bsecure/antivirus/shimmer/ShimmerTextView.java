@@ -1,4 +1,4 @@
-package com.example.bsecure.antivirus.shimmer;
+package com.birina.bsecure.antivirus.shimmer;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

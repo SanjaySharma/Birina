@@ -1,4 +1,4 @@
-package com.example.bsecure.util;
+package com.birina.bsecure.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

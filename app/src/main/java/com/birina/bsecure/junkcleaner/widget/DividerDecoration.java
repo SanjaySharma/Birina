@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.widget;
+package com.birina.bsecure.junkcleaner.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.bsecure.junkcleaner.model.adapter.AppsListAdapter;
+import com.birina.bsecure.junkcleaner.model.adapter.AppsListAdapter;
 
 
 public class DividerDecoration extends RecyclerView.ItemDecoration {

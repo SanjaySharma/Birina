@@ -1,8 +1,8 @@
-package com.example.bsecure.util;
+package com.birina.bsecure.util;
 
 import android.content.Context;
 
-import com.example.bsecure.backup.model.Request;
+import com.birina.bsecure.backup.model.Request;
 import com.google.gson.Gson;
 
 import java.io.IOException;

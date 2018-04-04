@@ -1,10 +1,10 @@
-package com.example.bsecure.backup
+package com.birina.bsecure.backup
 
 import android.Manifest
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bsecure.R
+import com.birina.bsecure.R
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.util.Log
@@ -13,15 +13,15 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import com.example.bsecure.antivirus.shimmer.Shimmer
-import com.example.bsecure.backup.model.Request
-import com.example.bsecure.util.BirinaPrefrence
-import com.example.bsecure.util.ContactUtility
+import com.birina.bsecure.antivirus.shimmer.Shimmer
+import com.birina.bsecure.backup.model.Request
+import com.birina.bsecure.util.BirinaPrefrence
+import com.birina.bsecure.util.ContactUtility
 import kotlinx.android.synthetic.main.activity_backup.*
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import android.view.ViewTreeObserver
-import com.example.bsecure.util.Constant
+import com.birina.bsecure.util.Constant
 
 
 class BackupActivity : AppCompatActivity(), BackupContract.View {
@@ -33,7 +33,7 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
 
     internal var mShimmer: Shimmer? = null
     internal var mBackupCompleteTxt: TextView? = null
-    private var mBackupMsgText: com.example.bsecure.antivirus.shimmer.ShimmerTextView? = null
+    private var mBackupMsgText: com.birina.bsecure.antivirus.shimmer.ShimmerTextView? = null
 
       var  mContext : Context? = null;
 

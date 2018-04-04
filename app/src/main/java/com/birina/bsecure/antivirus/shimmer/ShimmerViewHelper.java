@@ -1,4 +1,4 @@
-package com.example.bsecure.antivirus.shimmer;
+package com.birina.bsecure.antivirus.shimmer;
 
 import android.content.res.TypedArray;
 import android.graphics.LinearGradient;
@@ -8,7 +8,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 /**
  * Shimmer

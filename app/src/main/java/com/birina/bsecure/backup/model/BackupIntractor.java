@@ -1,4 +1,4 @@
-package com.example.bsecure.backup.model;
+package com.birina.bsecure.backup.model;
 
 /**
  * Created by narendra on 27/02/18.

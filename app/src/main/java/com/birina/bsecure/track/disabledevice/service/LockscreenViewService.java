@@ -1,4 +1,4 @@
-package com.example.bsecure.track.disabledevice.service;
+package com.birina.bsecure.track.disabledevice.service;
 
 import android.annotation.TargetApi;
 import android.app.Service;
@@ -23,11 +23,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 
-import com.example.bsecure.R;
-import com.example.bsecure.track.disabledevice.Lockscreen;
-import com.example.bsecure.track.disabledevice.LockscreenUtil;
-import com.example.bsecure.track.disabledevice.SharedPreferencesUtil;
-import com.example.bsecure.util.Constant;
+import com.birina.bsecure.R;
+import com.birina.bsecure.track.disabledevice.Lockscreen;
+import com.birina.bsecure.track.disabledevice.LockscreenUtil;
+import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
+import com.birina.bsecure.util.Constant;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 

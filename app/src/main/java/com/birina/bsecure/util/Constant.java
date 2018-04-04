@@ -1,4 +1,4 @@
-package com.example.bsecure.util;
+package com.birina.bsecure.util;
 
 /**
  * Created by Admin on 2/13/2018.

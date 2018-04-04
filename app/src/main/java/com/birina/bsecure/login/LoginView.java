@@ -1,7 +1,7 @@
-package com.example.bsecure.login;
+package com.birina.bsecure.login;
 
 
-import com.example.bsecure.Base.BaseView;
+import com.birina.bsecure.Base.BaseView;
 
 /**
  * Created by Admin on 7/12/2017.

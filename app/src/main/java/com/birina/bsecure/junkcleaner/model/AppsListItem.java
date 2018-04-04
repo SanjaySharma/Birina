@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.model;
+package com.birina.bsecure.junkcleaner.model;
 
 import android.graphics.drawable.Drawable;
 

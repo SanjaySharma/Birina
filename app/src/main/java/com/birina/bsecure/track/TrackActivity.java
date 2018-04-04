@@ -1,4 +1,4 @@
-package com.example.bsecure.track;
+package com.birina.bsecure.track;
 
 
 import android.Manifest;
@@ -19,13 +19,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.bsecure.Base.BaseActivity;
-import com.example.bsecure.R;
-import com.example.bsecure.track.disabledevice.LockscreenUtil;
-import com.example.bsecure.track.disabledevice.SharedPreferencesUtil;
-import com.example.bsecure.util.BirinaPrefrence;
-import com.example.bsecure.util.Constant;
-import com.example.bsecure.util.Validation;
+import com.birina.bsecure.Base.BaseActivity;
+import com.birina.bsecure.R;
+import com.birina.bsecure.track.disabledevice.LockscreenUtil;
+import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
+import com.birina.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.Constant;
+import com.birina.bsecure.util.Validation;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

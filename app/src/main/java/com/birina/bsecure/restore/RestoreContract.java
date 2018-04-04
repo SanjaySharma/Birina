@@ -1,9 +1,9 @@
-package com.example.bsecure.restore;
+package com.birina.bsecure.restore;
 
-import com.example.bsecure.Base.BasePresenter;
-import com.example.bsecure.Base.BaseView;
-import com.example.bsecure.backup.model.Request;
-import com.example.bsecure.restore.model.RestoreRequest;
+import com.birina.bsecure.Base.BasePresenter;
+import com.birina.bsecure.Base.BaseView;
+import com.birina.bsecure.backup.model.Request;
+import com.birina.bsecure.restore.model.RestoreRequest;
 
 /**
  * Created by narendra on 27/02/18.

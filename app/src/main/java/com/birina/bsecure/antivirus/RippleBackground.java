@@ -1,4 +1,4 @@
-package com.example.bsecure.antivirus;
+package com.birina.bsecure.antivirus;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 import java.util.ArrayList;
 

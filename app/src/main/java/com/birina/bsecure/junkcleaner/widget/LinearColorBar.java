@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.example.bsecure.junkcleaner.widget;
+package com.birina.bsecure.junkcleaner.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

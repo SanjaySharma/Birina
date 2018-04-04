@@ -1,4 +1,4 @@
-package com.example.bsecure.junkcleaner.activity;
+package com.birina.bsecure.junkcleaner.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.example.bsecure.R;
+import com.birina.bsecure.R;
 
 
 public class SettingsActivity extends PreferenceActivity {
