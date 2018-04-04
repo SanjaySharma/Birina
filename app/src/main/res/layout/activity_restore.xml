@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.birina.backup.BackupActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/textScanningComplete"
+        android:drawablePadding="@dimen/_15sdp"
+        android:drawableTop="@mipmap/scan_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="@string/scanning_complete"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+
+        />
+
+
+
+    <com.example.birina.antivirus.shimmer.ShimmerTextView
+        android:textColor="#444"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/foundDevice"
+        android:text="@string/scanning_msg"
+        android:textSize="@dimen/_20sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+
+        />
+
+
+</RelativeLayout>
