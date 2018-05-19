@@ -21,19 +21,21 @@ import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 import com.birina.bsecure.R;
+import com.birina.bsecure.login.LoginActivity;
 import com.birina.bsecure.track.disabledevice.Lockscreen;
 import com.birina.bsecure.track.disabledevice.LockscreenUtil;
 import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
+import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.Constant;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 public class LockscreenViewService extends Service {
 
-    private final String PASSWORD = "12345";
 
     private final int LOCK_OPEN_OFFSET_VALUE = 50;
     private Context mContext = null;
@@ -46,8 +48,7 @@ public class LockscreenViewService extends Service {
     private ImageView mBackgroundLockImageView = null;
     private RelativeLayout mForgroundLayout = null;
     private RelativeLayout mStatusBackgruondDummyView = null;
-    private RelativeLayout mStatusForgruondDummyView = null;
-    private ShimmerTextView mShimmerTextView = null;
+
     private EditText mPasswordET = null;
     private boolean mIsLockEnable = false;
     private boolean mIsSoftkeyEnable = false;
@@ -224,16 +225,14 @@ public class LockscreenViewService extends Service {
         mBackgroundInLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_background_in_layout);
         mBackgroundLockImageView = (ImageView) mLockscreenView.findViewById(R.id.lockscreen_background_image);
         mForgroundLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_forground_layout);
-        mShimmerTextView = (ShimmerTextView) mLockscreenView.findViewById(R.id.shimmer_tv);
-        (new Shimmer()).start(mShimmerTextView);
-        mForgroundLayout.setOnTouchListener(mViewTouchListener);
+
+       // mForgroundLayout.setOnTouchListener(mViewTouchListener);
 
         mPasswordET = (EditText)mLockscreenView.findViewById(R.id.password);
         mLockscreenView.findViewById(R.id.passwordBtn).setOnClickListener(onPasswordListener);
 
 
         mStatusBackgruondDummyView = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_background_status_dummy);
-        mStatusForgruondDummyView = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_forground_status_dummy);
         setBackGroundLockView();
 
         DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
@@ -244,13 +243,7 @@ public class LockscreenViewService extends Service {
         //kitkat
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int val = LockscreenUtil.getInstance(mContext).getStatusBarHeight();
-            RelativeLayout.LayoutParams forgroundParam = (RelativeLayout.LayoutParams) mStatusForgruondDummyView.getLayoutParams();
-            forgroundParam.height = val;
-            mStatusForgruondDummyView.setLayoutParams(forgroundParam);
-            AlphaAnimation alpha = new AlphaAnimation(0.5F, 0.5F);
-            alpha.setDuration(0); // Make animation instant
-            alpha.setFillAfter(true); // Tell it to persist after the animation ends
-            mStatusForgruondDummyView.startAnimation(alpha);
+
             RelativeLayout.LayoutParams backgroundParam = (RelativeLayout.LayoutParams) mStatusBackgruondDummyView.getLayoutParams();
             backgroundParam.height = val;
             mStatusBackgruondDummyView.setLayoutParams(backgroundParam);
@@ -389,10 +382,16 @@ public class LockscreenViewService extends Service {
 
                 if(null != mPasswordET.getText() && !mPasswordET.getText().toString().isEmpty()){
 
-                    if(mPasswordET.getText().toString().equalsIgnoreCase(PASSWORD)){
+                    if(mPasswordET.getText().toString().equalsIgnoreCase(BirinaPrefrence.getTrackingPwd(mContext))){
                         stopLockScreenService();
+                        BirinaPrefrence.updateTrackingStatus(mContext, false);
 
-                    }
+                    }else
+                        Toast.makeText(mContext, getResources().getString(R.string.track_fail), Toast.LENGTH_LONG).show();
+
+                }else {
+                    Toast.makeText(mContext, getResources().getString(R.string.track_empty), Toast.LENGTH_LONG).show();
+
                 }
 
         }

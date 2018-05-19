@@ -23,7 +23,7 @@ public interface APIServices {
 
     @Headers("Content-Type:application/json")
     @POST("activation.php")
-    Observable<Response<LogInResponseModel>> performLogin( @Body LogInRequestModel logInRequestModel);
+    Observable<Response<LogInResponseModel>> performLogin(@Body LogInRequestModel logInRequestModel);
 
     @POST("backup.php")
     Call<BackupResponse> createBackUp(@Body Request user);

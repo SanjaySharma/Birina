@@ -6,11 +6,16 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.birina.bsecure.Base.BaseActivity;
+import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.R;
 import com.birina.bsecure.antivirus.shimmer.Shimmer;
 
@@ -18,9 +23,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class AntivirusActivity extends AppCompatActivity {
+public class AntivirusActivity extends BirinaActivity {
 
-    private TextView  mProgressText, mScanningCompleteText;
+    private TextView  mProgressText, mScanningCompleteText,mTextDeviceSequre;
     private com.birina.bsecure.antivirus.shimmer.ShimmerTextView mScanningText;
     AnimatorSet mAnimatorSet;
     RippleBackground mRippleBackground;
@@ -30,31 +35,59 @@ public class AntivirusActivity extends AppCompatActivity {
 
     Handler mHandler;
      Random mRand;
+     private RelativeLayout mThreadDetactParent,mNoThreadParent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antivirus);
+        checkExpireStatus();
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.antivirus);
 
-
-        mRippleBackground =(RippleBackground)findViewById(R.id.content);
-        mScanningCompleteText = (TextView) findViewById(R.id.textScanningComplete);
-        mScanningCompleteText.setVisibility(View.GONE);
-
-
-          mHandler=new Handler();
-          mRand = new Random();
-
-        mScanningText =(com.birina.bsecure.antivirus.shimmer.ShimmerTextView) findViewById(R.id.foundDevice);
-
-        mProgressText =(TextView)findViewById(R.id.centerImage);
+        initializeView();
+        setListeners();
 
         startScanning();
         handleProgress();
         toggleAnimation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkExpireStatus();
+    }
+
+
+    private void initializeView(){
+        mRippleBackground =(RippleBackground)findViewById(R.id.content);
+        mScanningCompleteText = (TextView) findViewById(R.id.textScanningComplete);
+        mScanningCompleteText.setVisibility(View.GONE);
+        mTextDeviceSequre = (TextView) findViewById(R.id.textDeviceSequre);
+        mTextDeviceSequre.setVisibility(View.GONE);
+        mThreadDetactParent = (RelativeLayout) findViewById(R.id.threadDetactParent);
+        mNoThreadParent = (RelativeLayout) findViewById(R.id.noThreadParent);
+        mNoThreadParent.setVisibility(View.GONE);
+
+        mScanningText =(com.birina.bsecure.antivirus.shimmer.ShimmerTextView) findViewById(R.id.foundDevice);
+        mProgressText =(TextView)findViewById(R.id.centerImage);
+
+
+        mHandler=new Handler();
+        mRand = new Random();
+
+    }
+
+    private void setListeners(){
+        findViewById(R.id.btnOk).setOnClickListener(v ->finish());
+        findViewById(R.id.btnCancel).setOnClickListener(v ->finish());
+
     }
 
 
@@ -175,5 +208,8 @@ public class AntivirusActivity extends AppCompatActivity {
         mRippleBackground.stopRippleAnimation();
         mProgressText.setVisibility(View.GONE);
         mScanningCompleteText.setVisibility(View.VISIBLE);
+        mTextDeviceSequre.setVisibility(View.VISIBLE);
+        mThreadDetactParent.setVisibility(View.GONE);
+        mNoThreadParent.setVisibility(View.VISIBLE);
     }
 }

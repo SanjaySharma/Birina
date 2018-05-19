@@ -2,12 +2,14 @@ package com.birina.bsecure.login;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.birina.bsecure.login.model.LogInRequestModel;
 import com.birina.bsecure.login.model.LogInResponseModel;
 import com.birina.bsecure.network.RestClient;
 import com.birina.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.BirinaUtility;
 import com.birina.bsecure.util.ConnectionManager;
 import com.birina.bsecure.util.Constant;
 import com.birina.bsecure.util.Validation;
@@ -33,8 +36,8 @@ import rx.schedulers.Schedulers;
 public class LoginActivity extends BaseActivity {
 
 
-    private EditText mEdtSiNo, mEdtPhone, mEdtEmail;
-
+    private EditText mEdtName,mEdtSiNo, mEdtPhone, mEdtEmail;
+    private CheckBox mPrivacyCheck;
 
 
     @Override
@@ -59,11 +62,11 @@ public class LoginActivity extends BaseActivity {
     private void initializeClick() {
 
 
+        mEdtName = (EditText) findViewById(R.id.userName);
         mEdtSiNo = (EditText) findViewById(R.id.siNo);
         mEdtPhone = (EditText) findViewById(R.id.textPhone);
-
         mEdtEmail = (EditText) findViewById(R.id.textEmail);
-
+        mPrivacyCheck = (CheckBox) findViewById(R.id.privacyCheck);
 
         findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,12 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+
+        findViewById(R.id.privacyLink).setOnClickListener((View v) ->{
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://birinagroup.com/privacy-policy.html"));
+            startActivity(browserIntent);
+        });
     }
 
 
@@ -99,7 +108,28 @@ public class LoginActivity extends BaseActivity {
 
                 } else {
 
-                    LoginApi(mEdtSiNo.getText().toString(), mEdtPhone.getText().toString(), (mEdtEmail.getText() != null ? mEdtEmail.getText().toString() : " "));
+                    if (Validation.isFieldEmpty(mEdtName)) {
+
+                        dismissProgressDialog();
+
+                        Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_user_name),
+                                Snackbar.LENGTH_LONG).show();
+
+                    } else {
+
+                        if (!mPrivacyCheck.isChecked()) {
+
+                            dismissProgressDialog();
+
+                            Snackbar.make(findViewById(R.id.loginperant), getResources()
+                                            .getString(R.string.fill_check_privacy),
+                                    Snackbar.LENGTH_LONG).show();
+
+                        } else {
+
+                            LoginApi(mEdtSiNo.getText().toString(), mEdtPhone.getText().toString(), (mEdtEmail.getText() != null ? mEdtEmail.getText().toString() : " "));
+                        }
+                    }
                 }
 
             } else {
@@ -161,11 +191,12 @@ public class LoginActivity extends BaseActivity {
                                     null != elabelResponse.body() && null != elabelResponse.body().getResponse()
                                     && Integer.parseInt(elabelResponse.body().getResponse()) == Constant.LOGGED_SUCCESS) {
 
-
+                                BirinaPrefrence.saveUserName(LoginActivity.this, mEdtName.getText().toString());
                                 BirinaPrefrence.updateLogInStatus(LoginActivity.this, true);
                                 BirinaPrefrence.saveRegisteredNumber(LoginActivity.this, mEdtPhone.getText().toString());
+                                BirinaPrefrence.saveExpireDate(LoginActivity.this, elabelResponse.body().getEnddate());
 
-                                Toast.makeText(LoginActivity.this, "Login Successfull", Toast.LENGTH_LONG).show();
+
                                 startDashBoardActivity();
 
                             } else {

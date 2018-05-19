@@ -12,6 +12,7 @@ import android.util.Log;
 
 import com.birina.bsecure.track.disabledevice.LockscreenActivity;
 import com.birina.bsecure.track.disabledevice.LockscreenUtil;
+import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.Constant;
 
 
@@ -25,7 +26,7 @@ public class LockscreenService extends Service {
     private BroadcastReceiver mLockscreenReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (null != context) {
+            if (null != context && BirinaPrefrence.isTrackingActivated(context)) {
 
                 Log.d(Constant.TAG, "Enter in mLockscreenReceiver of "+TAG);
 

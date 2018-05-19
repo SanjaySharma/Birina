@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_250sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:srcCompat="@mipmap/ic_user_profile" />
+
+    <TextView
+        android:id="@+id/navUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="oid "
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@color/text_green"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/subcriptionLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:text="@string/subscription_status"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+  <TextView
+        android:id="@+id/subcriptionValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:text="@string/subscription_status"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/more"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:textColor="@color/black_sub_header"
+        android:text="@string/more"
+        android:layout_marginTop="@dimen/_10sdp"
+        />
+
+</LinearLayout>

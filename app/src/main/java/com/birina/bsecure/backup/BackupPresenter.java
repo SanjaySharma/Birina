@@ -36,9 +36,6 @@ public class BackupPresenter implements BackupContract.Presenter, BackupIntracto
     public void createBackup(Request request) {
         if(mView!=null) {
 
-             Gson gson = new GsonBuilder()
-                .create();
-            String ss = gson.toJson(request);
             mBInteractor.sendBackupOnServer(request, this);
         }
     }

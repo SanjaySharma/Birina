@@ -17,12 +17,18 @@ public class BirinaPrefrence {
     private static final String PREF_REGISTERED_NUMBER = "RegisteredNumber";
     private static final String PREF_TRACKING_NUMBER = "TrackingNumber";
     private static final String PREF_TRACKING_PWD = "TrackingPwd";
+    private static final String PREF_TRACKING_OTP = "TrackingOtp";
 
     private static final String PREF_IS_TRACKING_DATA_SET = "TrackingDataSet";
 
     private static final String PREF_IS_TRACKING_ACTIVATED = "TrackingActivated";
+    private static final String PREF_TRACKING_OLD_PHONE = "TrackingOldPhone";
 
-
+    private static final String PREF_USER_NAME = "UserName";
+    private static final String PREF_BACK_UP_DATE = "backUpDate";
+    private static final String PREF_RESTORE_DATE = "restoreDate";
+    private static final String PREF_EXPIRE_DATE = "expireDate";
+    private static final String PREF_REMAINING_DATE = "remainingDate";
 
      /*
     * This method check all ready login or not
@@ -132,6 +138,31 @@ public class BirinaPrefrence {
 
 
 
+    public static void saveTrackingOtp( Context context, String otp){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_TRACKING_OTP, otp);
+        editor.commit();
+    }
+
+
+
+    public static String getTrackingOtp( Context context){
+
+        String trackingPwd = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_TRACKING_OTP) )
+        {
+            trackingPwd = preferences.getString(PREF_TRACKING_OTP, null);
+        }
+
+        return trackingPwd;
+    }
+
+
      /*
     * This method check tracking data set or not
     * */
@@ -198,5 +229,153 @@ public class BirinaPrefrence {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(PREF_IS_TRACKING_ACTIVATED, isActivated);
         editor.commit();
+    }
+
+
+
+
+    public static void saveTrackOldPhone( Context context, String oldPhone){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_TRACKING_OLD_PHONE, oldPhone);
+        editor.commit();
+    }
+
+
+
+    public static String getTrackOldPhone( Context context){
+
+        String trackingOldPhone = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_TRACKING_OLD_PHONE) )
+        {
+            trackingOldPhone = preferences.getString(PREF_TRACKING_OLD_PHONE, null);
+        }
+
+        return trackingOldPhone;
+    }
+
+
+
+
+    public static void saveUserName( Context context, String userName){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_USER_NAME, userName);
+        editor.commit();
+    }
+
+
+    public static String getUserName( Context context){
+
+        String userName = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_USER_NAME) ) {
+            userName = preferences.getString(PREF_USER_NAME, null);
+        }
+
+        return userName;
+    }
+
+
+
+    public static void saveBackUpDate( Context context, String backUpDate){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_BACK_UP_DATE, backUpDate);
+        editor.commit();
+    }
+
+
+    public static String getBackUpDate( Context context){
+
+        String backUpDate = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_BACK_UP_DATE) ) {
+            backUpDate = preferences.getString(PREF_BACK_UP_DATE, null);
+        }
+
+        return backUpDate;
+    }
+
+
+
+    public static void saveRestoreDate( Context context, String backUpDate){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_RESTORE_DATE, backUpDate);
+        editor.commit();
+    }
+
+
+    public static String getRestoreDate( Context context){
+
+        String backUpDate = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_RESTORE_DATE) ) {
+            backUpDate = preferences.getString(PREF_RESTORE_DATE, null);
+        }
+
+        return backUpDate;
+    }
+
+
+
+    public static void saveExpireDate( Context context, String backUpDate){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_EXPIRE_DATE, backUpDate);
+        editor.commit();
+    }
+
+
+    public static String getExpireDate( Context context){
+
+        String backUpDate = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_EXPIRE_DATE) ) {
+            backUpDate = preferences.getString(PREF_EXPIRE_DATE, null);
+        }
+
+        return backUpDate;
+    }
+
+
+
+    public static void saveRemainingTime( Context context, String backUpDate){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_REMAINING_DATE, backUpDate);
+        editor.commit();
+    }
+
+
+    public static String getRemainingTime( Context context){
+
+        String backUpDate = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_REMAINING_DATE) ) {
+            backUpDate = preferences.getString(PREF_REMAINING_DATE, null);
+        }
+
+        return backUpDate;
     }
 }

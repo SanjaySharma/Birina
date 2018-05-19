@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.birina.bsecure.backup.BackupActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:background="@color/accent"
+        >
+        <LinearLayout
+            android:id="@+id/threadParent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.33"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_15sdp"
+                >
+                <TextView
+                    android:id="@+id/levelBackUpDate"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:text="@string/backup_date"
+                    android:textSize="@dimen/_12sdp"
+                    />
+
+                <TextView
+                    android:id="@+id/txtBackUpDate"
+                    android:textColor="@color/mycolor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:textSize="@dimen/_12sdp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.33"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_15sdp"
+                >
+                <TextView
+                    android:id="@+id/levelSms"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:text="@string/backup_sms"
+                    android:textSize="@dimen/_12sdp"
+                    />
+
+                <TextView
+                    android:id="@+id/txtSms"
+                    android:textColor="@color/mycolor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:textSize="@dimen/_12sdp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.33"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_15sdp"
+                >
+                <TextView
+                    android:id="@+id/levelContact"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:text="@string/backup_contact"
+                    android:textSize="@dimen/_12sdp"
+                    />
+
+                <TextView
+                    android:id="@+id/txtContact"
+                    android:textColor="@color/mycolor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:textSize="@dimen/_12sdp"
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/backupProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/widget_progressbar"
+        />
+
+    <TextView
+        android:id="@+id/textBackupComplete"
+        android:drawablePadding="@dimen/_15sdp"
+        android:drawableTop="@mipmap/scan_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="@string/backup_complete"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/white"
+        android:layout_below="@id/header"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:visibility="gone"
+
+        />
+
+    <Button
+        android:id="@+id/btnBackUpCompleteOk"
+        android:layout_below="@+id/textBackupComplete"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:text="OK"
+        android:textColor="@color/black_bg"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone"
+
+        />
+
+    <com.birina.bsecure.antivirus.shimmer.ShimmerTextView
+        android:id="@+id/backupMsg"
+        android:layout_below="@id/backupProgress"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:textColor="#444"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/backup_msg"
+        android:textSize="@dimen/_20sdp"
+        android:layout_centerInParent="true"/>
+
+
+
+</RelativeLayout>

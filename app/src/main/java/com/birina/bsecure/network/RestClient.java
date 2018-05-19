@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RestClient {
 
     private APIServices apiServices;
-    private final String BASE_URL = "http://easywebsoft.in/demo/app/";
+    private final String BASE_URL = "http://birinagroup.com/birina-b-secure/back-office/";
 
 
     public RestClient() {

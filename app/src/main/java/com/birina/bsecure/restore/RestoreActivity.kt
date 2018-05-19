@@ -21,17 +21,24 @@ import rx.schedulers.Schedulers
 import android.net.Uri
 import android.os.Build
 import android.provider.Telephony
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.TextView
+import com.birina.bsecure.Base.BaseActivity
+import com.birina.bsecure.Base.BirinaActivity
 import com.birina.bsecure.antivirus.shimmer.Shimmer
 import com.birina.bsecure.util.BirinaUtility
 import com.birina.bsecure.util.Constant
 import kotlinx.android.synthetic.main.activity_restore.*
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.content_backup.*
+import kotlinx.android.synthetic.main.content_restore.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class RestoreActivity : AppCompatActivity(), RestoreContract.View {
+class RestoreActivity : BirinaActivity(), RestoreContract.View {
 
     val TAG = "RestoreActivity"
 
@@ -53,18 +60,40 @@ class RestoreActivity : AppCompatActivity(), RestoreContract.View {
 
     internal var mShimmer: Shimmer? = null
     internal var mRestoreCompleteTxt: TextView? = null
+    internal var mRestoreCompleteOkBtn: Button? = null
+
     private var mRestoreMsgText: com.birina.bsecure.antivirus.shimmer.ShimmerTextView? = null
+    internal var mTxtRestoreDate: TextView? = null
+    internal var mTxtSms: TextView? = null
+    internal var mTxtContact: TextView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkExpireStatus()
         setContentView(R.layout.activity_restore)
         val result = RestorePresenter(this)
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.restore)
         mRestoreMsgText = restore_msg
         mRestoreCompleteTxt = textRestoreComplete
+        mRestoreCompleteOkBtn = btnRestoreCompleteOk
+
+        mTxtRestoreDate = txtRestoreDate
+        mTxtSms = txtRestoreSms
+        mTxtContact = txtRestoreContact
 
         mProgressBar =progressBar1
+
+        mRestoreCompleteOkBtn?.setOnClickListener( View.OnClickListener { view -> finish() })
+
+
+        if(null != BirinaPrefrence.getBackUpDate(this))
+            mTxtRestoreDate?.setText(BirinaPrefrence.getRestoreDate(this))
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(this)
@@ -73,15 +102,20 @@ class RestoreActivity : AppCompatActivity(), RestoreContract.View {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED ) {
 
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS,
-                    Manifest.permission.WRITE_CONTACTS,Manifest.permission.READ_SMS), REQUEST_CODE_ASK_PERMISSIONS)
+                    Manifest.permission.WRITE_CONTACTS,Manifest.permission.READ_SMS,Manifest.permission.READ_PHONE_STATE), REQUEST_CODE_ASK_PERMISSIONS)
         } else {
             restoreContactAndSms()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkExpireStatus()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -136,14 +170,22 @@ class RestoreActivity : AppCompatActivity(), RestoreContract.View {
 
 
         Log.d(Constant.TAG_RESTORE, "Enter in onSuccess of " + TAG)
+
+        saveRestoreDate()
+
         if(response.contact != null && response.contact.size > 0) {
 
             Log.d(Constant.TAG_RESTORE, "Enter in onSuccess of " + TAG +"Total Contact: "
                     +response.contact.size)
 
+
+            mTxtContact?.setText(""+response.contact.size)
+
             smsBeanList = response.sms
 
             if(response.sms != null && response.sms.size > 0) {
+
+                mTxtSms?.setText(""+response.sms.size)
 
                 Log.d(Constant.TAG_RESTORE, "Enter in subscribe of onSuccess " + TAG)
                 smsQueue = 1;
@@ -412,5 +454,14 @@ class RestoreActivity : AppCompatActivity(), RestoreContract.View {
         }
         if(isSuccessful)
         mRestoreCompleteTxt?.setVisibility(View.VISIBLE)
+         mRestoreCompleteOkBtn?.setVisibility(View.VISIBLE)
+    }
+
+
+    fun saveRestoreDate(){
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy \nhh:mm a")
+        val format = sdf.format(Calendar.getInstance().getTime())
+        BirinaPrefrence.saveRestoreDate(this, format)
     }
 }

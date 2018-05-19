@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
 
 import com.birina.bsecure.util.BirinaPrefrence;
@@ -14,8 +15,7 @@ import com.birina.bsecure.util.BirinaPrefrence;
 
 public class SmsReceiver  extends BroadcastReceiver {
 
-    //interface
-    private static SmsListener mListener;
+ 
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -29,12 +29,11 @@ public class SmsReceiver  extends BroadcastReceiver {
             String sender = smsMessage.getDisplayOriginatingAddress();
             //Check the sender to filter messages which we require to read
 
-            if (sender.equals(BirinaPrefrence.getTrackingNumber(context)))
+            if ( PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender))
             {
-
                 String messageBody = smsMessage.getMessageBody();
 
-                if(messageBody.contains(BirinaPrefrence.getTrackingPwd(context)))
+                if(messageBody.contains(BirinaPrefrence.getTrackingOtp(context)))
                 {
                     BirinaPrefrence.updateTrackingStatus(context, true);
 
@@ -45,15 +44,11 @@ public class SmsReceiver  extends BroadcastReceiver {
                     break;
 
                 }
-                //Pass the message text to interface
-                mListener.messageReceived(messageBody);
+
 
             }
         }
 
     }
 
-    public static void bindListener(SmsListener listener) {
-        mListener = listener;
-    }
 }

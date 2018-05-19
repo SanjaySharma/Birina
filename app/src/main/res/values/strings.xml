@@ -107,33 +107,61 @@ sanjay
     <!--login module variable-->
 
     <string name="si_no">SI Number</string>
+    <string name= "privacy_policy"><u>Privacy policy </u></string>
+    <string name="user_name">Name</string>
+    <string name="subscription_status">Subscription Status:</string>
+    <string name="more">More B-Secure</string>
     <string name="connection_manager_fail">We apologize, a technical error has occurred. Please check your internet connection.</string>
 
     <string name="reg_invalid_mobile">Invalid Mobile no</string>
     <string name="fill_mobile_number">Please fill mobile number</string>
     <string name="fill_si_number">Please fill si number</string>
+    <string name="fill_user_name">Please fill user name</string>
+    <string name="fill_check_privacy">Please check privacy policy</string>
 
 
     <!--Dashboard module variable-->
 
     <string name="antivirus">Antivirus</string>
+    <string name="phone_booster">Phone Booster</string>
     <string name="trap">Track</string>
-    <string name="backup">Backup</string>
-    <string name="restore">Restore</string>
-    <string name="clear_junk">Clear Cache</string>
+    <string name="backup">Cloud Backup</string>
+    <string name="restore">Cloud Restore</string>
+    <string name="data_wipe">Data Wipe</string>
+    <string name="antitheft">Antitheft</string>
+    <string name="ota_update">O.T.A. Update</string>
+    <string name="banking_protection">Banking Protection</string>
+    <string name="real_time_protection">Real Time-Protection</string>
+    <string name="dashboard_heading">Antivirus &amp; Mobile Security</string>
     <string name="clean_now">Clean now</string>
+    <string name="clear_junk">Clear Cache</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="folder_selection">Folder Selection</string>
+    <string name="device_storage">Device storage</string>
+    <string name="internal_storage">Internal Storage card</string>
+    <string name="cancel">CANCEL</string>
 
 
     <!--antivirus module variable-->
     <string name="scanning_msg">Safety Scanning </string>
-    <string name="scanning_complete">Device is secure</string>
+    <string name="device_sequre">Device is secure</string>
+    <string name="scanning_complete">Scan Complete </string>
 
+    <string name="resolved">Resolved </string>
+    <string name="not_resolved">Not Resolved </string>
+    <string name="quarantined">Quarantined</string>
+    <string name="scan_complete">Scan Complete</string>
+    <string name="no_thread">No Threats Detected</string>
+    <string name="thread"> <font fgcolor="red">0</font> Threats Detected</string>
 
     <!--track module variable-->
     <string name="track_otp">OTP</string>
 
     <string name="track_mobile">Mobile</string>
     <string name="track_password">Track password</string>
+    <string name="track_fail">Please enter a valid password</string>
+    <string name="track_empty">Please enter a password</string>
 
     <string name="track_msg">It seems your tracking is activated and you have already set mobile number and password.\nIf you want to reset
         mobile number or password click on reset link.</string>
@@ -145,12 +173,15 @@ sanjay
 
     <string name="service_desc">Accessibility service</string>
 
-
+    <string name="track_unlock">Unlock</string>
     <!--ggg-->
 
     <string name="response_null">Response is null</string>
     <string name="backup_complete">Backup created successful</string>
     <string name="backup_msg"> Backup in progress.</string>
+    <string name="backup_date"> Last backup </string>
+    <string name="backup_sms">Sms on device</string>
+    <string name="backup_contact">Contacts on device</string>
 
     <string name="restore_success">Restore contact successful</string>
     <string name="contact_not_available">It seems data not available. Please try again later</string>
@@ -161,6 +192,19 @@ sanjay
     <!--restore module variable-->
     <string name="restore_msg"> Data Restoring in progress </string>
     <string name="restore_complete"> Data restore successfully</string>
+    <string name="restore_date"> Last restore </string>
+    <string name="restore_sms">Sms restore on device</string>
+    <string name="restore_contact">Contacts restore on device</string>
 
+
+    <!--system Advisor module variable-->
+    <string name="system_advisor">System Advisor</string>
+    <string name="system_scanning">System Scanning</string>
+    <string name="no_risk">No risks found</string>
+    <string name="advisor_detail">System advisor alert you about operating system threats
+        that allow attackers to access your device and your data.</string>
+    <string name="no_untrusted">No untrusted certificates detected</string>
+    <string name="no_rooted">No rooted device detected</string>
+    <string name="no_krack">No KRACK vulnerability detected</string>
 
 </resources>

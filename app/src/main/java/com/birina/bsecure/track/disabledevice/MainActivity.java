@@ -8,11 +8,12 @@ import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.widget.CompoundButton;
 
+import com.birina.bsecure.Base.BaseActivity;
 import com.birina.bsecure.R;
 import com.birina.bsecure.util.Constant;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
     private SwitchCompat mSwitchd = null;
     private Context mContext = null;
 

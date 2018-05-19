@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_menu_help"
+            android:icon="@mipmap/ic_help_nav"
+            android:title="Help" />
+        <item
+            android:id="@+id/nav_menu_feedback"
+            android:icon="@mipmap/ic_feedback_nav"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/nav_menu_about"
+            android:icon="@mipmap/ic_about_us_nav"
+            android:title="About" />
+
+    </group>
+
+
+</menu>

@@ -11,6 +11,16 @@ public class LogInResponseModel {
 
 
     private String response;
+    private String enddate;
+
+
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
 
     public String getResponse() {
         return response;

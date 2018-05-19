@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_contact"
+        android:title="Delete Contact"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sms"
+        android:title="Delete SMS"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_other"
+        android:title="Other"
+        app:showAsAction="never" />
+
+
+</menu>

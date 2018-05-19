@@ -15,8 +15,8 @@
 
 
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#CD0811</color>
+    <color name="colorPrimaryDark">#aa0811</color>
     <color name="colorAccent_light">#FF4081</color>
 
     <color name="colorAccent">#c2202b</color>
@@ -31,7 +31,7 @@
     <color name="black_contain">#5c5c5c</color>
     <color name="black_header">#2d2d2d</color>
     <color name="toolbar_blue">#1dbdd7</color>
-    <color name="white">#fff</color>
+    <color name="white">#ffffff</color>
     <color name="solid_black">#000</color>
     <color name="black_bg">#1e1a24</color>
     <color name="gray_stroke">#c2c2c2</color>
@@ -40,4 +40,14 @@
 
     <color name="rippelColor">#0099CC</color>
     <color name="lock_background_color">#222222</color>
+    <color name="logo_bg_color">#779295</color>
+
+
+    <color name="holo_green_light">#ff99cc00</color>
+    <!-- A light Holo shade of red -->
+    <color name="holo_red_light">#ffff4444</color>
+    <!-- A dark Holo shade of blue -->
+    <color name="holo_blue_dark">#ff0099cc</color>
+
+    <color name="holo_green_dark">#ff669900</color>
 </resources>

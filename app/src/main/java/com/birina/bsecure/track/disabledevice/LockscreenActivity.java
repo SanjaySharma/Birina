@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -15,13 +16,14 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
+import com.birina.bsecure.Base.BaseActivity;
 import com.birina.bsecure.R;
 import com.birina.bsecure.track.disabledevice.service.LockscreenViewService;
 import com.birina.bsecure.track.disabledevice.service.MyAccessibilityService;
 import com.birina.bsecure.util.Constant;
 
 
-public class LockscreenActivity extends Activity {
+public class LockscreenActivity extends BaseActivity {
 
 
 

@@ -1,56 +1,47 @@
-<com.birina.bsecure.antivirus.RippleBackground
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:id="@+id/content"
-    app:rb_color="#0099CC"
-    app:rb_radius="32dp"
-    app:rb_rippleAmount="6"
-    app:rb_duration="3000"
-    app:rb_scale="6">
+    android:fitsSystemWindows="true"
+    tools:context=".dashboard.DeshBoardActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_antivirus" />
+
+</android.support.design.widget.CoordinatorLayout>
 
 
-        <TextView
-            android:id="@+id/textScanningComplete"
-            android:drawablePadding="@dimen/_15sdp"
-            android:drawableTop="@mipmap/scan_complete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:text="@string/scanning_complete"
-            android:textSize="@dimen/_20sdp"
-            android:textColor="@color/white"
-            android:visibility="gone"
-
-            />
 
 
-    <TextView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:id="@+id/centerImage"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_20sdp"
-        />
 
 
-    <com.birina.bsecure.antivirus.shimmer.ShimmerTextView
-        android:textColor="#444"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/foundDevice"
-        android:text="@string/scanning_msg"
-        android:textSize="@dimen/_20sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/_20sdp"
-
-        />
 
 
-</com.birina.bsecure.antivirus.RippleBackground>
+
+
+
+
+
+
+
+
+
+
+
+
+

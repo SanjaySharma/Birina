@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.birina.bsecure.R
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -21,10 +22,16 @@ import kotlinx.android.synthetic.main.activity_backup.*
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import android.view.ViewTreeObserver
+import android.widget.Button
+import com.birina.bsecure.Base.BaseActivity
+import com.birina.bsecure.Base.BirinaActivity
 import com.birina.bsecure.util.Constant
+import kotlinx.android.synthetic.main.content_backup.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class BackupActivity : AppCompatActivity(), BackupContract.View {
+class BackupActivity : BirinaActivity(), BackupContract.View {
 
 
     val REQUEST_CODE_ASK_PERMISSIONS = 123
@@ -33,6 +40,11 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
 
     internal var mShimmer: Shimmer? = null
     internal var mBackupCompleteTxt: TextView? = null
+    internal var mBackUpCompleteOkBtn: Button? = null
+    internal var mTxtBackUpDate: TextView? = null
+    internal var mTxtSms: TextView? = null
+    internal var mTxtContact: TextView? = null
+
     private var mBackupMsgText: com.birina.bsecure.antivirus.shimmer.ShimmerTextView? = null
 
       var  mContext : Context? = null;
@@ -40,15 +52,29 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkExpireStatus()
         setContentView(R.layout.activity_backup)
-        val result = BackupPresenter(this)
+         BackupPresenter(this)
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.backup)
+
         mContext = this
         mBackupMsgText = backupMsg
         mBackupCompleteTxt = textBackupComplete
+        mBackUpCompleteOkBtn = btnBackUpCompleteOk
+        mTxtBackUpDate = txtBackUpDate
+        mTxtSms = txtSms
+        mTxtContact = txtContact
 
         mProgressBar =backupProgress
+
+        if(null != BirinaPrefrence.getBackUpDate(this))
+        mTxtBackUpDate?.setText(BirinaPrefrence.getBackUpDate(this))
+
+        mBackUpCompleteOkBtn?.setOnClickListener( View.OnClickListener { view -> finish() })
 
         mBackupCompleteTxt?.getViewTreeObserver()?.addOnGlobalLayoutListener(
                 object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -64,10 +90,11 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
                         // from blanking out the title - which they shouldn't but belt and braces!
                             if (ActivityCompat.checkSelfPermission(mContext as BackupActivity, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
                                     ActivityCompat.checkSelfPermission(mContext as BackupActivity, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
+                                    ActivityCompat.checkSelfPermission(mContext as BackupActivity, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED &&
                                     ActivityCompat.checkSelfPermission(mContext as BackupActivity, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
 
                                 ActivityCompat.requestPermissions(mContext as BackupActivity, arrayOf(Manifest.permission.READ_CONTACTS,
-                                        Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS), REQUEST_CODE_ASK_PERMISSIONS)
+                                        Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_STATE), REQUEST_CODE_ASK_PERMISSIONS)
                             } else {
                                 showDialog();
                                 startRestore()
@@ -82,6 +109,10 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        checkExpireStatus()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -113,21 +144,14 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                 { obj ->
+
+                    mTxtContact?.setText(""+obj.contact.size)
+                    mTxtSms?.setText(""+obj.sms.size)
+
                     mPresenter?.createBackup(obj);
 
                 })
 
-    /*    var contactList = getContacts();
-        var smsList =getSmsList();
-
-        var request = Request()
-
-        request.mobile="9599385901"
-        request.contact=contactList
-        request.sms=smsList
-
-
-        mPresenter?.createBackup(request);*/
     }
 
     private fun getSmsList(): List<Request.SmsBean> {
@@ -168,7 +192,7 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
 
     override fun onSuccess() {
         Toast.makeText(this, getString(R.string.backup_complete), Toast.LENGTH_LONG).show()
-
+        saveBackUpDate()
          completeRestore()
     }
 
@@ -194,11 +218,19 @@ class BackupActivity : AppCompatActivity(), BackupContract.View {
             mBackupMsgText?.setVisibility(View.GONE)
         }
             mBackupCompleteTxt?.setVisibility(View.VISIBLE)
+            mBackUpCompleteOkBtn?.setVisibility(View.VISIBLE)
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
         completeRestore();
+    }
+
+    fun saveBackUpDate(){
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy \nhh:mm a")
+        val format = sdf.format(Calendar.getInstance().getTime())
+        BirinaPrefrence.saveBackUpDate(this, format)
     }
 }

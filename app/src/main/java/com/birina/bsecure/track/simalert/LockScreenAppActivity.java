@@ -14,11 +14,12 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.birina.bsecure.Base.BaseActivity;
 import com.birina.bsecure.R;
 
 import java.io.FileOutputStream;
 
-public class LockScreenAppActivity extends Activity {
+public class LockScreenAppActivity extends BaseActivity {
 	TextView mTextView;
 	ToggleButton mToggleButton;
 	boolean isLock = false;

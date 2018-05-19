@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:id="@+id/imageViewParent"
+        android:background="@color/colorPrimary"
+        >
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/main_logo" />
+    </RelativeLayout>
+
+
+    <com.birina.bsecure.realtimeprotection.progressbar.CircleProgressBar
+        android:id="@+id/line_progress"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_180sdp"
+        app:style="line"
+        app:progress_stroke_width="@dimen/_2sdp"
+        app:line_width="@dimen/_15sdp"
+        app:progress_background_color="@color/holo_red_light"
+        app:background_color="@color/colorAccent"
+        app:progress_text_size="@dimen/_20sdp"
+        app:progress_text_color="@color/white"
+        app:line_count="100"
+        />
+
+    <TextView
+        android:id="@+id/noRiskTxt"
+        android:textColor="@color/black_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/system_scanning"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_centerVertical="true"
+        />
+
+    <!--app:line_width="4dp"
+    app:line_count="30"
+    app:progress_stroke_cap="round"
+    app:progress_shader="sweep"
+    app:progress_start_color="@color/holo_green_light"
+    app:progress_end_color="@color/holo_red_light"
+    app:progress_text_color="@color/holo_blue_light"
+    -->
+
+
+
+
+
+
+
+</LinearLayout>

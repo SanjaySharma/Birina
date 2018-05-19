@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/lockscreen_background_layout"
@@ -38,50 +39,62 @@
     <com.birina.bsecure.track.disabledevice.LockScreenView
         android:id="@+id/lockscreen_forground_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
 
         <RelativeLayout
-            android:id="@+id/lockscreen_forground_status_dummy"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_alignParentTop="true"
-            android:background="@android:color/holo_orange_light"></RelativeLayout>
+            android:layout_height="@dimen/_200sdp"
+            android:id="@+id/imageViewParent"
+            android:background="@color/colorPrimary"
+            >
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/main_logo" />
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="@drawable/images0"/>
 
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:background="#ffffff"
-            android:layout_marginTop="40dp"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_below="@id/imageViewParent"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/track_password"
+                android:textSize="@dimen/_12sdp"
+                android:drawableLeft="@mipmap/password_ic"
+                android:drawablePadding="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+
+                />
+
+
 
         <Button
             android:id="@+id/passwordBtn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_below="@id/password"
-            android:background="#ff8876"
-            android:layout_marginTop="20dp"
-            android:text="Submit"
-            android:onClick="passwordBtnListener"
-            android:layout_centerInParent="true"/>
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/rounded_blue"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/track_unlock"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
 
-        <com.romainpiel.shimmer.ShimmerTextView
-            android:id="@+id/shimmer_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text=">>> Slide to Unlock"
-            android:textColor="#444"
-            android:textSize="30sp" />
+
+
 
     </com.birina.bsecure.track.disabledevice.LockScreenView>
 

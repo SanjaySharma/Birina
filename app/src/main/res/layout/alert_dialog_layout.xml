@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp">
+
+
+    <TextView
+        android:id="@+id/folderSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/folder_selection"
+        android:textColor="@color/black_bg"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+
+        />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_below="@+id/folderSelection"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/apps_list_cache_memory">
+
+    </View>
+
+    <TextView
+        android:id="@+id/textDeviceStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:drawableLeft="@mipmap/ic_mobile"
+        android:drawableRight="@mipmap/ic_search"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="@string/device_storage"
+        android:textColor="@color/black_bg"
+        android:textSize="@dimen/_12sdp"
+
+        />
+
+    <TextView
+        android:id="@+id/textInternalStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textDeviceStorage"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:drawableLeft="@mipmap/ic_storage"
+        android:drawableRight="@mipmap/ic_search"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="@string/internal_storage"
+        android:textColor="@color/black_bg"
+        android:textSize="@dimen/_12sdp" />
+
+
+    <TextView
+        android:id="@+id/textCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/cancel"
+        android:textColor="@color/apps_list_cache_memory"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
