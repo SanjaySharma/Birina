@@ -32,6 +32,10 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
         android:allowBackup="true"
@@ -44,11 +48,11 @@
         <activity
             android:name="com.birina.bsecure.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-            </intent-filter>
+            </intent-filter>-->
 
         </activity>
 
@@ -68,16 +72,31 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.birina.bsecure.registration.RegistrationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+
+            </intent-filter>
+        </activity>
+
 
         <activity
             android:name="com.birina.bsecure.dashboard.DeshBoardActivity"
             android:screenOrientation="portrait">
-
-          <!--  <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-            </intent-filter>-->
+            </intent-filter>
 
         </activity>
         <activity
@@ -271,6 +290,132 @@
             android:screenOrientation="portrait"></activity>
 
         <!--*****************RealTimeProtectionActivity declaration finish************************************-->
+
+
+
+
+        <!--*****************ResetPwd declaration Start ************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.resetpwd.ForgotPwdActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="com.birina.bsecure.resetpwd.ReNewActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="com.birina.bsecure.resetpwd.ResetPwdActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--*****************ResetPwd declaration finish************************************-->
+
+
+
+
+        <!--*****************PocketTheft declaration start************************************-->
+
+
+        <activity
+            android:name="com.birina.bsecure.pockettheft.PocketTheftActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <service
+            android:name="com.birina.bsecure.pockettheft.PocketTheftService"
+            android:exported="false" />
+
+
+
+        <!--*****************PocketTheft declaration finish************************************-->
+
+
+
+        <!--*****************UnplugCharger declaration start************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.unplugcharger.UnPlugChargerActivity"
+            android:screenOrientation="portrait">
+
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>-->
+        </activity>
+
+        <service
+            android:name="com.birina.bsecure.unplugcharger.UnPlugChargerService"
+            android:exported="false" />
+
+
+
+        <receiver android:name="com.birina.bsecure.unplugcharger.PlugInReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+
+        <!--*****************UnplugCharger declaration finish************************************-->
+
+
+
+
+
+
+
+  <!--*****************RemoteScreaming declaration start************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.remotescreaming.RemoteScreamingActivity"
+            android:screenOrientation="portrait">
+
+        <!--    <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>-->
+        </activity>
+
+        <service
+            android:name="com.birina.bsecure.remotescreaming.RemoteScreamingService"
+            android:exported="false" />
+
+
+        <receiver android:name="com.birina.bsecure.remotescreaming.RemoteScreamingSmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+
+        <!--*****************RemoteScreaming declaration finish************************************-->
+
+
+
+
+
+
+        <!--*****************Antitheft declaration Start ************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.antitheft.MakePhotoActivity"
+            android:screenOrientation="portrait">
+
+            <!-- <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+
+          </intent-filter>-->
+        </activity>
+
+
+
+        <!--*****************Antitheft declaration finish************************************-->
+
+
 
     </application>
 

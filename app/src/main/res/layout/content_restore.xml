@@ -11,7 +11,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:background="@color/accent"
+        android:background="@color/gray_color"
         >
         <LinearLayout
             android:id="@+id/threadParent"
@@ -30,7 +30,7 @@
                 >
                 <TextView
                     android:id="@+id/levelRestoreDate"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_50sdp"
                     android:text="@string/restore_date"
@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/txtRestoreDate"
-                    android:textColor="@color/mycolor1"
+                    android:textColor="@color/text_green"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
                     android:textSize="@dimen/_12sdp"
@@ -56,7 +56,7 @@
                 >
                 <TextView
                     android:id="@+id/levelSms"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_50sdp"
                     android:text="@string/restore_sms"
@@ -65,7 +65,7 @@
 
                 <TextView
                     android:id="@+id/txtRestoreSms"
-                    android:textColor="@color/mycolor1"
+                    android:textColor="@color/text_green"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
                     android:textSize="@dimen/_12sdp"
@@ -82,7 +82,7 @@
                 >
                 <TextView
                     android:id="@+id/levelContact"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_50sdp"
                     android:text="@string/restore_contact"
@@ -91,7 +91,7 @@
 
                 <TextView
                     android:id="@+id/txtRestoreContact"
-                    android:textColor="@color/mycolor1"
+                    android:textColor="@color/text_green"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
                     android:textSize="@dimen/_12sdp"

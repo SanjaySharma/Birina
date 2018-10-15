@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginperant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:padding="@dimen/_10sdp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_30sdp"
+
+    >
+    <TextView
+        android:id="@+id/pocket_theft_header"
+        android:drawablePadding="@dimen/_17sdp"
+        android:drawableLeft="@mipmap/ic_pocket_theft"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:text="@string/pocket_theft"
+        android:textColor="@color/black_bg"
+        style="@style/headerTextStyle"
+        />
+
+    <TextView
+        android:id="@+id/pocket_theft_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:text="@string/pocket_theft_description"
+        android:paddingRight="@dimen/_15sdp"
+        android:paddingLeft="@dimen/_8sdp"
+        android:textColor="@color/black_bg"
+        style="@style/inputTextStyle"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+
+
+        <TextView
+            android:id="@+id/pocket_theft_active_inactive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/arrow"
+            android:gravity="center"
+            android:paddingTop="@dimen/_8sdp"
+            android:text="@string/pocket_theft"
+            android:drawablePadding="@dimen/_4sdp"
+            android:textColor="@color/colorAccent"
+            style="@style/headerTextStyle"
+            android:textSize="@dimen/_14sdp"
+
+            />
+
+        <Button
+            android:id="@+id/pocket_theft_on"
+            android:layout_width="@dimen/_58sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_toLeftOf="@+id/pocket_theft_divider"
+            android:layout_gravity="center"
+            android:text="@string/active"
+            android:textColor="@color/black_bg"
+            android:background="@mipmap/button_unselect"
+            />
+        <View
+            android:id="@+id/pocket_theft_divider"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_toLeftOf="@+id/pocket_theft_off"
+            android:background="@color/black_bg"
+            />
+        <Button
+            android:id="@+id/pocket_theft_off"
+            android:layout_width="@dimen/_58sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:text="@string/inactive"
+            android:textColor="@color/black_bg"
+            android:background="@mipmap/button_select"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+
+
+        <TextView
+            android:id="@+id/pocket_theft_alarm_off_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/arrow"
+            android:text="@string/alarm_off"
+            android:drawablePadding="@dimen/_4sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:textColor="@color/colorAccent"
+            style="@style/headerTextStyle"
+            android:textSize="@dimen/_14sdp"
+
+            />
+
+        <Button
+            android:id="@+id/pocket_theft_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_toRightOf="@id/pocket_theft_alarm_off_text"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:text="@string/alarm_off"
+            android:textColor="@color/black_bg"
+            android:background="@drawable/button_selector"
+            />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/pocket_theft_back"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@mipmap/back"
+        />
+</LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_100sdp"
+        android:src="@drawable/main_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="-50dp"
+        />
+
+
+
+</RelativeLayout>

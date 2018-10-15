@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reNewParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    >
+
+    <TextView
+        android:id="@+id/reNewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:text="@string/app_name"
+        android:gravity="center_horizontal"
+        style="@style/headerTextStyle"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/reNewHeader"
+        android:src="@drawable/main_logo" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageView9"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/_18sdp"
+        android:paddingLeft="@dimen/_18sdp"
+        >
+
+
+        <TextView
+            android:id="@+id/forgotPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/renew_now"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            style="@style/headerTextStyle"
+            />
+
+
+        <TextView
+            android:id="@+id/forgotTxtMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/serial_no"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_40sdp"
+            style="@style/inputTextStyle"
+            />
+
+
+            <EditText
+                android:id="@+id/textReNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:inputType="text"
+                style="@style/EditTextHint"
+                />
+
+
+
+        <Button
+            android:id="@+id/btn_reNewSubmit"
+            android:text="@string/reg_submit"
+            style="@style/buttonStyle"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

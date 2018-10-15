@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import com.birina.bsecure.Base.BaseActivity;
 import com.birina.bsecure.login.LoginActivity;
+import com.birina.bsecure.registration.RegistrationActivity;
 
 
 public class SplashActivity extends BaseActivity {
@@ -37,7 +38,7 @@ public class SplashActivity extends BaseActivity {
 			public void run() {
 
 					startActivity(new Intent(SplashActivity.this,
-							LoginActivity.class));
+							RegistrationActivity.class));
 					finish();
 			}
 

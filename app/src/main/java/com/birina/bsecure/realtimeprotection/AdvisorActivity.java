@@ -16,7 +16,6 @@ import com.birina.bsecure.login.LoginActivity;
 
 public class AdvisorActivity extends BirinaActivity {
 
-	private final int SPLASH_DISPLAY_LENGTH = 1500;
 
 
 	@Override
@@ -35,6 +34,8 @@ public class AdvisorActivity extends BirinaActivity {
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setTitle(R.string.system_advisor);
+
+		findViewById(R.id.btnRealTimeCompleteOk).setOnClickListener( v-> finish());
 	}
 
 	@Override

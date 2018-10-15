@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">B-Secure</string>
+    <string name="app_name">Bi-Secure</string>
 
 
     <!-- Globals -->
@@ -107,18 +107,36 @@ sanjay
     <!--login module variable-->
 
     <string name="si_no">SI Number</string>
-    <string name= "privacy_policy"><u>Privacy policy </u></string>
+
     <string name="user_name">Name</string>
+    <string name="login_mobile">Mobile No.</string>
+    <string name="login_pwd">Password</string>
+
     <string name="subscription_status">Subscription Status:</string>
     <string name="more">More B-Secure</string>
     <string name="connection_manager_fail">We apologize, a technical error has occurred. Please check your internet connection.</string>
 
     <string name="reg_invalid_mobile">Invalid Mobile no</string>
     <string name="fill_mobile_number">Please fill mobile number</string>
-    <string name="fill_si_number">Please fill si number</string>
+    <string name="fill_si_number">Please fill serial number</string>
     <string name="fill_user_name">Please fill user name</string>
+    <string name="fill_login_pwd">Please fill password</string>
     <string name="fill_check_privacy">Please check privacy policy</string>
+    <string name="privacy_msg">I want to join Bi-Secure community watch in the fight
+        against cybercrime by letting my device automatically forward security information to Birina (Recommended).</string>
 
+    <string name= "privacy_policy">Privacy policy </string>
+    <string name= "privacy_agree"><u>Agree &amp; Launch </u></string>
+    <string name="privacy_dialog_header">Bi-Secure privacy policy</string>
+    <string name= "forget_pwd">Forgot Password </string>
+    <string name= "reset_pwd">Reset Password </string>
+    <string name= "otp">OTP </string>
+    <string name= "forgot_reg_fail">Mobile number not registered </string>
+    <string name= "serial_no">Serial No. </string>
+    <string name= "renew_now">Renew Now </string>
+    <string name= "reset_pwd_fail">Oops reset password failed </string>
+    <string name= "renew_key_fail">Oops renewable of serial key is failed </string>
+    <string name= "login_support">Support </string>
 
     <!--Dashboard module variable-->
 
@@ -127,19 +145,24 @@ sanjay
     <string name="trap">Track</string>
     <string name="backup">Cloud Backup</string>
     <string name="restore">Cloud Restore</string>
-    <string name="data_wipe">Data Wipe</string>
+    <string name="data_wipe">Remote Wipe</string>
     <string name="antitheft">Antitheft</string>
+    <string name="sim_alert">Sim Alert</string>
+    <string name="tracking_recover">Tracking Recover</string>
+    <string name="unplug_charger">Unplug Charger</string>
+    <string name="remote_screaming">Remote Screaming</string>
     <string name="ota_update">O.T.A. Update</string>
     <string name="banking_protection">Banking Protection</string>
     <string name="real_time_protection">Real Time-Protection</string>
+    <string name="pocket_theft">Pocket Theft</string>
     <string name="dashboard_heading">Antivirus &amp; Mobile Security</string>
     <string name="clean_now">Clean now</string>
     <string name="clear_junk">Clear Cache</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="folder_selection">Folder Selection</string>
-    <string name="device_storage">Device storage</string>
-    <string name="internal_storage">Internal Storage card</string>
+    <string name="device_storage">Device Storage</string>
+    <string name="internal_storage">External Storage</string>
     <string name="cancel">CANCEL</string>
 
 
@@ -156,10 +179,10 @@ sanjay
     <string name="thread"> <font fgcolor="red">0</font> Threats Detected</string>
 
     <!--track module variable-->
-    <string name="track_otp">OTP</string>
+    <string name="track_otp">SET PASSWORD</string>
 
     <string name="track_mobile">Mobile</string>
-    <string name="track_password">Track password</string>
+    <string name="track_password">RECOVERY PASSWORD</string>
     <string name="track_fail">Please enter a valid password</string>
     <string name="track_empty">Please enter a password</string>
 
@@ -174,6 +197,9 @@ sanjay
     <string name="service_desc">Accessibility service</string>
 
     <string name="track_unlock">Unlock</string>
+
+    <string name="track_warning">Remotely locks and wipes the personal information on your
+        lost or stolen device to prevent anyone from accessing it.</string>
     <!--ggg-->
 
     <string name="response_null">Response is null</string>
@@ -206,5 +232,56 @@ sanjay
     <string name="no_untrusted">No untrusted certificates detected</string>
     <string name="no_rooted">No rooted device detected</string>
     <string name="no_krack">No KRACK vulnerability detected</string>
+
+
+
+    <!--Registration module variable-->
+    <string name="reg_heading">REGISTER</string>
+    <string name="gender">Gender :</string>
+
+    <string name="dob">DOB :</string>
+    <string name="dob_hint">DD/MM/YEAR</string>
+    <string name="reg_mobile">Mobile</string>
+    <string name="reg_email">Email ID</string>
+    <string name="reg_si_number">Serial No.</string>
+    <string name= "reg_password">Create Password </string>
+    <string name= "reg_conf_password">Confirm Password </string>
+    <string name="reg_sign_up">Sign Up</string>
+    <string name="reg_or">OR</string>
+    <string name="reg_login">Login</string>
+
+    <string name="fill_pwd">Please fill create password</string>
+    <string name="fill_conf_pwd">Please fill confirm password</string>
+    <string name="fill_gender">Please enter Gender</string>
+    <string name="fill_dob">Please enter Date of Birth</string>
+    <string name="password_not_match">Create password and confirm password are not the same</string>
+
+
+
+    <!--PocketTheft module variable-->
+    <string name="pockettheft">PocketTheft</string>
+    <string name="pocket_theft_description"> After activation "Pocket Theft" option and then screen is
+        off now if user press any button of the device, a Ring ton will play. This rington will play although the
+    device is in silent mode.</string>
+
+    <string name="active">ACTIVE</string>
+    <string name="inactive">INACTIVE</string>
+    <string name="alarm_off">ALARM OFF</string>
+
+    <!--PocketTheft module variable-->
+    <string name="unPlug_charger_description"> After activation "Unplug Charger Alert" option if we unplug
+        device charger app will play an alarm. This alarm will play although the
+    device is in silent or vibration mode.</string>
+
+    <string name="unplug_charger_heading">Unplug Charger Alert</string>
+    <string name="unplug_charger_active">Unplug Alert</string>
+
+    <!--sim alert module variable-->
+    <string name="btn_reset_remote_screaming"><u>Reset Password?</u></string>
+
+    <string name="remote_screaming_description"> After activation "Remote Screaming" option when app
+        received an SMS with registered Remote Screaming password, the app will play an alarm. This alarm will play although the
+    device is in silent or vibration mode.</string>
+    <string name="btn_back_remote_screaming">Home</string>
 
 </resources>

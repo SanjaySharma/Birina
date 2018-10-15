@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/forgotParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/main_logo" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageView9"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/_18sdp"
+        android:paddingLeft="@dimen/_18sdp"
+        >
+
+
+        <TextView
+            android:id="@+id/forgotPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_pwd"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            style="@style/headerTextStyle"
+            />
+
+
+        <TextView
+            android:id="@+id/forgotTxtMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_mobile"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_40sdp"
+            style="@style/inputTextStyle"
+            />
+
+
+            <EditText
+                android:id="@+id/textResPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:inputType="number"
+                style="@style/inputTextStyle"
+                android:theme="@style/EditTextHint"
+
+                />
+
+
+
+        <Button
+            android:id="@+id/btn_forgotPwdSubmit"
+            android:text="@string/reg_submit"
+            android:layout_marginTop="@dimen/_40sdp"
+            style="@style/buttonStyle"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

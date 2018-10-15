@@ -15,14 +15,13 @@
 
 
 
-    <color name="colorPrimary">#CD0811</color>
-    <color name="colorPrimaryDark">#aa0811</color>
+    <color name="colorPrimary">#1B8ADB</color>
+    <color name="colorPrimaryDark">#1564DB</color>
     <color name="colorAccent_light">#FF4081</color>
 
-    <color name="colorAccent">#c2202b</color>
+    <color name="colorAccent">#2C8AE3</color>
     <color name="textColorPrimary">#FFFFFF</color>
 
-    <color name="orange">#FF4630</color>
     <color name="textGray">#8B999F</color>
     <color name="separator">#D0D4D9</color>
     <color name="green">#62c836</color>
@@ -41,6 +40,8 @@
     <color name="rippelColor">#0099CC</color>
     <color name="lock_background_color">#222222</color>
     <color name="logo_bg_color">#779295</color>
+    <color name="gray_color">#D3D3D3</color>
+    <color name="bg_color">#EBEBEB</color>
 
 
     <color name="holo_green_light">#ff99cc00</color>
@@ -50,4 +51,13 @@
     <color name="holo_blue_dark">#ff0099cc</color>
 
     <color name="holo_green_dark">#ff669900</color>
+
+
+    <color name="switchTrack">#ffd600</color>
+    <color name="switchTrackDisable">#90caf9</color>
+    <color name="switchTrackActive">#1565c0</color>
+    <color name="switchTrackNormal">#90caf9</color>
+    <color name="switchThumbBgActive">#1b5e20</color>
+    <color name="switchThumbActive">#ad1457</color>
+    <color name="switchThumbkNormal">#64b5f6</color>
 </resources>

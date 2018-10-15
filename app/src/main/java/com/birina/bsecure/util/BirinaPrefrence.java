@@ -29,8 +29,15 @@ public class BirinaPrefrence {
     private static final String PREF_RESTORE_DATE = "restoreDate";
     private static final String PREF_EXPIRE_DATE = "expireDate";
     private static final String PREF_REMAINING_DATE = "remainingDate";
+    private static final String PREF_POCKET_THEFT = "pocketTheft";
+    private static final String PREF_UNPLUG_CHARGER = "unplugCharger";
+    private static final String PREF_REMOTE_SCREAMING = "remoteScreaming";
+    private static final String PREF_REMOTE_SCREAMING_NUMBER = "remoteScreamingNumber";
+    private static final String PREF_REMOTE_SCREAMING_PWD = "remoteScreamingPwd";
+    private static final String PREF_IS_REMOTE_SCREAMING_DATA_SET = "remoteScreamingDataSet";
 
-     /*
+
+    /*
     * This method check all ready login or not
     * */
 
@@ -377,5 +384,191 @@ public class BirinaPrefrence {
         }
 
         return backUpDate;
+    }
+
+
+    /*
+     * This method check PocketTheft all ready active or not
+     * */
+
+    public  static boolean isPocketTheftActive(Context context){
+
+        boolean isPocketTheftActive = false;
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if(preferences.contains(PREF_POCKET_THEFT) && preferences.getBoolean(PREF_POCKET_THEFT, false))
+        {
+            isPocketTheftActive = true;
+        }else{
+            isPocketTheftActive = false;
+        }
+        return isPocketTheftActive;
+    }
+
+
+
+    /*
+     * This method update PocketTheft status.
+     * */
+
+    public static void updatePocketTheftStatus( Context context, boolean isPocketTheftActive ){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_POCKET_THEFT, isPocketTheftActive);
+        editor.commit();
+    }
+
+
+    /*
+     * This method check RemoteScreaming all ready active or not
+     * */
+
+    public  static boolean isRemoteScreamingActive(Context context){
+
+        boolean isRemoteScreamingActive = false;
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if(preferences.contains(PREF_REMOTE_SCREAMING) && preferences.getBoolean(PREF_REMOTE_SCREAMING, false))
+        {
+            isRemoteScreamingActive = true;
+        }else{
+            isRemoteScreamingActive = false;
+        }
+        return isRemoteScreamingActive;
+    }
+
+
+
+    /*
+     * This method update RemoteScreaming status.
+     * */
+
+    public static void updateRemoteScreamingStatus( Context context, boolean isRemoteScreaming ){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_REMOTE_SCREAMING, isRemoteScreaming);
+        editor.commit();
+    }
+
+
+    /*
+     * This method check unplug charger active or not
+     * */
+
+    public  static boolean isUnplugChargerActive(Context context){
+
+        boolean isUnplugChargerActive = false;
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if(preferences.contains(PREF_UNPLUG_CHARGER) && preferences.getBoolean(PREF_UNPLUG_CHARGER, false))
+        {
+            isUnplugChargerActive = true;
+        }else{
+            isUnplugChargerActive = false;
+        }
+        return isUnplugChargerActive;
+    }
+
+
+
+    /*
+     * This method update unplug charger status.
+     * */
+
+    public static void updateUnplugChargerStatus( Context context, boolean isUnplugChargerActive ){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_UNPLUG_CHARGER, isUnplugChargerActive);
+        editor.commit();
+    }
+
+
+
+
+
+    public static void saveRemoteScreamingNumber( Context context, String number){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_REMOTE_SCREAMING_NUMBER, number);
+        editor.commit();
+    }
+
+
+    public static String getRemoteScreamingNumber( Context context){
+
+        String trackingNumber = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_REMOTE_SCREAMING_NUMBER) )
+        {
+            trackingNumber = preferences.getString(PREF_REMOTE_SCREAMING_NUMBER, null);
+        }
+
+        return trackingNumber;
+    }
+
+
+
+    public static void saveRemoteScreamingPwd( Context context, String password){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_REMOTE_SCREAMING_PWD, password);
+        editor.commit();
+    }
+
+
+
+    public static String getRemoteScreamingPwd( Context context){
+
+        String trackingPwd = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_REMOTE_SCREAMING_PWD) )
+        {
+            trackingPwd = preferences.getString(PREF_REMOTE_SCREAMING_PWD, null);
+        }
+
+        return trackingPwd;
+    }
+
+
+
+    /*
+     * This method check RemoteStreaming data set or not
+     * */
+
+    public static boolean isRemoteScreamingDataSet(Context context){
+
+        boolean isRemoteStreamingDataSet = false;
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if(preferences.contains(PREF_IS_REMOTE_SCREAMING_DATA_SET) && preferences.getBoolean(PREF_IS_REMOTE_SCREAMING_DATA_SET, false))
+        {
+            isRemoteStreamingDataSet = true;
+        }else{
+            isRemoteStreamingDataSet = false;
+        }
+        return isRemoteStreamingDataSet;
+    }
+
+
+
+    /*
+     * This method update RemoteStreaming status.
+     * */
+
+    public static void setRemoteScreamingDataStatus( Context context, boolean isRemoteStreamingDataSet ){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(PREF_IS_REMOTE_SCREAMING_DATA_SET, isRemoteStreamingDataSet);
+        editor.commit();
     }
 }

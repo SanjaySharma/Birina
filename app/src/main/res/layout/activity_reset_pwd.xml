@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/resetPwdParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    >
+
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/main_logo" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageView9"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/_18sdp"
+        android:paddingLeft="@dimen/_18sdp"
+        >
+
+
+        <TextView
+            android:id="@+id/resetPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_pwd"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            style="@style/headerTextStyle"
+            />
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:theme="@style/EditTextHint"
+            app:passwordToggleEnabled = "true"
+            app:passwordToggleTint="@color/white"
+            app:passwordToggleDrawable="@mipmap/ic_eye"
+
+            >
+
+            <EditText
+                android:id="@+id/textResPwd"
+                android:drawablePadding="@dimen/_7sdp"
+                android:drawableRight="@mipmap/ic_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/reg_password"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                style="@style/inputTextStyle"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/EditTextHint"
+            app:passwordToggleEnabled = "true"
+            app:passwordToggleTint="@color/white"
+            app:passwordToggleDrawable="@mipmap/ic_eye"
+
+            >
+
+
+
+            <EditText
+                android:id="@+id/textResConfPwd"
+                android:drawablePadding="@dimen/_7sdp"
+                android:drawableRight="@mipmap/ic_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/reg_conf_password"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                style="@style/inputTextStyle"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btn_reset_submit"
+            android:text="@string/reg_submit"
+            style="@style/buttonStyle"
+             />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

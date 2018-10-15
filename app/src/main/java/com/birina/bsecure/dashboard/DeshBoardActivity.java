@@ -31,9 +31,13 @@ import com.birina.bsecure.login.LoginActivity;
 import com.birina.bsecure.login.LoginPresenter;
 import com.birina.bsecure.login.LoginPresenterImp;
 import com.birina.bsecure.login.LoginView;
+import com.birina.bsecure.pockettheft.PocketTheftActivity;
 import com.birina.bsecure.realtimeprotection.RealTimeProtectionActivity;
+import com.birina.bsecure.remotescreaming.RemoteScreamingActivity;
+import com.birina.bsecure.remotescreaming.RemoteScreamingService;
 import com.birina.bsecure.restore.RestoreActivity;
 import com.birina.bsecure.track.TrackActivity;
+import com.birina.bsecure.unplugcharger.UnPlugChargerActivity;
 import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.BirinaUtility;
 import com.birina.bsecure.util.Constant;
@@ -157,11 +161,22 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         findViewById(R.id.textPhoneBoost).setOnClickListener(this);
         findViewById(R.id.textAntivirus).setOnClickListener(this);
-        findViewById(R.id.textDataWipe).setOnClickListener(this);
-        findViewById(R.id.textAntitheft).setOnClickListener(this);
+        findViewById(R.id.textPocketTheft).setOnClickListener(this);
+
+        findViewById(R.id.textUnPlugCharger).setOnClickListener(this);
+        findViewById(R.id.textSimAlert).setOnClickListener(this);
+        findViewById(R.id.textTrackingRecovery).setOnClickListener(this);
+
+        findViewById(R.id.textRemoteScreaming).setOnClickListener(this);
         findViewById(R.id.textBackup).setOnClickListener(this);
         findViewById(R.id.textRestoreData).setOnClickListener(this);
+
+        findViewById(R.id.textDataWipe).setOnClickListener(this);
+        findViewById(R.id.textAntitheft).setOnClickListener(this);
         findViewById(R.id.textRealtimeProtection).setOnClickListener(this);
+
+
+
     }
 
 
@@ -196,6 +211,20 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
             case R.id.textRealtimeProtection:
                 startRealTimeProtectionActivity();
                 break;
+
+             case R.id.textPocketTheft:
+                startPocketTheftActivity();
+                break;
+
+            case R.id.textUnPlugCharger:
+                startUnPlugChargerActivity();
+                break;
+            case R.id.textRemoteScreaming:
+                startRemoteScreamingActivity();
+                break;
+
+
+
         }
     }
 
@@ -231,6 +260,18 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
     private void startRealTimeProtectionActivity() {
         startActivity(new Intent(DeshBoardActivity.this, RealTimeProtectionActivity.class));
+    }
+
+    private void startPocketTheftActivity() {
+        startActivity(new Intent(DeshBoardActivity.this, PocketTheftActivity.class));
+    }
+
+    private void startUnPlugChargerActivity() {
+        startActivity(new Intent(DeshBoardActivity.this, UnPlugChargerActivity.class));
+    }
+
+    private void startRemoteScreamingActivity() {
+        startActivity(new Intent(DeshBoardActivity.this, RemoteScreamingActivity.class));
     }
 
 

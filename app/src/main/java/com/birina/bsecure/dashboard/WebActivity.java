@@ -82,6 +82,10 @@ public class WebActivity extends BirinaActivity {
                 title = Constant.ABOUT;
                 url = Constant.URL_ABOUT;
                 break;
+            case Constant.URL_SUPPORT:
+                title = Constant.SUPPORT;
+                url = Constant.URL_SUPPORT;
+                break;
                 default:
                     title = getResources().getString(R.string.app_name);
         }

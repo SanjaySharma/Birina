@@ -2,17 +2,16 @@ package com.birina.bsecure.login.model;
 
 
 /**
- * FileName : LogInRequestModel
+ * FileName : ForgotPwdRequestModel
  * Description :  User Login - request
  * Dependencies :  Internet , Server
  */
 
 public class LogInRequestModel {
 
-
-    private String email;
-    private String siNo;
+    private String pwd;
     private String phone;
+    private String deviceId;
 
 
     /**
@@ -22,28 +21,19 @@ public class LogInRequestModel {
      */
 
 
-    public LogInRequestModel(String siNo, String phone, String email) {
-        this.email = email;
-        this.siNo = siNo;
+    public LogInRequestModel(String pwd, String phone, String deviceId) {
+        this.pwd = pwd;
         this.phone = phone;
+        this.deviceId = deviceId;
     }
 
 
-
-    public String getEmail() {
-        return email;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSiNo() {
-        return siNo;
-    }
-
-    public void setSiNo(String siNo) {
-        this.siNo = siNo;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public String getPhone() {
@@ -52,5 +42,13 @@ public class LogInRequestModel {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }

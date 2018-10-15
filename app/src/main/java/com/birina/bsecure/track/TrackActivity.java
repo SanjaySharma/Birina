@@ -307,7 +307,7 @@ private void saveOldSimNumber(){
 
            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE,
                    Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS
-                   ,Manifest.permission.WRITE_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
+                   ,Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
        }
 
 

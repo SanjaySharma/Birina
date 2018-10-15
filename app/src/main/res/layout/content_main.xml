@@ -14,28 +14,18 @@
         android:id="@+id/loginperant"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical"
-        android:weightSum="10"
         >
-
-        <include layout="@layout/cleaner_layout"
-            android:layout_height="0dp"
-            android:layout_weight="2.8"
-            android:layout_width="match_parent"
-            >
-        </include>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7.2"
+            android:layout_height="match_parent"
             >
 
             <TextView
                 android:id="@+id/textPhoneBoost"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_phone_booster"
+                android:drawableTop="@mipmap/phoon_booster"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -50,7 +40,7 @@
             <TextView
                 android:id="@+id/textAntivirus"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_antivirus"
+                android:drawableTop="@mipmap/antivirus"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -65,14 +55,14 @@
 
 
             <TextView
-                android:id="@+id/textRealtimeProtection"
+                android:id="@+id/textPocketTheft"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_real_time_protection"
+                android:drawableTop="@mipmap/pocket_theft"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
-                android:text="@string/real_time_protection"
+                android:text="@string/pocket_theft"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
                 android:layout_marginRight="@dimen/_10sdp"
@@ -83,14 +73,14 @@
 
 
             <TextView
-                android:id="@+id/textBackup"
-                android:layout_below="@id/textAntivirus"
+                android:id="@+id/textSimAlert"
+                android:layout_below="@id/textPhoneBoost"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_backup1"
+                android:drawableTop="@mipmap/sim_alert"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/backup"
+                android:text="@string/sim_alert"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -100,14 +90,62 @@
 
 
             <TextView
-                android:id="@+id/textRestoreData"
+                android:id="@+id/textTrackingRecovery"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_restore1"
-                android:layout_below="@id/textRealtimeProtection"
+                android:drawableTop="@mipmap/tracking_recovery"
+                android:layout_below="@id/textAntivirus"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/restore"
+                android:text="@string/tracking_recover"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black_bg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:paddingTop="@dimen/_10sdp"
+                />
+            <TextView
+                android:id="@+id/textUnPlugCharger"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableTop="@mipmap/unplug_charger"
+                android:layout_below="@id/textPocketTheft"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="@string/unplug_charger"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black_bg"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:paddingTop="@dimen/_10sdp"
+                />
+
+
+            <TextView
+                android:id="@+id/textRemoteScreaming"
+                android:layout_below="@id/textSimAlert"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableTop="@mipmap/remote_screaming"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/remote_screaming"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black_bg"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:paddingTop="@dimen/_10sdp"
+                />
+
+            <TextView
+                android:id="@+id/textBackup"
+                android:layout_below="@id/textTrackingRecovery"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableTop="@mipmap/cloud_backup"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/backup"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
                 android:layout_centerHorizontal="true"
@@ -115,19 +153,36 @@
                 android:paddingTop="@dimen/_10sdp"
                 />
 
+
+            <TextView
+                android:id="@+id/textRestoreData"
+                android:drawablePadding="@dimen/_5sdp"
+                android:drawableTop="@mipmap/cloud_restore"
+                android:layout_below="@id/textTrackingRecovery"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/restore"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black_bg"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:paddingTop="@dimen/_10sdp"
+                />
+
             <TextView
                 android:id="@+id/textDataWipe"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_data_wipe"
-                android:layout_below="@id/textRealtimeProtection"
+                android:drawableTop="@mipmap/remote_wipe"
+                android:layout_below="@id/textRemoteScreaming"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:gravity="center"
                 android:text="@string/data_wipe"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
-                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:paddingTop="@dimen/_10sdp"
                 />
@@ -137,54 +192,38 @@
                 android:id="@+id/textAntitheft"
                 android:layout_below="@id/textBackup"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_antitheft"
+                android:drawableTop="@mipmap/remote_lock"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/antitheft"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:paddingTop="@dimen/_10sdp"
                 />
 
 
+
             <TextView
-                android:id="@+id/textBankingProtection"
+                android:id="@+id/textRealtimeProtection"
                 android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_banking_protection"
+                android:drawableTop="@mipmap/real_time_protectio"
                 android:layout_below="@id/textRestoreData"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/banking_protection"
+                android:text="@string/real_time_protection"
                 android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black_bg"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:paddingTop="@dimen/_10sdp"
-                android:visibility="gone"
-
-                />
-
-            <TextView
-                android:id="@+id/textOtaUpdate"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@mipmap/ic_update"
-                android:layout_below="@id/textDataWipe"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:text="@string/ota_update"
-                android:textSize="@dimen/_10sdp"
-                android:visibility="gone"
-                android:textColor="@color/black_bg"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:paddingTop="@dimen/_10sdp"
+
                 />
+
         </RelativeLayout>
 
 
