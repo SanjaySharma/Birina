@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:layout_marginTop="@dimen/_45sdp"
+
+    >
+
+
+
+    <RelativeLayout
+        android:id="@+id/btn_clean"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/memory_parent"
+        android:background="@mipmap/boost"
+        android:layout_marginTop="@dimen/_50sdp"
+        >
+        <TextView
+            android:id="@+id/clean_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/inputTextStyle"
+            android:text="56"
+            android:textSize="@dimen/_50sdp"
+            />
+
+        <TextView
+            android:id="@+id/clean_meter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/clean_amount"
+            android:layout_centerInParent="true"
+            style="@style/inputTextStyle"
+            android:textSize="@dimen/_20sdp"
+            android:text="MB"
+
+            />
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/cleanProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/cleanProgress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/cache_progressbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:minHeight="50dp"
+            />
+
+        <TextView
+            android:id="@+id/cleanProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            style="@style/headerTextStyle"
+            android:text="@string/cleaning" />
+
+    </RelativeLayout>
+</RelativeLayout>

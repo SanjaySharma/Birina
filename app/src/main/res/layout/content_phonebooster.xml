@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    >
+
+    <TextView
+        android:id="@+id/memory_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/memory_used"
+        style="@style/headerTextStyle"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:textColor="@color/colorAccent"
+        />
+    <LinearLayout
+        android:id="@+id/memory_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_below="@+id/memory_heading"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_marginLeft="@dimen/_50sdp"
+
+            >
+
+            <TextView
+                android:id="@+id/internal_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memory_internal"
+                style="@style/inputTextStyle"
+                android:paddingLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/internal_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_15sdp"
+                android:layout_below="@+id/internal_heading"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimaryDark"
+                style="@style/headerTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/internal_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_memory_amount"
+                style="@style/inputTextStyle"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/internal_percentage"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+
+                />
+
+
+            <TextView
+                android:id="@+id/external_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memory_external"
+                style="@style/inputTextStyle"
+                android:paddingLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_below="@+id/internal_usage"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/external_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_15sdp"
+                android:layout_below="@+id/external_heading"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimaryDark"
+                style="@style/headerTextStyle"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/external_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_memory_amount"
+                style="@style/inputTextStyle"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/external_percentage"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+                android:visibility="gone"
+
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_weight=".1"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_30sdp"
+            >
+
+
+        </View>
+
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.9"
+            android:layout_marginLeft="@dimen/_16sdp"
+            >
+
+            <TextView
+                android:id="@+id/ram_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ram"
+                style="@style/inputTextStyle"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/ram_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_15sdp"
+                android:layout_below="@+id/ram_heading"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/colorPrimaryDark"
+                style="@style/headerTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/ram_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_memory_amount"
+                style="@style/inputTextStyle"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_below="@id/ram_percentage"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_boost"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/memory_parent"
+        android:background="@mipmap/boost"
+        android:layout_marginTop="@dimen/_10sdp"
+        >
+        <ImageView
+            android:id="@+id/btn_boot_image"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:src="@mipmap/rocket"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_25sdp"
+            />
+
+        <TextView
+            android:id="@+id/btn_boot_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boost"
+            style="@style/inputTextStyle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@id/btn_boot_image"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/boot_footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boost_footer"
+        style="@style/inputTextStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/btn_boost"
+        android:textColor="@color/black_bg"
+        />
+
+</RelativeLayout>

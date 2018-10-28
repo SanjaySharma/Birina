@@ -36,23 +36,26 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".BirinaApplication"
         android:installLocation="internalOnly"
         android:theme="@style/AppTheme">
 
         <activity
             android:name="com.birina.bsecure.SplashActivity"
             android:screenOrientation="portrait">
-           <!-- <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-            </intent-filter>-->
+            </intent-filter>
 
         </activity>
 
@@ -92,11 +95,11 @@
         <activity
             android:name="com.birina.bsecure.dashboard.DeshBoardActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
+         <!--   <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-            </intent-filter>
+            </intent-filter>-->
 
         </activity>
         <activity
@@ -113,6 +116,12 @@
         <activity
             android:name="com.birina.bsecure.junkcleaner.activity.CleanerActivity"
             android:screenOrientation="portrait"></activity>
+
+
+        <activity
+            android:name="com.birina.bsecure.junkcleaner.activity.PhoneBoosterActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name="com.birina.bsecure.junkcleaner.activity.SettingsActivity"
@@ -162,10 +171,10 @@
 
         <service android:name="com.birina.bsecure.track.simalert.SaveMyAppsService"></service>
 
-        <service android:name="com.birina.bsecure.track.simalert.SimChangeService"></service>
+        <service android:name="com.birina.bsecure.simAlert.SimChangeService"></service>
 
 
-        <receiver android:name="com.birina.bsecure.track.simalert.receiver.SimChangeReciver">
+        <receiver android:name="com.birina.bsecure.simAlert.SimChangeReciver">
             <intent-filter>
                 <action android:name="android.intent.action.SIM_STATE_CHANGED" />
             </intent-filter>
@@ -403,8 +412,8 @@
         <activity
             android:name="com.birina.bsecure.antitheft.MakePhotoActivity"
             android:screenOrientation="portrait">
-
-            <!-- <intent-filter>
+<!--
+             <intent-filter>
               <action android:name="android.intent.action.MAIN" />
               <category android:name="android.intent.category.LAUNCHER" />
 
@@ -414,6 +423,80 @@
 
 
         <!--*****************Antitheft declaration finish************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.login.TempLoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <service
+            android:name="com.birina.bsecure.Base.BaseService"
+            android:stopWithTask="false"
+             />
+
+
+        <!--*****************Sim Alert declaration finish************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.simAlert.SimAlertActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.birina.bsecure.Base.LocationActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
+
+
+        <!--*****************TrackingRecovery declaration start************************************-->
+
+        <activity
+            android:name="com.birina.bsecure.trackingrecovery.TrackingRecoveryActivity"
+            android:screenOrientation="portrait">
+
+            <!--    <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+
+                </intent-filter>-->
+        </activity>
+
+        <service
+            android:name="com.birina.bsecure.trackingrecovery.TrackingRecoveryService"
+            android:exported="false" />
+
+
+        <receiver android:name="com.birina.bsecure.trackingrecovery.TrackingRecoverySmsReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+
+        <!--*****************TrackingRecovery declaration finish************************************-->
+
+
+
+
+        <service android:name=".notification.remotenotification.BiSecureFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_app_logo" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+
+        <receiver android:name="com.birina.bsecure.notification.localnotification.AlarmNotificationReceiver"/>
 
 
 

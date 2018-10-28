@@ -4,7 +4,7 @@
     android:id="@+id/loginperant"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_color"
     android:focusableInTouchMode="true"
     android:focusable="true"
     android:padding="@dimen/_10sdp">

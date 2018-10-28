@@ -26,7 +26,7 @@
     <string name="no_such_app">No such application.</string>
 
     <!-- Progress bar -->
-    <string name="scanning">Scanning…</string>
+    <string name="scanning">SCANNING %1$d</string>
     <string name="scanning_m_of_n">Scanning %1$d/%2$d</string>
 
     <!-- Progress dialog -->
@@ -111,8 +111,10 @@ sanjay
     <string name="user_name">Name</string>
     <string name="login_mobile">Mobile No.</string>
     <string name="login_pwd">Password</string>
+    <string name="lite">Lite</string>
 
     <string name="subscription_status">Subscription Status:</string>
+    <string name="product_name">Product: Bi-Secure</string>
     <string name="more">More B-Secure</string>
     <string name="connection_manager_fail">We apologize, a technical error has occurred. Please check your internet connection.</string>
 
@@ -121,6 +123,7 @@ sanjay
     <string name="fill_si_number">Please fill serial number</string>
     <string name="fill_user_name">Please fill user name</string>
     <string name="fill_login_pwd">Please fill password</string>
+    <string name="wrong_pwd">Please enter a correct password</string>
     <string name="fill_check_privacy">Please check privacy policy</string>
     <string name="privacy_msg">I want to join Bi-Secure community watch in the fight
         against cybercrime by letting my device automatically forward security information to Birina (Recommended).</string>
@@ -148,7 +151,7 @@ sanjay
     <string name="data_wipe">Remote Wipe</string>
     <string name="antitheft">Antitheft</string>
     <string name="sim_alert">Sim Alert</string>
-    <string name="tracking_recover">Tracking Recover</string>
+    <string name="tracking_recover">Tracking Recovery</string>
     <string name="unplug_charger">Unplug Charger</string>
     <string name="remote_screaming">Remote Screaming</string>
     <string name="ota_update">O.T.A. Update</string>
@@ -164,7 +167,11 @@ sanjay
     <string name="device_storage">Device Storage</string>
     <string name="internal_storage">External Storage</string>
     <string name="cancel">CANCEL</string>
+    <string name="ok">OK</string>
 
+    <string name="backup_allow">Allow Cloud Backup?</string>
+    <string name="restore_allow">Allow Cloud Restore?</string>
+    <string name="agree">Always allow from this device</string>
 
     <!--antivirus module variable-->
     <string name="scanning_msg">Safety Scanning </string>
@@ -283,5 +290,26 @@ sanjay
         received an SMS with registered Remote Screaming password, the app will play an alarm. This alarm will play although the
     device is in silent or vibration mode.</string>
     <string name="btn_back_remote_screaming">Home</string>
+
+
+    <string name="junk_header">Selected junks</string>
+    <string name="junk_amount"> %1$d MB</string>
+
+    <string name="memory_used">STORAGE USED</string>
+    <string name="memory_internal">INTERNAL</string>
+    <string name="memory_external">EXTERNAL</string>
+    <string name="ram">RAM USAGE</string>
+    <string name="percentage">%1$d %</string>
+    <string name="total_memory_amount">%1$d GB / %2$d GB</string>
+    <string name="boost">BOOST</string>
+    <string name="boost_footer">Excess junk will lag your Phone</string>
+    <string name="cleaning">CLEANING %1$d</string>
+
+
+
+    <string name="notification_chhenal">Channel</string>
+    <string name="scan">Scan</string>
+    <string name="notification_desc">Messi of junk files are using up your storage! Tap to clean now.</string>
+    <string name="cache_clean"> Cache Cleaner</string>
 
 </resources>

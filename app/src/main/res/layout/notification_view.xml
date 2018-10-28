@@ -4,9 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:minHeight="?attr/listPreferredItemHeight"
-    android:background="@color/bg_color"
     android:paddingLeft="?attr/listPreferredItemPaddingLeft"
     android:paddingStart="?attr/listPreferredItemPaddingLeft"
     android:paddingRight="?attr/listPreferredItemPaddingRight"
@@ -17,9 +15,8 @@
 
     <ImageView
         android:id="@+id/app_icon"
-        android:layout_width="@android:dimen/app_icon_size"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:contentDescription="@null"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp" />
 
@@ -31,25 +28,30 @@
 
         <TextView
             android:id="@+id/app_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:ellipsize="marquee"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textAlignment="viewStart"
-            android:layout_gravity="start">
+            style="@style/headerTextStyle"
+            android:textColor="@color/colorPrimary"
+           >
         </TextView>
 
         <TextView
-            android:id="@+id/app_size"
+            android:id="@+id/noti_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textAlignment="viewStart"
-            android:layout_gravity="start">
+            style="@style/inputTextStyle"
+            android:textColor="@color/black_bg"
+            >
         </TextView>
 
     </LinearLayout>
-
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        style="@style/inputTextStyle"
+        />
 </LinearLayout>

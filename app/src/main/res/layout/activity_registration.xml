@@ -178,20 +178,19 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_46sdp"
             android:theme="@style/EditTextHint"
-            app:passwordToggleDrawable="@mipmap/ic_eye"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/white"
 
             >
 
-            <EditText
+            <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableRight="@mipmap/ic_eye"
+                android:drawablePadding="@dimen/_7sdp"
+                android:drawableRight="@drawable/ic_eye_close"
+                app:drawable_show="@drawable/ic_eye_close"
+                app:drawable_hide="@drawable/ic_eye_open"
                 android:hint="@string/reg_password"
                 android:imeOptions="actionNext"
                 android:inputType="textPassword"
@@ -202,21 +201,19 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_46sdp"
             android:theme="@style/EditTextHint"
-            app:passwordToggleDrawable="@mipmap/ic_eye"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/white"
-
             >
 
-            <EditText
+            <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
                 android:id="@+id/confPassword"
                 style="@style/inputTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableRight="@mipmap/ic_eye"
+                android:drawablePadding="@dimen/_7sdp"
+                android:drawableRight="@drawable/ic_eye_close"
+                app:drawable_show="@drawable/ic_eye_close"
+                app:drawable_hide="@drawable/ic_eye_open"
                 android:hint="@string/reg_conf_password"
                 android:imeOptions="actionNext"
                 android:inputType="textPassword"

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "831379902850",
+    "firebase_url": "https://bi-9400c.firebaseio.com",
+    "project_id": "bi-9400c",
+    "storage_bucket": "bi-9400c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831379902850:android:fa24101440841704",
+        "android_client_info": {
+          "package_name": "com.birina.bsecure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831379902850-t0tf95v7a78mlu3ods3ra450fa2j3hh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyFuUrrLceh43ySqyDAGGcZpMqmaC72Gs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

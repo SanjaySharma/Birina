@@ -126,21 +126,21 @@
 
             >
             <TextView
-                android:id="@+id/sim_change_header"
+                android:id="@+id/tracking_recovery_header"
                 android:drawablePadding="@dimen/_17sdp"
                 android:drawableLeft="@mipmap/ic_alarm"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:text="@string/sim_alert"
+                android:text="@string/tracking_recover"
                 android:textColor="@color/black_bg"
                 style="@style/headerTextStyle"
                 android:textSize="@dimen/_14sdp"
                 />
 
             <TextView
-                android:id="@+id/sim_change_description"
+                android:id="@+id/tracking_recovery_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -160,7 +160,7 @@
 
 
                 <TextView
-                    android:id="@+id/sim_change_active_inactive"
+                    android:id="@+id/tracking_recovery_active_inactive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/arrow"
@@ -175,10 +175,10 @@
                     />
 
                 <Button
-                    android:id="@+id/sim_change_on"
+                    android:id="@+id/tracking_recovery_on"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_below="@+id/sim_change_active_inactive"
+                    android:layout_below="@+id/tracking_recovery_active_inactive"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_25sdp"
                     android:layout_gravity="center"
@@ -187,20 +187,20 @@
                     android:background="@mipmap/button_unselect"
                     />
                 <View
-                    android:id="@+id/sim_change_divider"
+                    android:id="@+id/tracking_recovery_divider"
                     android:layout_width="@dimen/_1sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_toRightOf="@id/sim_change_on"
-                    android:layout_below="@+id/sim_change_active_inactive"
+                    android:layout_toRightOf="@id/tracking_recovery_on"
+                    android:layout_below="@+id/tracking_recovery_active_inactive"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/black_bg"
                     />
                 <Button
-                    android:id="@+id/sim_change_off"
+                    android:id="@+id/tracking_recovery_off"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_toRightOf="@+id/sim_change_divider"
-                    android:layout_below="@+id/sim_change_active_inactive"
+                    android:layout_toRightOf="@+id/tracking_recovery_divider"
+                    android:layout_below="@+id/tracking_recovery_active_inactive"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/inactive"
                     android:textColor="@color/black_bg"
@@ -237,7 +237,7 @@
 
 
         <Button
-            android:id="@+id/sim_change_back"
+            android:id="@+id/tracking_recovery_back"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center"

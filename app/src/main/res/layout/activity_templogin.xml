@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/resetPwdParent"
+    android:id="@+id/loginperant"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
@@ -31,60 +31,23 @@
         >
 
 
-        <TextView
-            android:id="@+id/resetPwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reset_pwd"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_20sdp"
-            style="@style/headerTextStyle"
-            />
-
-
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/pwdWrapper"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:theme="@style/EditTextHint"
             >
 
             <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
-                android:id="@+id/textResPwd"
+                android:id="@+id/temp_textPwd"
                 android:drawablePadding="@dimen/_7sdp"
                 android:drawableRight="@drawable/ic_eye_close"
                 app:drawable_show="@drawable/ic_eye_close"
                 app:drawable_hide="@drawable/ic_eye_open"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/reg_password"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                style="@style/inputTextStyle"
-                />
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_46sdp"
-            android:theme="@style/EditTextHint"
-            >
-
-
-
-            <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
-                android:id="@+id/textResConfPwd"
-                android:drawablePadding="@dimen/_7sdp"
-                android:drawableRight="@drawable/ic_eye_close"
-                app:drawable_show="@drawable/ic_eye_close"
-                app:drawable_hide="@drawable/ic_eye_open"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/reg_conf_password"
+                android:hint="@string/login_pwd"
                 android:inputType="textPassword"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
@@ -93,18 +56,25 @@
                 />
 
         </android.support.design.widget.TextInputLayout>
-
-
-
-
 
 
         <Button
-            android:id="@+id/btn_reset_submit"
-            android:text="@string/reg_submit"
+            android:id="@+id/btn_temp_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/login"
             style="@style/buttonStyle"
              />
 
+
+        <TextView
+            android:id="@+id/tempForgetPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_pwd"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            style="@style/inputTextStyle"
+            />
 
 
 

@@ -98,16 +98,7 @@
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:background="@drawable/button_selector_blue"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/reg_submit"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="bold" />
+           style="@style/submitButtonStyle" />
 
     </LinearLayout>
     </RelativeLayout>
