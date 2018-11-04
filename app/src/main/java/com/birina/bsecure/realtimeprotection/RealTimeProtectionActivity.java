@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -30,9 +31,7 @@ import java.util.Random;
 
 public class RealTimeProtectionActivity extends BirinaActivity {
     private CircleProgressBar mLineProgressBar;
-    AnimatorSet mAnimatorSet;
-    Handler mHandler;
-    Random mRand;
+    ValueAnimator animator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +60,7 @@ public class RealTimeProtectionActivity extends BirinaActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                closeAnimation();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
@@ -76,8 +76,16 @@ public class RealTimeProtectionActivity extends BirinaActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        closeAnimation();
+        super.onBackPressed();
+    }
+
+
     private void simulateProgress() {
-        ValueAnimator animator = ValueAnimator.ofInt(0, 101);
+         animator = ValueAnimator.ofInt(0, 101);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -103,5 +111,15 @@ public class RealTimeProtectionActivity extends BirinaActivity {
         finish();
     }
 
+    private void closeAnimation(){
+
+        try {
+            if (null != animator && animator.isRunning()) {
+                animator.cancel();
+            }
+        }catch (Exception e){
+            Log.e("Exception ","in RealTimeProtectionActivity: "+e);
+        }
+    }
 
 }

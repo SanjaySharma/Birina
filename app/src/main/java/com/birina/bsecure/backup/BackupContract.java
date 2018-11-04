@@ -9,7 +9,7 @@ import com.birina.bsecure.backup.model.Request;
  */
 
 public interface BackupContract {
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
         void onSuccess();
         void onFailure();
     }

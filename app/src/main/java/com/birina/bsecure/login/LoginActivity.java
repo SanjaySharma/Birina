@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        navigateFlow();
+        //navigateFlow();
 
         ActionBar supportActionBar = getSupportActionBar();
 
@@ -105,6 +105,8 @@ public class LoginActivity extends BaseActivity {
         findViewById(R.id.btn_signUp).setOnClickListener((View v) ->{
 
             Intent browserIntent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            browserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
             startActivity(browserIntent);
             finish();
         });
@@ -170,7 +172,9 @@ public class LoginActivity extends BaseActivity {
 
 
     private void startDashBoardActivity() {
-        startActivity(new Intent(LoginActivity.this, DeshBoardActivity.class));
+        Intent intent = new Intent(LoginActivity.this, DeshBoardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
         finish();
     }
   private void startReNewActivity() {
@@ -186,12 +190,15 @@ public class LoginActivity extends BaseActivity {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE,
                     Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS
-                    ,Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
+                    ,Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS
+                    ,Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
 
             TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
@@ -220,10 +227,14 @@ public class LoginActivity extends BaseActivity {
 
                                 if(elabelResponse.body().getResponse() == Constant.LOGGED_SUCCESS){
 
-                                  //  BirinaPrefrence.saveUserName(LoginActivity.this, mEdtMobile.getText().toString());
+                                    BirinaPrefrence.saveUserName(LoginActivity.this, elabelResponse.body().getUserName());
                                     BirinaPrefrence.updateLogInStatus(LoginActivity.this, true);
-                                  //  BirinaPrefrence.saveRegisteredNumber(LoginActivity.this, mEdtPwd.getText().toString());
+                                    BirinaPrefrence.updateTempLogInStatus(LoginActivity.this, true);
+                                    BirinaPrefrence.saveRegisteredNumber(LoginActivity.this, elabelResponse.body().getUserMobile());
                                     BirinaPrefrence.saveExpireDate(LoginActivity.this, elabelResponse.body().getEndDate());
+                                    BirinaPrefrence.saveLoginPwd(LoginActivity.this, pwd);
+                                    BirinaPrefrence.saveDeviceId(LoginActivity.this, deviceId);
+                                    BirinaPrefrence.saveSiNo(LoginActivity.this, elabelResponse.body().getSiNo());
 
                                     startDashBoardActivity();
 

@@ -20,10 +20,12 @@ public class RegistrationRequestModel {
     private String password;
     @SerializedName("dob")
     private String dob;
+    @SerializedName("gender")
+    private String gender;
 
 
     public RegistrationRequestModel(String email, String siNo, String phone, String name,
-                                    String deviceId, String password, String dob) {
+                                    String deviceId, String password, String dob, String gender) {
         this.email = email;
         this.siNo = siNo;
         this.phone = phone;
@@ -31,6 +33,7 @@ public class RegistrationRequestModel {
         this.deviceId = deviceId;
         this.password = password;
         this.dob = dob;
+        this.gender = gender;
     }
 
     public String getEmail() {
@@ -89,4 +92,12 @@ public class RegistrationRequestModel {
         this.dob = dob;
     }
 
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

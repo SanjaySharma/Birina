@@ -21,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+
 import com.birina.bsecure.R;
 
 import java.io.File;
@@ -45,12 +46,12 @@ public class CleanerService extends Service {
     public interface OnActionListener {
         void onScanStarted(Context context);
 
-        void onScanProgressUpdated(Context context, int current, int max);
+        void onScanProgressUpdated(Context context, List<AppsListItem> apps);
 
         void onScanCompleted(Context context, List<AppsListItem> apps);
 
         void onCleanStarted(Context context);
-
+        void onCleanProgressUpdated(Context context, int[] cleanData);
         void onCleanCompleted(Context context, boolean succeeded);
     }
 
@@ -63,7 +64,7 @@ public class CleanerService extends Service {
 
     private CleanerServiceBinder mBinder = new CleanerServiceBinder();
 
-    private class TaskScan extends AsyncTask<Void, Integer, List<AppsListItem>> {
+    private class TaskScan extends AsyncTask<Void, List<AppsListItem> , List<AppsListItem>> {
 
         private int mAppCount = 0;
 
@@ -81,7 +82,7 @@ public class CleanerService extends Service {
             final List<ApplicationInfo> packages = getPackageManager().getInstalledApplications(
                     PackageManager.GET_META_DATA);
 
-            publishProgress(0, packages.size());
+           // publishProgress(0, packages.size());
 
             final CountDownLatch countDownLatch = new CountDownLatch(packages.size());
 
@@ -97,9 +98,12 @@ public class CleanerService extends Service {
                                                                 boolean succeeded)
                                         throws RemoteException {
                                     synchronized (apps) {
-                                        publishProgress(++mAppCount, packages.size());
 
-                                        mCacheSize += addPackage(apps, pStats, succeeded);
+                                        mCacheSize += addPackage(apps, pStats, succeeded, ++mAppCount, packages.size());
+
+                                       // publishProgress(++mAppCount, packages.size());
+
+                                        publishProgress(new ArrayList<>(apps));
                                     }
 
                                     synchronized (countDownLatch) {
@@ -119,9 +123,11 @@ public class CleanerService extends Service {
         }
 
         @Override
-        protected void onProgressUpdate(Integer... values) {
+        protected void onProgressUpdate(List<AppsListItem>...result) {
             if (mOnActionListener != null) {
-                mOnActionListener.onScanProgressUpdated(CleanerService.this, values[0], values[1]);
+                mOnActionListener.onScanProgressUpdated(CleanerService.this, result[0]);
+
+                // mOnActionListener.onScanProgressUpdated(CleanerService.this, values[0], values[1]);
             }
         }
 
@@ -134,7 +140,7 @@ public class CleanerService extends Service {
             mIsScanning = false;
         }
 
-        private long addPackage(List<AppsListItem> apps, PackageStats pStats, boolean succeeded) {
+        private long addPackage(List<AppsListItem> apps, PackageStats pStats, boolean succeeded, int current, int max) {
             long cacheSize = 0;
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -157,7 +163,7 @@ public class CleanerService extends Service {
                 apps.add(new AppsListItem(pStats.packageName,
                         packageManager.getApplicationLabel(info).toString(),
                         packageManager.getApplicationIcon(pStats.packageName),
-                        cacheSize));
+                        cacheSize, current, max));
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
@@ -166,7 +172,9 @@ public class CleanerService extends Service {
         }
     }
 
-    private class TaskClean extends AsyncTask<Void, Void, Boolean> {
+    private class TaskClean extends AsyncTask<Void, int[], Boolean> {
+
+        private int mAppCount = 0;
 
         @Override
         protected void onPreExecute() {
@@ -190,6 +198,7 @@ public class CleanerService extends Service {
                                 public void onRemoveCompleted(String packageName, boolean succeeded)
                                         throws RemoteException {
                                     countDownLatch.countDown();
+                                    Log.e("CLEAN "," packageName: "+packageName);
                                 }
                             }
                     );
@@ -209,6 +218,8 @@ public class CleanerService extends Service {
                             final File[] files = externalDataDirectory.listFiles();
 
                             for (File file : files) {
+                                publishProgress(new int[]{++mAppCount,files.length});
+
                                 if (!deleteDirectory(new File(String.format(externalCachePath,
                                         file.getName())), true)) {
                                     Log.e(TAG, "External storage suddenly becomes unavailable");
@@ -234,6 +245,16 @@ public class CleanerService extends Service {
             return true;
         }
 
+
+        @Override
+        protected void onProgressUpdate(int[]...result) {
+            if (mOnActionListener != null) {
+                mOnActionListener.onCleanProgressUpdated(CleanerService.this, result[0]);
+
+            }
+        }
+
+
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
@@ -241,7 +262,11 @@ public class CleanerService extends Service {
             }
 
             if (mOnActionListener != null) {
+
+                Log.e("ONPOSTEXECUTE "," mAppCount: "+(++mAppCount));
+
                 mOnActionListener.onCleanCompleted(CleanerService.this, result);
+
             }
 
             mIsCleaning = false;
@@ -267,6 +292,9 @@ public class CleanerService extends Service {
                     }
                 }
             }
+
+
+
 
             file.delete();
 
@@ -324,7 +352,7 @@ public class CleanerService extends Service {
                 }
 
                 @Override
-                public void onScanProgressUpdated(Context context, int current, int max) {
+                public void onScanProgressUpdated(Context context, List<AppsListItem> apps) {
                 }
 
                 @Override
@@ -333,6 +361,11 @@ public class CleanerService extends Service {
 
                 @Override
                 public void onCleanStarted(Context context) {
+                }
+
+                @Override
+                public void onCleanProgressUpdated(Context context, int[] cleanData) {
+
                 }
 
                 @Override

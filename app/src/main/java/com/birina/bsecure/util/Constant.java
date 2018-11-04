@@ -27,6 +27,7 @@ public class Constant {
     public static final String URL_ABOUT = "http://www.birinagroup.com/birina-b-secure/";
     public static final String URL_FEEDBACK = "http://www.birinagroup.com/birina-b-secure/";
     public static final String URL_SUPPORT = "http://www.birinagroup.com/birina-b-secure/faq.php";
+    public static final String URL_NOTIFICATION = "url_notification";
     public static final String WEB_INTENT_KEY = "webUrl";
 
 
@@ -47,5 +48,21 @@ public class Constant {
     public static final String START_REMOTE_SCREAMING_ALARM = "startRemoteScreamingAlarm";
     public static final String STOP_REMOTE_SCREAMING_ALARM = "stopRemoteScreamingAlarm";
 
+    //Location variables
+    public static final String LOCATION_ACTIVITY_KEY = "locationActivityKey";
+    public static final String SIM_CHANGE_KEY = "simChangeKey";
+    public static final String TRACKING_RECOVERY_KEY = "trackingRecoveryKey";
+
+
+    //Notification variables
+
+    public static final String IMAGE_URL_KEY = "image";
+    public static final String TITLE_KEY = "title";
+    public static final String TARGET_LINK_KEY = "targetLink";
+    public static final String MESSAGE_KEY = "message";
+
+
+    //SignUp variables
+    public static final String RESET_PWD_KEY = "resetPwdKey";
 
 }

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.birina.bsecure.R;
 import com.birina.bsecure.login.LoginActivity;
+import com.birina.bsecure.track.disabledevice.CaptureService;
 import com.birina.bsecure.track.disabledevice.Lockscreen;
 import com.birina.bsecure.track.disabledevice.LockscreenUtil;
 import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
@@ -58,6 +59,8 @@ public class LockscreenViewService extends Service {
     private int mServiceStartId = 0;
     private SendMassgeHandler mMainHandler = null;
 //    private boolean sIsSoftKeyEnable = false;
+    private int mWrongPwd =0;
+    private final int PERMIT_WRONG_ATTEMPT =0;
 
     private class SendMassgeHandler extends android.os.Handler {
         @Override
@@ -268,15 +271,15 @@ public class LockscreenViewService extends Service {
     private void changeBackGroundLockView(float forgroundX) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             if (forgroundX < mDeviceWidth) {
-                mBackgroundLockImageView.setBackground(getResources().getDrawable(R.drawable.lock));
+                //mBackgroundLockImageView.setBackground(getResources().getDrawable(R.drawable.lock));
             } else {
-                mBackgroundLockImageView.setBackground(getResources().getDrawable(R.drawable.unlock));
+               // mBackgroundLockImageView.setBackground(getResources().getDrawable(R.drawable.unlock));
             }
         } else {
             if (forgroundX < mDeviceWidth) {
-                mBackgroundLockImageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.lock));
+               // mBackgroundLockImageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.lock));
             } else {
-                mBackgroundLockImageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.unlock));
+                //mBackgroundLockImageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.unlock));
             }
         }
     }
@@ -388,6 +391,15 @@ public class LockscreenViewService extends Service {
 
                     }else
                         Toast.makeText(mContext, getResources().getString(R.string.track_fail), Toast.LENGTH_LONG).show();
+
+                    mWrongPwd++;
+
+                    if(mWrongPwd >= PERMIT_WRONG_ATTEMPT){
+
+                        startService(new Intent(LockscreenViewService.this, CaptureService.class));
+
+                        mWrongPwd = 0;
+                    }
 
                 }else {
                     Toast.makeText(mContext, getResources().getString(R.string.track_empty), Toast.LENGTH_LONG).show();

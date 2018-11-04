@@ -8,13 +8,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.R;
+import com.birina.bsecure.pockettheft.PocketTheftActivity;
 import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
 import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.Constant;
@@ -30,13 +35,10 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
     private EditText  mEdtPhone,mEdtOtp;
 
-    private Button mRemoteStreamingActive;
-    private Button mRemoteSteamingInActive;
+    TextView mActiveInactive;
 
-   private LinearLayout mRegParent;
+   private RelativeLayout mRegParent;
    private RelativeLayout mReSetParent ;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,21 +47,15 @@ public class RemoteScreamingActivity extends BirinaActivity {
         setContentView(R.layout.activity_remote_streaming);
         SharedPreferencesUtil.init(this);
 
-
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.remote_screaming);
 
-
-
         initializeClick();
 
         navigateFlow();
-
     }
 
     @Override
@@ -79,22 +75,43 @@ public class RemoteScreamingActivity extends BirinaActivity {
     }
 
 
-
-    // Method to initialize id & ClickListener
-    private void initializeClick() {
+    private void initializeClick(){
 
         mEdtPhone = (EditText) findViewById(R.id.trackPhone);
         mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
-        mRegParent = (LinearLayout)findViewById(R.id.reg_parent) ;
-        mReSetParent = (RelativeLayout) findViewById(R.id.alert_details);
+        mRegParent = (RelativeLayout)findViewById(R.id.alert_form) ;
+        mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
 
-        mRemoteStreamingActive = (Button) findViewById(R.id.remote_screaming_on);
-        mRemoteStreamingActive.setOnClickListener(v ->handleRemoteScreamingActiveListener());
-        mRemoteSteamingInActive = (Button) findViewById(R.id.remote_screaming_off);
-        mRemoteSteamingInActive.setOnClickListener(v ->handleRemoteScreamingInActiveListener());
-        findViewById(R.id.remote_screaming_alarm).setOnClickListener(v ->stopRemoteScreamingAlarm());
-        findViewById(R.id.remote_screaming_back).setOnClickListener(v ->finish());
-        setRemoteScreamingBtnStatus(BirinaPrefrence.isRemoteScreamingActive(RemoteScreamingActivity.this));
+
+        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
+        headerIcon.setBackgroundResource(R.drawable.ic_alarm);
+
+        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
+        header.setText(R.string.remote_screaming);
+
+        TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
+        desc.setText(R.string.remote_screaming_description);
+
+        ((Switch)findViewById(R.id.pocket_theft_on)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    handleRemoteScreamingActiveListener();
+                }else{
+                    handleRemoteScreamingInActiveListener();
+                }
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+            }
+        });
+
+        mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
+
+        findViewById(R.id.pocket_theft_alarm).setOnClickListener(v ->stopRemoteScreamingAlarm());
+        findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
+
+
+
+
 
 
         findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
@@ -107,7 +124,7 @@ public class RemoteScreamingActivity extends BirinaActivity {
         });
 
 
-        findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,15 +132,34 @@ public class RemoteScreamingActivity extends BirinaActivity {
             }
         });
 
-        findViewById(R.id.remote_screaming_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                finish();
-            }
-        });
+
+        setInitialActiveValue();
+
 
     }
+
+
+
+
+
+    private void setInitialActiveValue(){
+
+        boolean initialValue = BirinaPrefrence.isRemoteScreamingActive(RemoteScreamingActivity.this);
+
+        if(initialValue){
+            mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
+
+        }else {
+            mActiveInactive.setTextColor(getResources().getColor(R.color.gray_stroke));
+        }
+
+        ((Switch)findViewById(R.id.pocket_theft_on)).setChecked(initialValue);
+    }
+
+
+
+
 
 
     private void validateNo() {
@@ -225,14 +261,14 @@ private boolean saveRemoteScreamingData(String phone, String otp){
 
     private void handleRemoteScreamingActiveListener(){
 
-        setRemoteScreamingBtnStatus(true);
+        mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
         BirinaPrefrence.updateRemoteScreamingStatus(RemoteScreamingActivity.this, true);
         startRemoteScreamingService();
     }
 
     private void handleRemoteScreamingInActiveListener(){
 
-        setRemoteScreamingBtnStatus(false);
+        mActiveInactive.setTextColor(getResources().getColor(R.color.gray_stroke));
         BirinaPrefrence.updateRemoteScreamingStatus(RemoteScreamingActivity.this, false);
         stopRemoteScreamingService();
     }
@@ -258,14 +294,6 @@ private boolean saveRemoteScreamingData(String phone, String otp){
         startService(i);
     }
 
-    private void setRemoteScreamingBtnStatus(boolean isUnPlugChargerActive){
-        if(isUnPlugChargerActive){
-            mRemoteSteamingInActive.setBackgroundResource(R.mipmap.button_unselect);
-            mRemoteStreamingActive.setBackgroundResource(R.mipmap.button_select);
-        }else {
-            mRemoteSteamingInActive.setBackgroundResource(R.mipmap.button_select);
-            mRemoteStreamingActive.setBackgroundResource(R.mipmap.button_unselect);
-        }
-    }
+
 
 }

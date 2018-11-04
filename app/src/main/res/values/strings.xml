@@ -115,7 +115,7 @@ sanjay
 
     <string name="subscription_status">Subscription Status:</string>
     <string name="product_name">Product: Bi-Secure</string>
-    <string name="more">More B-Secure</string>
+    <string name="more">More Bi-Secure</string>
     <string name="connection_manager_fail">We apologize, a technical error has occurred. Please check your internet connection.</string>
 
     <string name="reg_invalid_mobile">Invalid Mobile no</string>
@@ -149,7 +149,7 @@ sanjay
     <string name="backup">Cloud Backup</string>
     <string name="restore">Cloud Restore</string>
     <string name="data_wipe">Remote Wipe</string>
-    <string name="antitheft">Antitheft</string>
+    <string name="antitheft">Remote Lock</string>
     <string name="sim_alert">Sim Alert</string>
     <string name="tracking_recover">Tracking Recovery</string>
     <string name="unplug_charger">Unplug Charger</string>
@@ -175,6 +175,7 @@ sanjay
 
     <!--antivirus module variable-->
     <string name="scanning_msg">Safety Scanning </string>
+    <string name="allow_scanning">Allow Antivirus Scanning </string>
     <string name="device_sequre">Device is secure</string>
     <string name="scanning_complete">Scan Complete </string>
 
@@ -262,6 +263,7 @@ sanjay
     <string name="fill_gender">Please enter Gender</string>
     <string name="fill_dob">Please enter Date of Birth</string>
     <string name="password_not_match">Create password and confirm password are not the same</string>
+    <string name="password_lenght_match">Password should be more than 5 characters</string>
 
 
 
@@ -270,21 +272,27 @@ sanjay
     <string name="pocket_theft_description"> After activation "Pocket Theft" option and then screen is
         off now if user press any button of the device, a Ring ton will play. This rington will play although the
     device is in silent mode.</string>
+    <string name="active_inactive">ACTIVE/INACTIVE</string>
 
     <string name="active">ACTIVE</string>
+    <string name="home">Home</string>
+    <string name="go_to_dashboard">Dashboard</string>
     <string name="inactive">INACTIVE</string>
     <string name="alarm_off">ALARM OFF</string>
+    <string name="off">Off</string>
 
     <!--PocketTheft module variable-->
     <string name="unPlug_charger_description"> After activation "Unplug Charger Alert" option if we unplug
         device charger app will play an alarm. This alarm will play although the
     device is in silent or vibration mode.</string>
 
+
     <string name="unplug_charger_heading">Unplug Charger Alert</string>
     <string name="unplug_charger_active">Unplug Alert</string>
 
     <!--sim alert module variable-->
-    <string name="btn_reset_remote_screaming"><u>Reset Password?</u></string>
+    <string name="btn_reset_remote_screaming">Reset Password</string>
+    <string name="reset">Reset</string>
 
     <string name="remote_screaming_description"> After activation "Remote Screaming" option when app
         received an SMS with registered Remote Screaming password, the app will play an alarm. This alarm will play although the
@@ -312,4 +320,19 @@ sanjay
     <string name="notification_desc">Messi of junk files are using up your storage! Tap to clean now.</string>
     <string name="cache_clean"> Cache Cleaner</string>
 
+
+    <!--camera module variable-->
+
+    <string name="error_cannot_write">Cannot write image captured by camera.</string>
+    <string name="error_cannot_open">Cannot open camera.</string>
+    <string name="error_cannot_get_permission">Camera permission not available.</string>
+    <string name="error_not_having_camera">Your device does not have front camera.</string>
+    <string name="error_camera_permission_denied">Camera permission denied.</string>
+    <string name="btn_tittle_capture_image">Capture image</string>
+
+
+    <!--tracking recovery module variable-->
+    <string name="tracking_recovery_description"> After activation "Unplug Charger Alert" option if we unplug
+        device charger app will play an alarm. This alarm will play although the
+    device is in silent or vibration mode.</string>
 </resources>

@@ -34,10 +34,18 @@
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+
 
     <application
         android:allowBackup="true"
@@ -479,6 +487,9 @@
 
 
 
+        <!--*****************Notification declaration start************************************-->
+
+
         <service android:name=".notification.remotenotification.BiSecureFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -499,6 +510,31 @@
         <receiver android:name="com.birina.bsecure.notification.localnotification.AlarmNotificationReceiver"/>
 
 
+        <!--*****************Notification declaration finish************************************-->
+
+<!--
+
+
+        <activity
+            android:name="com.birina.bsecure.antitheft.DemoCameraActivity"
+            android:screenOrientation="portrait">
+
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+
+                </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.birina.bsecure.antitheft.DemoCamService"
+            android:exported="false" />
+
+-->
+
+        <service
+            android:name="com.birina.bsecure.track.disabledevice.CaptureService"
+            android:exported="false" />
 
     </application>
 

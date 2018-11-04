@@ -37,7 +37,13 @@ public class UnPlugChargerService extends Service {
         switch (screenState)
         {
             case Constant.START_UNPLUG_ALARM:
-                startAlarm();
+                if(ringtone != null){
+                    if(!ringtone.isPlaying()){
+                        startAlarm();
+                    }
+                }else{
+                    startAlarm();
+                }
                 break;
 
             case Constant.UNREGISTER:

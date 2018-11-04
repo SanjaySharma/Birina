@@ -41,14 +41,14 @@ public class ForgotPwdActivity extends BaseActivity {
     private TextView mEdtForgotLabel;
 
     private boolean isOtpReqSuccess = false;
-
+    private  String mobileNo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pwd);
         isOtpReqSuccess = false;
-        navigateFlow();
+       // navigateFlow();
 
         ActionBar supportActionBar = getSupportActionBar();
 
@@ -103,6 +103,8 @@ public class ForgotPwdActivity extends BaseActivity {
 
             if (Validation.isMobileValid(mEdtForgotValue.getText().toString())) {
 
+                mobileNo = mEdtForgotValue.getText().toString();
+
                 performPwdRecovery( mEdtForgotValue.getText().toString());
 
             } else {
@@ -134,7 +136,7 @@ public class ForgotPwdActivity extends BaseActivity {
 
                     } else {
 
-                        performVerifyOtp( BirinaPrefrence.getRegisteredNumber(ForgotPwdActivity.this) ,mEdtForgotValue.getText().toString());
+                        performVerifyOtp( mobileNo ,mEdtForgotValue.getText().toString());
 
                     }
         }
@@ -162,7 +164,10 @@ public class ForgotPwdActivity extends BaseActivity {
 
 
     private void startResetPasswordActivity() {
-        startActivity(new Intent(ForgotPwdActivity.this, ResetPwdActivity.class));
+
+        Intent intent = new Intent(ForgotPwdActivity.this, ResetPwdActivity.class);
+        intent.putExtra(Constant.RESET_PWD_KEY, mobileNo);
+        startActivity(intent);
         finish();
     }
 

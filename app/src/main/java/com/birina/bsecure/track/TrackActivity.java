@@ -345,7 +345,7 @@ private void saveOldSimNumber(){
                     LockscreenUtil.getInstance(this).getPermissionCheckSubject()
                             .onNext(true);
 
-                  //  startActivity(new Intent(TrackActivity.this, MainActivity.class));
+                  //  startActivity(new Intent(TrackActivity.this, AlarmGenerator.class));
 
                    // finish();
                 } else {

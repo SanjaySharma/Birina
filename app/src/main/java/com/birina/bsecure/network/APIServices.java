@@ -4,11 +4,19 @@ import com.birina.bsecure.backup.model.BackupResponse;
 import com.birina.bsecure.backup.model.Request;
 import com.birina.bsecure.login.model.LogInRequestModel;
 import com.birina.bsecure.login.model.LogInResponseModel;
+import com.birina.bsecure.notification.TokenRegistrationRequest;
+import com.birina.bsecure.notification.TokenRegistrationResponse;
 import com.birina.bsecure.registration.model.RegistrationRequestModel;
 import com.birina.bsecure.registration.model.RegistrationResponseModel;
 import com.birina.bsecure.resetpwd.model.ForgotPwdRequestModel;
 import com.birina.bsecure.resetpwd.model.ForgotPwdResponseModel;
+import com.birina.bsecure.resetpwd.model.ReNewSerialKeyRequestModel;
+import com.birina.bsecure.resetpwd.model.ReNewSerialKeyResponseModel;
 import com.birina.bsecure.restore.model.RestoreRequest;
+import com.birina.bsecure.track.disabledevice.model.UploadImageRequest;
+import com.birina.bsecure.track.disabledevice.model.UploadImageResponse;
+import com.birina.bsecure.trackingrecovery.LocationRequestModel;
+import com.birina.bsecure.trackingrecovery.LocationResponseModel;
 
 
 import retrofit2.Call;
@@ -50,14 +58,26 @@ public interface APIServices {
                                                                              forgotPwdRequestModel );
 
     @Headers("Content-Type:application/json")
-    @POST("reset-key.php")
-    Observable<Response<ForgotPwdResponseModel>> performResetKey(@Body ForgotPwdRequestModel
-                                                                            forgotPwdRequestModel );
+    @POST("renew.php")
+    Observable<Response<ReNewSerialKeyResponseModel>> performRenewKey(@Body ReNewSerialKeyRequestModel
+                                                                            reNewSerialKeyRequestModel );
     @Headers("Content-Type:application/json")
     @POST("newuser.php")
     Observable<Response<RegistrationResponseModel>> performRegistration(@Body RegistrationRequestModel
                                                                             registrationRequestModel );
 
+    @Headers("Content-Type:application/json")
+    @POST("track_device.php")
+    Observable<Response<LocationResponseModel>> trackingRecovery(@Body LocationRequestModel
+                                                                            locationRequestModel );
 
 
+    @Headers("Content-Type:application/json")
+    @POST("save_token.php")
+    Observable<Response<TokenRegistrationResponse>> registrationToken(@Body TokenRegistrationRequest
+                                                                            tokenRegistrationRequest );
+
+    @Headers("Content-Type:application/json")
+    @POST("take_pic.php")
+    Observable<Response<UploadImageResponse>> uploadImage(@Body UploadImageRequest uploadImageRequest);
 }

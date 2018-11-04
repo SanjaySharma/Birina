@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_180sdp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorAccent"
         android:orientation="vertical"
         >
 
@@ -49,7 +49,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
 
     <LinearLayout
@@ -129,7 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:textColor="@color/black_sub_header"
+        android:textColor="@color/white"
         android:text="@string/more"
         android:layout_marginTop="@dimen/_10sdp"
         />

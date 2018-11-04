@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Log.d(Constant.TAG, "Enter in onCheckedChanged of MainActivity");
+                    Log.d(Constant.TAG, "Enter in onCheckedChanged of AlarmGenerator");
 
                     SharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, true);
                     Lockscreen.getInstance(mContext).startLockscreenService();

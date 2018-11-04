@@ -88,7 +88,7 @@
                 android:hint="@string/track_otp"
                 android:textSize="@dimen/_10sdp"
                 android:inputType="text"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:maxLines="1"
                />
 
@@ -103,188 +103,16 @@
     </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/alert_details"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_color"
-        android:focusableInTouchMode="true"
-        android:focusable="true"
-        android:padding="@dimen/_10sdp"
+
+
+    <!--Second view-->
+
+
+    <include
+        layout="@layout/pocket_first_view"
         android:visibility="gone"
-        >
+        />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-
-                >
-                <TextView
-                    android:id="@+id/remote_screaming_header"
-                    android:drawablePadding="@dimen/_17sdp"
-                    android:drawableLeft="@mipmap/ic_alarm"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:text="@string/remote_screaming"
-                    android:textColor="@color/black_bg"
-                    style="@style/headerTextStyle"
-                    android:textSize="@dimen/_14sdp"
-                    />
-
-                <TextView
-                    android:id="@+id/remote_screaming_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:text="@string/remote_screaming_description"
-                    android:paddingRight="@dimen/_15sdp"
-                    android:paddingLeft="@dimen/_8sdp"
-                    android:textColor="@color/black_bg"
-                    style="@style/inputTextStyle"
-                    />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    >
-
-
-                    <TextView
-                        android:id="@+id/remote_screaming_active_inactive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/arrow"
-                        android:gravity="center"
-                        android:paddingTop="@dimen/_8sdp"
-                        android:text="@string/remote_screaming"
-                        android:drawablePadding="@dimen/_4sdp"
-                        android:textColor="@color/colorAccent"
-                        style="@style/headerTextStyle"
-                        android:textSize="@dimen/_14sdp"
-
-                        />
-
-                    <Button
-                        android:id="@+id/remote_screaming_on"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_below="@+id/remote_screaming_active_inactive"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_25sdp"
-                        android:layout_gravity="center"
-                        android:text="@string/active"
-                        android:textColor="@color/black_bg"
-                        android:background="@mipmap/button_unselect"
-                        />
-                    <View
-                        android:id="@+id/remote_screaming_divider"
-                        android:layout_width="@dimen/_1sdp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_toRightOf="@id/remote_screaming_on"
-                        android:layout_below="@+id/remote_screaming_active_inactive"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@color/black_bg"
-                        />
-                    <Button
-                        android:id="@+id/remote_screaming_off"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_toRightOf="@+id/remote_screaming_divider"
-                        android:layout_below="@+id/remote_screaming_active_inactive"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:text="@string/inactive"
-                        android:textColor="@color/black_bg"
-                        android:background="@mipmap/button_select"
-                        />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    >
-
-
-                    <TextView
-                        android:id="@+id/remote_screaming_alarm_off_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/arrow"
-                        android:text="@string/alarm_off"
-                        android:drawablePadding="@dimen/_4sdp"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:textColor="@color/colorAccent"
-                        style="@style/headerTextStyle"
-                        android:textSize="@dimen/_14sdp"
-
-                        />
-
-                    <Button
-                        android:id="@+id/remote_screaming_alarm"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_toRightOf="@id/remote_screaming_alarm_off_text"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_30sdp"
-                        android:text="@string/alarm_off"
-                        android:textColor="@color/black_bg"
-                        android:background="@drawable/button_selector"
-                        />
-                </RelativeLayout>
-
-
-
-            </LinearLayout>
-
-
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_100sdp"
-                android:src="@drawable/main_logo"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="-70dp"
-                />
-
-        <TextView
-            android:id="@+id/btn_reset"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentBottom="true"
-            android:layout_above="@+id/remote_screaming_back"
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:text="@string/btn_reset_remote_screaming"
-            android:textColor="@color/colorAccent"
-            android:layout_marginBottom="@dimen/_40sdp"
-            style="@style/headerTextStyle" />
-
-
-        <Button
-            android:id="@+id/remote_screaming_back"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:text="@string/btn_back_remote_screaming"
-            android:textColor="@color/colorAccent"
-            android:background="@drawable/button_selector"
-            android:textStyle="bold"
-            />
-
-        </RelativeLayout>
 
 
 

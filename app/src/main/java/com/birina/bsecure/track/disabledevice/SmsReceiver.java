@@ -28,8 +28,9 @@ public class SmsReceiver  extends BroadcastReceiver {
 
             String sender = smsMessage.getDisplayOriginatingAddress();
             //Check the sender to filter messages which we require to read
+            //PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender)
 
-            if ( PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender))
+            if (PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender) )
             {
                 String messageBody = smsMessage.getMessageBody();
 

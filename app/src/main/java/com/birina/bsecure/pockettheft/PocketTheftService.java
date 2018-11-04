@@ -39,7 +39,13 @@ public class PocketTheftService extends Service {
 
             switch (screenState) {
                 case Constant.SCREEN_ON:
-                    startAlarm();
+                    if(ringtone != null){
+                        if(!ringtone.isPlaying()){
+                            startAlarm();
+                        }
+                    }else{
+                        startAlarm();
+                    }
                     break;
 
                 case Constant.UNREGISTER:

@@ -18,11 +18,12 @@ import android.widget.Toast;
 import com.birina.bsecure.Base.BaseActivity;
 import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.R;
+import com.birina.bsecure.notification.remotenotification.BiSecureFirebaseMessagingService;
 import com.birina.bsecure.util.Constant;
 
 
 public class WebActivity extends BirinaActivity {
-
+   private Intent intent = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class WebActivity extends BirinaActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String url ="";
-        Intent intent = getIntent();
+        intent = getIntent();
         if(null != intent){
              url = setTitleAndUrl(intent.getStringExtra(Constant.WEB_INTENT_KEY));
         }
@@ -85,6 +86,10 @@ public class WebActivity extends BirinaActivity {
             case Constant.URL_SUPPORT:
                 title = Constant.SUPPORT;
                 url = Constant.URL_SUPPORT;
+                break;
+            case Constant.URL_NOTIFICATION:
+                title = getResources().getString(R.string.app_name);
+                url = intent.getStringExtra(Constant.TARGET_LINK_KEY);
                 break;
                 default:
                     title = getResources().getString(R.string.app_name);

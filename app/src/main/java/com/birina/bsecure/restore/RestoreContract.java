@@ -10,7 +10,7 @@ import com.birina.bsecure.restore.model.RestoreRequest;
  */
 
 public interface RestoreContract {
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
         void onSuccess(Request backup);
         void onFailure();
     }

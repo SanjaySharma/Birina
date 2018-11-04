@@ -31,7 +31,15 @@ public class RemoteScreamingService extends Service {
 
         switch (state) {
             case Constant.START_REMOTE_SCREAMING_ALARM:
-                startAlarm();
+                if(ringtone != null){
+                    if(!ringtone.isPlaying()){
+                        startAlarm();
+                    }
+                }else{
+                    startAlarm();
+                }
+
+
                 break;
 
             case Constant.UNREGISTER:

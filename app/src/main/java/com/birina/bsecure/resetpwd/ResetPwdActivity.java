@@ -42,13 +42,16 @@ public class ResetPwdActivity extends BaseActivity {
 
 
     private EditText mEdtResPwd,mEdtResConfPwd;
-
+    private  String mobileNo = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_pwd);
-
-        navigateFlow();
+        Intent intent = getIntent();
+        if(null != intent){
+            mobileNo = intent.getStringExtra(Constant.RESET_PWD_KEY);
+        }
+       // navigateFlow();
 
         ActionBar supportActionBar = getSupportActionBar();
 
@@ -120,7 +123,7 @@ public class ResetPwdActivity extends BaseActivity {
                             Snackbar.LENGTH_LONG).show();
 
                 } else {
-                    resetPwd(BirinaPrefrence.getRegisteredNumber(ResetPwdActivity.this), mEdtResPwd.getText().toString());
+                    resetPwd(mobileNo, mEdtResPwd.getText().toString());
                 }
 
             }

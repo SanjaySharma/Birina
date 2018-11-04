@@ -30,7 +30,8 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
 
                 String sender = smsMessage.getDisplayOriginatingAddress();
                 //Check the sender to filter messages which we require to read
-
+                //
+                //"AX-bytwoo".equalsIgnoreCase(sender)
                 if (PhoneNumberUtils.compare(context, BirinaPrefrence.getRemoteScreamingNumber(context), sender)) {
                     String messageBody = smsMessage.getMessageBody();
 
@@ -40,7 +41,6 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
                         break;
                     }
 
-
                 }
             }
         }
@@ -49,7 +49,7 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
 
     private void startRemoteScreamingService(Context context){
 
-        Intent i = new Intent(context, UnPlugChargerService.class);
+        Intent i = new Intent(context, RemoteScreamingService.class);
         i.putExtra(Constant.REMOTE_SCREAMING_ALARM_STATE, Constant.START_REMOTE_SCREAMING_ALARM);
         context.startService(i);
     }

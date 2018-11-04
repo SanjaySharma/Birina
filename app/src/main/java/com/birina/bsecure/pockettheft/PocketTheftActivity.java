@@ -2,10 +2,16 @@ package com.birina.bsecure.pockettheft;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.R;
@@ -15,8 +21,7 @@ import com.birina.bsecure.util.Constant;
 
 public class PocketTheftActivity extends BirinaActivity {
 
-    private Button mPocketTheftActive;
-    private Button mPocketTheftInActive;
+      TextView mActiveInactive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,6 @@ public class PocketTheftActivity extends BirinaActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.pockettheft);
 
-        initializeView();
         setListeners();
     }
 
@@ -53,35 +57,74 @@ public class PocketTheftActivity extends BirinaActivity {
     }
 
 
-    private void initializeView(){
-
-
-    }
-
     private void setListeners(){
-        mPocketTheftActive = (Button) findViewById(R.id.pocket_theft_on);
-        mPocketTheftActive.setOnClickListener(v ->handlePocketTheftActiveListener());
-        mPocketTheftInActive = (Button) findViewById(R.id.pocket_theft_off);
-        mPocketTheftInActive.setOnClickListener(v ->handlePocketTheftInActiveListener());
+
+        findViewById(R.id.back_parent).setVisibility(View.GONE);
+
+        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
+        headerIcon.setBackgroundResource(R.drawable.ic_pocket_theft);
+
+        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
+        header.setText(R.string.pocket_theft);
+
+        TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
+        desc.setText(R.string.pocket_theft_description);
+
+        ((Switch)findViewById(R.id.pocket_theft_on)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    handlePocketTheftActiveListener();
+                }else{
+                    handlePocketTheftInActiveListener();
+                }
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+            }
+        });
+
+        mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
+
         findViewById(R.id.pocket_theft_alarm).setOnClickListener(v ->stopPocketTheftAlarm());
         findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
-        setPocketTheftBtnStatus(BirinaPrefrence.isPocketTheftActive(PocketTheftActivity.this));
+        setInitialActiveValue();
     }
 
 
  private void handlePocketTheftActiveListener(){
 
-     setPocketTheftBtnStatus(true);
+     mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
      BirinaPrefrence.updatePocketTheftStatus(PocketTheftActivity.this, true);
      startPocketTheftService();
  }
 
  private void handlePocketTheftInActiveListener(){
 
-     setPocketTheftBtnStatus(false);
+     mActiveInactive.setTextColor(getResources().getColor(R.color.gray_stroke));
+
      BirinaPrefrence.updatePocketTheftStatus(PocketTheftActivity.this, false);
      stopPocketTheftService();
  }
+
+
+ private void setInitialActiveValue(){
+
+        boolean initialValue = BirinaPrefrence.isPocketTheftActive(PocketTheftActivity.this);
+
+        if(initialValue){
+            mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
+
+        }else {
+            mActiveInactive.setTextColor(getResources().getColor(R.color.gray_stroke));
+        }
+
+     ((Switch)findViewById(R.id.pocket_theft_on)).setChecked(initialValue);
+ }
+
+
+
+
+
+
 
     private void startPocketTheftService(){
 
@@ -104,13 +147,5 @@ public class PocketTheftActivity extends BirinaActivity {
         startService(i);
     }
 
-    private void setPocketTheftBtnStatus(boolean isPocketTheftActive){
-        if(isPocketTheftActive){
-            mPocketTheftInActive.setBackgroundResource(R.mipmap.button_unselect);
-            mPocketTheftActive.setBackgroundResource(R.mipmap.button_select);
-        }else {
-            mPocketTheftInActive.setBackgroundResource(R.mipmap.button_select);
-            mPocketTheftActive.setBackgroundResource(R.mipmap.button_unselect);
-        }
-    }
+
 }

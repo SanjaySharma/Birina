@@ -5,6 +5,7 @@
         <item
             android:id="@+id/nav_menu_help"
             android:icon="@mipmap/ic_help_nav"
+
             android:title="Help" />
         <item
             android:id="@+id/nav_menu_feedback"

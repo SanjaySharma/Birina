@@ -1,14 +1,20 @@
 package com.birina.bsecure.Base;
 
+import android.app.ActivityManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.birina.bsecure.login.LoginActivity;
+import com.birina.bsecure.resetpwd.ReNewActivity;
 import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.BirinaProgressDialog;
 import com.birina.bsecure.util.BirinaUtility;
+
+import java.util.List;
 
 
 /**
@@ -29,8 +35,6 @@ public class BirinaActivity extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
-        Log.d("BirinaActivity "," onCreate() called ");
-
        // checkExpireStatus();
 
 
@@ -42,15 +46,16 @@ public class BirinaActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Log.d("BirinaActivity "," onResume() called ");
-
        // checkExpireStatus();
     }
+
+
 
     public void checkExpireStatus(){
 
             if(BirinaUtility.isLicenseExpire(this)){
                 BirinaPrefrence.updateLogInStatus(this, false);
+                startActivity(new Intent(BirinaActivity.this, ReNewActivity.class));
                 finish();
                 return;
             }
