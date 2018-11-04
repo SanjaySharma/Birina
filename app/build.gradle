@@ -9,7 +9,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.birina.bsecure"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 5
         versionName "1.5"
@@ -72,7 +72,9 @@ dependencies {
     implementation  'com.google.android.gms:play-services-location:16.0.0'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.firebase:firebase-core:16.0.4'
-    compile 'com.github.scottyab:showhidepasswordedittext:0.8'
+    implementation 'com.github.scottyab:showhidepasswordedittext:0.8'
+    implementation group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

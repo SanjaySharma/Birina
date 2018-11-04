@@ -181,7 +181,8 @@ public class ReNewActivity extends BaseActivity {
         RestClient restClient = new RestClient();
 
         Observable<Response<ReNewSerialKeyResponseModel>> resetKeyResponsePayload
-                = restClient.getApiService().performRenewKey(new ReNewSerialKeyRequestModel(siNo, deviceId, ""));
+                = restClient.getApiService().performRenewKey(new ReNewSerialKeyRequestModel
+                (BirinaPrefrence.getRegisteredNumber(ReNewActivity.this), siNo, deviceId));
 
         resetKeyResponsePayload.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

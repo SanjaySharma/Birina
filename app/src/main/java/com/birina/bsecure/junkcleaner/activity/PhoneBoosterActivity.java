@@ -126,15 +126,14 @@ public class PhoneBoosterActivity extends AppCompatActivity {
 
         if(isSDSupportedDevice && isSDPresent)
         {
-            // yes SD-card is present
-        }
-        else
-        {
             mTxtExternalUsage.setVisibility(View.VISIBLE);
             mTxtExternalPercentage.setVisibility(View.VISIBLE);
-            findViewById(R.id.external_heading).setVisibility(View.VISIBLE);
+            findViewById(R.id.external_heading).setVisibility(View.VISIBLE);        }
+        else
+        {
+
         }
-      /*  if((totalInternalValue != totalExternalValue) &&(freeInternalValue != freeExternalValue)){
+       /* if((totalInternalValue != totalExternalValue) &&(freeInternalValue != freeExternalValue)){
             mTxtExternalUsage.setVisibility(View.VISIBLE);
             mTxtExternalPercentage.setVisibility(View.VISIBLE);
             findViewById(R.id.external_heading).setVisibility(View.VISIBLE);
