@@ -7,56 +7,41 @@
     android:background="@color/bg_color"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:paddingTop="@dimen/_10sdp"
-    android:paddingLeft="@dimen/_10sdp"
-    android:paddingBottom="@dimen/_5sdp"
-    android:paddingRight="@dimen/_10sdp">
+   >
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:id="@+id/imageViewParent"
+        android:background="@drawable/app_bg"
+        >
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/main_logo" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewParent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_10sdp"
         >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            >
-
-            <ImageView
-                android:id="@+id/header_icon"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:background="@mipmap/ic_pocket_theft"
-                />
-
-        <TextView
-            android:id="@+id/pocket_theft_header"
-            android:layout_marginLeft="@dimen/_17sdp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_toRightOf="@id/header_icon"
-            android:text="@string/pocket_theft"
-            android:textColor="@color/black_bg"
-            style="@style/headerTextStyle"
-            />
-
-
-        </RelativeLayout>
-
-
-
         <TextView
             android:id="@+id/pocket_theft_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_10sdp"
             android:text="@string/pocket_theft_description"
-            android:paddingRight="@dimen/_15sdp"
-            android:paddingLeft="@dimen/_8sdp"
             android:textColor="@color/black_bg"
             style="@style/inputTextStyle"
             />
@@ -143,7 +128,7 @@
         </RelativeLayout>
 
 
-        <RelativeLayout
+     <!--   <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             >
@@ -179,7 +164,7 @@
                 android:layout_alignParentBottom="true"
                 />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
         <RelativeLayout
@@ -220,18 +205,6 @@
 
     </LinearLayout>
 
-
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_80sdp"
-        android:src="@drawable/main_logo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="-50dp"
-        />
-
-
+    </ScrollView>
 
 </RelativeLayout>

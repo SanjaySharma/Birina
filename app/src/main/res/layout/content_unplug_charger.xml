@@ -7,7 +7,7 @@
     android:background="@color/bg_color"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:padding="@dimen/_10sdp">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -610,7 +610,7 @@ public class BirinaPrefrence {
 
 
 
-    public static void saveRemoteScreamingNumber( Context context, String number){
+  /*  public static void saveRemoteScreamingNumber( Context context, String number){
 
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -631,7 +631,7 @@ public class BirinaPrefrence {
         }
 
         return trackingNumber;
-    }
+    }*/
 
 
 

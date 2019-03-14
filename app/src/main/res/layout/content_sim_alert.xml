@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:id="@+id/imageViewParent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/app_bg"
         >
         <ImageView
             android:id="@+id/imageView9"
@@ -46,17 +46,16 @@
             android:id="@+id/textDeviceStorage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/track_warning"
+            android:text="@string/sim_alert_details"
             android:textColor="@color/black_bg"
-            android:textSize="@dimen/_14sdp"
-
+            android:textSize="@dimen/_12sdp"
             />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/phoneWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginTop="@dimen/_3sdp">
 
             <EditText
                 android:id="@+id/trackPhone"
@@ -76,7 +75,7 @@
             android:id="@+id/otpWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginTop="@dimen/_3sdp">
 
             <EditText
                 android:id="@+id/trackOtp"

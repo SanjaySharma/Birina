@@ -61,12 +61,6 @@ public class PocketTheftActivity extends BirinaActivity {
 
         findViewById(R.id.back_parent).setVisibility(View.GONE);
 
-        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
-        headerIcon.setBackgroundResource(R.drawable.ic_pocket_theft);
-
-        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
-        header.setText(R.string.pocket_theft);
-
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
         desc.setText(R.string.pocket_theft_description);
 
@@ -85,7 +79,7 @@ public class PocketTheftActivity extends BirinaActivity {
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
 
         findViewById(R.id.pocket_theft_alarm).setOnClickListener(v ->stopPocketTheftAlarm());
-        findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
+       // findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
         setInitialActiveValue();
     }
 

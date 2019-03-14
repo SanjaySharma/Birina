@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:layout_marginTop="?attr/actionBarSize"
+    android:background="@color/bg_color"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_180sdp"
         android:id="@+id/imageViewParent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/app_bg"
         >
         <ImageView
             android:id="@+id/imageView9"
@@ -38,7 +39,7 @@
 
     <TextView
         android:id="@+id/noRiskTxt"
-        android:textColor="@color/black_bg"
+        android:textColor="@color/toolbar_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/system_scanning"

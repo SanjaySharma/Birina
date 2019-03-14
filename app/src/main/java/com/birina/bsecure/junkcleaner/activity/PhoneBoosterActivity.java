@@ -263,4 +263,7 @@ public class PhoneBoosterActivity extends AppCompatActivity {
         finish();
     }
 
+ public void onCancelClick(View v){
+     finish();
+ }
 }

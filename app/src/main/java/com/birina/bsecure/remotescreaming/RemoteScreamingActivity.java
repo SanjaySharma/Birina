@@ -33,7 +33,7 @@ import rx.schedulers.Schedulers;
 public class RemoteScreamingActivity extends BirinaActivity {
 
 
-    private EditText  mEdtPhone,mEdtOtp;
+    private EditText  mEdtOtp;
 
     TextView mActiveInactive;
 
@@ -77,17 +77,9 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
     private void initializeClick(){
 
-        mEdtPhone = (EditText) findViewById(R.id.trackPhone);
         mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
         mRegParent = (RelativeLayout)findViewById(R.id.alert_form) ;
         mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
-
-
-        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
-        headerIcon.setBackgroundResource(R.drawable.ic_alarm);
-
-        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
-        header.setText(R.string.remote_screaming);
 
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
         desc.setText(R.string.remote_screaming_description);
@@ -107,7 +99,7 @@ public class RemoteScreamingActivity extends BirinaActivity {
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
 
         findViewById(R.id.pocket_theft_alarm).setOnClickListener(v ->stopRemoteScreamingAlarm());
-        findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
+      //  findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
 
 
 
@@ -163,11 +155,6 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
 
     private void validateNo() {
-
-        if (!Validation.isFieldEmpty(mEdtPhone)) {
-
-            if (Validation.isMobileValid(mEdtPhone.getText().toString())) {
-
                     if(Validation.isFieldEmpty(mEdtOtp)){
 
                         dismissProgressDialog();
@@ -178,7 +165,7 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
 
                         Observable.just( saveRemoteScreamingData(
-                                mEdtPhone.getText().toString(), mEdtOtp.getText().toString()) )
+                                 mEdtOtp.getText().toString()) )
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribeOn(Schedulers.io())
                                 .subscribe( obj ->
@@ -189,29 +176,6 @@ public class RemoteScreamingActivity extends BirinaActivity {
                                         }
                                 );
                     }
-
-                }
-
-             else {
-
-                dismissProgressDialog();
-
-                Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.reg_invalid_mobile),
-                        Snackbar.LENGTH_LONG).show();
-
-
-            }
-
-
-        } else {
-
-            dismissProgressDialog();
-
-            Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_mobile_number),
-                     Snackbar.LENGTH_LONG).show();
-
-
-        }
 
     }
 
@@ -245,9 +209,8 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
 
 
-private boolean saveRemoteScreamingData(String phone, String otp){
+private boolean saveRemoteScreamingData( String otp){
 
-    BirinaPrefrence.saveRemoteScreamingNumber(RemoteScreamingActivity.this, phone);
     BirinaPrefrence.saveRemoteScreamingPwd(RemoteScreamingActivity.this, otp);
     BirinaPrefrence.setRemoteScreamingDataStatus(RemoteScreamingActivity.this, true);
 

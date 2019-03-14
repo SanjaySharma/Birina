@@ -75,18 +75,6 @@
     <string name="rationale_title">Insufficient permissions</string>
     <string name="rationale_storage">Storage permission is needed to clean external cache.</string>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <string name="please_wait">Please Wait..</string>
 
     <string name="reg_submit">Submit</string>
@@ -109,7 +97,7 @@ sanjay
     <string name="si_no">SI Number</string>
 
     <string name="user_name">Name</string>
-    <string name="login_mobile">Mobile No.</string>
+    <string name="login_mobile">Registered Mobile No.</string>
     <string name="login_pwd">Password</string>
     <string name="lite">Lite</string>
 
@@ -150,14 +138,14 @@ sanjay
     <string name="restore">Cloud Restore</string>
     <string name="data_wipe">Remote Wipe</string>
     <string name="antitheft">Remote Lock</string>
-    <string name="sim_alert">Sim Alert</string>
-    <string name="tracking_recover">Tracking Recovery</string>
-    <string name="unplug_charger">Unplug Charger</string>
+    <string name="sim_alert">SIM Alert</string>
+    <string name="tracking_recover">Location Tracker</string>
+    <string name="unplug_charger">Unplugged Charger Alarm</string>
     <string name="remote_screaming">Remote Screaming</string>
     <string name="ota_update">O.T.A. Update</string>
     <string name="banking_protection">Banking Protection</string>
     <string name="real_time_protection">Real Time-Protection</string>
-    <string name="pocket_theft">Pocket Theft</string>
+    <string name="pocket_theft">Anti-Theft</string>
     <string name="dashboard_heading">Antivirus &amp; Mobile Security</string>
     <string name="clean_now">Clean now</string>
     <string name="clear_junk">Clear Cache</string>
@@ -206,8 +194,13 @@ sanjay
 
     <string name="track_unlock">Unlock</string>
 
-    <string name="track_warning">Remotely locks and wipes the personal information on your
-        lost or stolen device to prevent anyone from accessing it.</string>
+    <string name="track_warning">Activating Location Tracker helps users to track their devices location if the device been lost or stolen.
+
+Just type \'TRACKLOCATION\' <i>space&lt;yourloginpassword&lt; </i> and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.
+
+If your device is ON or whenever it receives the SMS it will send an auto-generated SMS notification as well as a mail to the registered mail id containing the link of last geo-location of your device.
+
+</string>
     <!--ggg-->
 
     <string name="response_null">Response is null</string>
@@ -233,7 +226,7 @@ sanjay
 
     <!--system Advisor module variable-->
     <string name="system_advisor">System Advisor</string>
-    <string name="system_scanning">System Scanning</string>
+    <string name="system_scanning">Scanning in Progress</string>
     <string name="no_risk">No risks found</string>
     <string name="advisor_detail">System advisor alert you about operating system threats
         that allow attackers to access your device and your data.</string>
@@ -268,10 +261,8 @@ sanjay
 
 
     <!--PocketTheft module variable-->
-    <string name="pockettheft">PocketTheft</string>
-    <string name="pocket_theft_description"> After activation "Pocket Theft" option and then screen is
-        off now if user press any button of the device, a Ring ton will play. This rington will play although the
-    device is in silent mode.</string>
+    <string name="pockettheft">Anti-Theft</string>
+    <string name="pocket_theft_description">This feature is designed to protect the user from theft and unauthorized device access. You will receive notification mail to registered mail id containing captured images with geo-location and also device triggers a loud siren if someone tries to access it with wrong attempt. The feature will work even if it is in silent mode as well.</string>
     <string name="active_inactive">ACTIVE/INACTIVE</string>
 
     <string name="active">ACTIVE</string>
@@ -281,10 +272,8 @@ sanjay
     <string name="alarm_off">ALARM OFF</string>
     <string name="off">Off</string>
 
-    <!--PocketTheft module variable-->
-    <string name="unPlug_charger_description"> After activation "Unplug Charger Alert" option if we unplug
-        device charger app will play an alarm. This alarm will play although the
-    device is in silent or vibration mode.</string>
+    <!--unPlug_charger module variable-->
+    <string name="unPlug_charger_description">This feature is designed to protect the theft of device during charging. It helps the device to trigger a loud siren if it is unplugged from the charger. This feature will work even if your phone is in silent mode.</string>
 
 
     <string name="unplug_charger_heading">Unplug Charger Alert</string>
@@ -294,9 +283,17 @@ sanjay
     <string name="btn_reset_remote_screaming">Reset Password</string>
     <string name="reset">Reset</string>
 
-    <string name="remote_screaming_description"> After activation "Remote Screaming" option when app
-        received an SMS with registered Remote Screaming password, the app will play an alarm. This alarm will play although the
-    device is in silent or vibration mode.</string>
+    <string name="sim_alert_details">This feature enables you to get an alert SMS to your registered alternate number whenever there is a SIM change is this device. You can then locate your device through that number from which SMS was sent.
+
+\n Register your alternate mobile number in which you want to receive the SIM CHANGE ALERT SMS.
+</string>
+
+    <string name="remote_screaming_description">This feature helps you to locate your device in case it gets misplaced in a crowded party or even at your home etc. simply by sending an SMS code to your device from any available mobile number.
+
+        Just type \'SCREAM\'<i>space&lt;yourloginpassword&lt; </i>and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.
+
+If your phone is ON and receives the SMS it will trigger a loud siren which will help you to locate your device. This feature will work even if your phone is in silent mode.
+</string>
     <string name="btn_back_remote_screaming">Home</string>
 
 

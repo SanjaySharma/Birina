@@ -88,14 +88,8 @@ public class SimAlertActivity  extends BirinaActivity {
 
         findViewById(R.id.alarm_parent).setVisibility(View.GONE);
 
-        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
-        headerIcon.setBackgroundResource(R.drawable.ic_sim_change);
-
-        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
-        header.setText(R.string.sim_alert);
-
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
-        desc.setText(R.string.pocket_theft_description);
+        desc.setText(R.string.sim_alert_details);
 
         ((Switch)findViewById(R.id.pocket_theft_on)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -111,7 +105,7 @@ public class SimAlertActivity  extends BirinaActivity {
 
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
 
-        findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
+       // findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
 
 
 

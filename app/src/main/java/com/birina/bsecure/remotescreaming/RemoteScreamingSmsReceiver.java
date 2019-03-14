@@ -28,20 +28,16 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
             for (int i = 0; i < pdus.length; i++) {
                 SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
-                String sender = smsMessage.getDisplayOriginatingAddress();
+              //  String sender = smsMessage.getDisplayOriginatingAddress();
                 //Check the sender to filter messages which we require to read
                 //
                 //"AX-bytwoo".equalsIgnoreCase(sender)
-                if (PhoneNumberUtils.compare(context, BirinaPrefrence.getRemoteScreamingNumber(context), sender)) {
-                    String messageBody = smsMessage.getMessageBody();
+                  String messageBody = smsMessage.getMessageBody();
 
                     if (messageBody.contains(BirinaPrefrence.getRemoteScreamingPwd(context))) {
-
                         startRemoteScreamingService(context);
                         break;
                     }
-
-                }
             }
         }
     }

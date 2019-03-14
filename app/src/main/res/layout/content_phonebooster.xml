@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/memory_used"
         style="@style/headerTextStyle"
-        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:textColor="@color/colorAccent"
         />
@@ -121,7 +121,7 @@
             android:layout_height="@dimen/_130sdp"
             android:layout_weight=".1"
             android:background="@color/colorAccent"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             >
 
 
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ram"
                 style="@style/inputTextStyle"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:textColor="@color/black_bg"
                 android:textStyle="bold"
 
@@ -216,9 +216,20 @@
         android:text="@string/boost_footer"
         style="@style/inputTextStyle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:layout_below="@id/btn_boost"
         android:textColor="@color/black_bg"
         />
-
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:onClick="onCancelClick"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12sdp"
+        android:background="@color/colorPrimary"
+        />
 </RelativeLayout>

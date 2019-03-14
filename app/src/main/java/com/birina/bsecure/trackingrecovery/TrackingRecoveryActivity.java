@@ -90,12 +90,6 @@ public class TrackingRecoveryActivity extends BirinaActivity {
         mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
 
 
-        ImageView headerIcon = (ImageView) findViewById(R.id.header_icon);
-        headerIcon.setBackgroundResource(R.drawable.tracking_recovery);
-
-        TextView header = (TextView) findViewById(R.id.pocket_theft_header);
-        header.setText(R.string.tracking_recover);
-
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
         desc.setText(R.string.tracking_recovery_description);
 
@@ -113,7 +107,7 @@ public class TrackingRecoveryActivity extends BirinaActivity {
 
         findViewById(R.id.alarm_parent).setVisibility(View.GONE);
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
-        findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
+       // findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
 
 
         findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
