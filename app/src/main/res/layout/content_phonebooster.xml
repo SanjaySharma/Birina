@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/memory_used"
         style="@style/headerTextStyle"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_55sdp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:textColor="@color/colorAccent"
         />

@@ -103,7 +103,7 @@
         <activity
             android:name="com.birina.bsecure.dashboard.DeshBoardActivity"
             android:screenOrientation="portrait">
-         <!--   <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 

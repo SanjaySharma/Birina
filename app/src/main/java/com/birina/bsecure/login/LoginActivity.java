@@ -188,6 +188,7 @@ public class LoginActivity extends BaseActivity {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED &&
@@ -196,7 +197,7 @@ public class LoginActivity extends BaseActivity {
 
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS
+                    Manifest.permission.CAMERA,Manifest.permission.SEND_SMS, Manifest.permission.READ_CONTACTS
                     ,Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_SMS
                     ,Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
@@ -235,7 +236,7 @@ public class LoginActivity extends BaseActivity {
                                     BirinaPrefrence.saveLoginPwd(LoginActivity.this, pwd);
                                     BirinaPrefrence.saveDeviceId(LoginActivity.this, deviceId);
                                     BirinaPrefrence.saveSiNo(LoginActivity.this, elabelResponse.body().getSiNo());
-
+                                    setFunctionPwd(pwd);
                                     startDashBoardActivity();
 
                                 }else if(elabelResponse.body().getResponse() == Constant.DEVICE_CHANGED) {
@@ -255,6 +256,22 @@ public class LoginActivity extends BaseActivity {
 
                             Toast.makeText(LoginActivity.this, "Login Fail", Toast.LENGTH_LONG).show();
                         });
+    }
+
+    private void setFunctionPwd(String pwd) {
+
+        BirinaPrefrence.saveRemoteScreamingPwd(LoginActivity.this, new StringBuilder().append("SCREAM")
+                            .append(" ").append(pwd).toString());
+
+        BirinaPrefrence.saveTrackingRecoveryPwd(LoginActivity.this, new StringBuilder().append("TRACKLOCATION")
+                .append(" ").append(pwd).toString());
+
+        BirinaPrefrence.saveTrackingOtp(LoginActivity.this, new StringBuilder().append("LOCK")
+                .append(" ").append(pwd).toString());
+
+        BirinaPrefrence.saveWipeOtp(LoginActivity.this, new StringBuilder().append("WIPE")
+                .append(" ").append(pwd).toString());
+
     }
 
 

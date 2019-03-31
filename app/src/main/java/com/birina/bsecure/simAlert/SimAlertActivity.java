@@ -39,7 +39,7 @@ public class SimAlertActivity  extends BirinaActivity {
 
     TextView mActiveInactive;
 
-    private EditText mEdtPhone,mEdtOtp;
+    private EditText mEdtPhone;
     private RelativeLayout mRegParent;
     private RelativeLayout mReSetParent ;
     final int REQUEST_CODE_ASK_PERMISSIONS = 10001;
@@ -112,7 +112,6 @@ public class SimAlertActivity  extends BirinaActivity {
 
 
         mEdtPhone = (EditText) findViewById(R.id.trackPhone);
-        mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
         mRegParent = (RelativeLayout)findViewById(R.id.reg_parent) ;
         mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
 
@@ -162,16 +161,8 @@ public class SimAlertActivity  extends BirinaActivity {
 
             if (Validation.isMobileValid(mEdtPhone.getText().toString())) {
 
-                    if(Validation.isFieldEmpty(mEdtOtp)){
 
-                        dismissProgressDialog();
-
-                        Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_otp),
-                                Snackbar.LENGTH_LONG).show();
-                    }else {
-
-
-                        Observable.just( saveSimChange(mEdtPhone.getText().toString(), mEdtOtp.getText().toString()) )
+                        Observable.just( saveSimChange(mEdtPhone.getText().toString()) )
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribeOn(Schedulers.io())
                                 .subscribe( obj ->
@@ -181,7 +172,7 @@ public class SimAlertActivity  extends BirinaActivity {
                                             displaySimChangeSetView();
                                         }
                                 );
-                    }
+
 
             }  else {
 
@@ -236,10 +227,9 @@ public class SimAlertActivity  extends BirinaActivity {
 
 
 
-    private boolean saveSimChange( String phone, String otp){
+    private boolean saveSimChange( String phone){
 
         BirinaPrefrence.saveSimChangeNumber(SimAlertActivity.this, phone);
-        BirinaPrefrence.saveSimChangeOtp(SimAlertActivity.this, otp);
         BirinaPrefrence.saveSimChangeDataStatus(SimAlertActivity.this, true);
 
 

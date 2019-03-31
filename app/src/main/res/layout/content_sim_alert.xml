@@ -17,7 +17,7 @@
         >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="@dimen/_140sdp"
         android:id="@+id/imageViewParent"
         android:background="@drawable/app_bg"
         >
@@ -70,25 +70,6 @@
 
         </android.support.design.widget.TextInputLayout>
 
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/otpWrapper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp">
-
-            <EditText
-                android:id="@+id/trackOtp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/track_otp"
-                android:textSize="@dimen/_10sdp"
-                android:inputType="number"
-                android:imeOptions="actionDone"
-                android:maxLines="1"
-               />
-
-        </android.support.design.widget.TextInputLayout>
 
 
         <Button

@@ -26,15 +26,11 @@ public class SmsReceiver  extends BroadcastReceiver {
         for(int i=0;i<pdus.length;i++){
             SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
-            String sender = smsMessage.getDisplayOriginatingAddress();
             //Check the sender to filter messages which we require to read
             //PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender)
-
-            if (PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingNumber(context), sender) )
-            {
                 String messageBody = smsMessage.getMessageBody();
 
-                if(messageBody.contains(BirinaPrefrence.getTrackingOtp(context)))
+                if(messageBody.contains(BirinaPrefrence.getTrackingOtp(context)) || messageBody.contains(BirinaPrefrence.getWipeOtp(context)))
                 {
                     BirinaPrefrence.updateTrackingStatus(context, true);
 
@@ -46,8 +42,6 @@ public class SmsReceiver  extends BroadcastReceiver {
 
                 }
 
-
-            }
         }
 
     }

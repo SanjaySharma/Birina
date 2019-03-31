@@ -131,7 +131,7 @@ sanjay
 
     <!--Dashboard module variable-->
 
-    <string name="antivirus">Antivirus</string>
+    <string name="antivirus">Anti-virus</string>
     <string name="phone_booster">Phone Booster</string>
     <string name="trap">Track</string>
     <string name="backup">Cloud Backup</string>
@@ -144,7 +144,7 @@ sanjay
     <string name="remote_screaming">Remote Screaming</string>
     <string name="ota_update">O.T.A. Update</string>
     <string name="banking_protection">Banking Protection</string>
-    <string name="real_time_protection">Real Time-Protection</string>
+    <string name="real_time_protection">Real Time Protection</string>
     <string name="pocket_theft">Anti-Theft</string>
     <string name="dashboard_heading">Antivirus &amp; Mobile Security</string>
     <string name="clean_now">Clean now</string>
@@ -182,8 +182,8 @@ sanjay
     <string name="track_fail">Please enter a valid password</string>
     <string name="track_empty">Please enter a password</string>
 
-    <string name="track_msg">It seems your tracking is activated and you have already set mobile number and password.\nIf you want to reset
-        mobile number or password click on reset link.</string>
+    <string name="track_msg">It seems your tracking is activated and you have already set recovery password.\nIf you want to reset
+        recovery password click on reset link.</string>
 
     <string name="btn_reset"><u>Reset?</u></string>
 
@@ -194,9 +194,9 @@ sanjay
 
     <string name="track_unlock">Unlock</string>
 
-    <string name="track_warning">Activating Location Tracker helps users to track their devices location if the device been lost or stolen.
+    <string name="track_warning">Activating Location Tracker helps users to track their devices location if the device been lost or stolen.\n\n
 
-Just type \'TRACKLOCATION\' <i>space&lt;yourloginpassword&lt; </i> and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.
+Just type \'TRACKLOCATION\' <i>space \"yourloginpassword\" </i> and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.\n\n
 
 If your device is ON or whenever it receives the SMS it will send an auto-generated SMS notification as well as a mail to the registered mail id containing the link of last geo-location of your device.
 
@@ -262,7 +262,7 @@ If your device is ON or whenever it receives the SMS it will send an auto-genera
 
     <!--PocketTheft module variable-->
     <string name="pockettheft">Anti-Theft</string>
-    <string name="pocket_theft_description">This feature is designed to protect the user from theft and unauthorized device access. You will receive notification mail to registered mail id containing captured images with geo-location and also device triggers a loud siren if someone tries to access it with wrong attempt. The feature will work even if it is in silent mode as well.</string>
+    <string name="pocket_theft_description">This feature is designed to protect the user from theft and unauthorized device access. It helps the device to trigger a loud siren if some one try to access your device. The feature will work even if it is in silent mode as well.</string>
     <string name="active_inactive">ACTIVE/INACTIVE</string>
 
     <string name="active">ACTIVE</string>
@@ -280,7 +280,7 @@ If your device is ON or whenever it receives the SMS it will send an auto-genera
     <string name="unplug_charger_active">Unplug Alert</string>
 
     <!--sim alert module variable-->
-    <string name="btn_reset_remote_screaming">Reset Password</string>
+    <string name="btn_reset_remote_screaming">Reset Mobile Number</string>
     <string name="reset">Reset</string>
 
     <string name="sim_alert_details">This feature enables you to get an alert SMS to your registered alternate number whenever there is a SIM change is this device. You can then locate your device through that number from which SMS was sent.
@@ -288,9 +288,9 @@ If your device is ON or whenever it receives the SMS it will send an auto-genera
 \n Register your alternate mobile number in which you want to receive the SIM CHANGE ALERT SMS.
 </string>
 
-    <string name="remote_screaming_description">This feature helps you to locate your device in case it gets misplaced in a crowded party or even at your home etc. simply by sending an SMS code to your device from any available mobile number.
+    <string name="remote_screaming_description">This feature helps you to locate your device in case it gets misplaced in a crowded party or even at your home etc. simply by sending an SMS code to your device from any available mobile number.\n\n
 
-        Just type \'SCREAM\'<i>space&lt;yourloginpassword&lt; </i>and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.
+        Just type \'SCREAM\' <i> space \"yourloginpassword\" </i>and send it to your mobile number. Remember, your password should be the same which you have already registered during Login.\n\n
 
 If your phone is ON and receives the SMS it will trigger a loud siren which will help you to locate your device. This feature will work even if your phone is in silent mode.
 </string>
@@ -328,8 +328,17 @@ If your phone is ON and receives the SMS it will trigger a loud siren which will
     <string name="btn_tittle_capture_image">Capture image</string>
 
 
-    <!--tracking recovery module variable-->
-    <string name="tracking_recovery_description"> After activation "Unplug Charger Alert" option if we unplug
-        device charger app will play an alarm. This alarm will play although the
-    device is in silent or vibration mode.</string>
+    <!--remote lock recovery module variable-->
+    <string name="remote_lock_description">This feature enables you to Lock your devices remotely if it gets misplaced or stolen.\n\n
+
+Just type \'LOCK\' <i> space \"yourloginpassword\" </i> and send it to your mobile number. Remember, your password should be the same which you have already registered during Login. If your device is ON or whenever it receives the SMS it will send an auto-generated SMS notification as well as a mail to the registered mail id containing the link of last geo-location of your device.\n\n
+
+It is important to register your Recovery Password below which will help you to unlock your device in case you get it back.
+</string>
+
+    <string name="remote_wipe_description">This feature enables you to wipe the data of your lost device remotely inorder to restrict any misuse of sensitive information.\n\n
+Just type \'WIPE\' <i> space \"yourloginpassword\" </i> and send it to your mobile number. Remember, your password should be the same which you have already registered during Login. If your device is ON and/or whenever it receives the SMS, your entire data will be wiped.\n\n
+It is important to note that once the data gets wiped it can't be recovered.
+</string>
+
 </resources>

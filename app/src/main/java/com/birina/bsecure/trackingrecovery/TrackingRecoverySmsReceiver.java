@@ -28,20 +28,16 @@ public class TrackingRecoverySmsReceiver extends BroadcastReceiver {
             for (int i = 0; i < pdus.length; i++) {
                 SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
-                String sender = smsMessage.getDisplayOriginatingAddress();
                 //Check the sender to filter messages which we require to read
-                //
-//
-                if (PhoneNumberUtils.compare(context, BirinaPrefrence.getTrackingRecoveryNumber(context), sender)) {
                     String messageBody = smsMessage.getMessageBody();
-
-                    if (messageBody.contains(BirinaPrefrence.getTrackingRecoveryOtp(context))) {
-
+                    String recoveryPwd = BirinaPrefrence.getTrackingRecoveryPwd(context);
+                    if (messageBody.contains(recoveryPwd)) {
+                        String sender = smsMessage.getDisplayOriginatingAddress();
+                        BirinaPrefrence.saveTrackingRecoveryNumber(context, sender);
                         startLocationActivity(context);
                         break;
                     }
 
-                }
             }
         }
     }

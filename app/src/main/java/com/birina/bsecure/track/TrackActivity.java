@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.birina.bsecure.Base.BaseActivity;
@@ -45,7 +46,7 @@ import rx.schedulers.Schedulers;
 public class TrackActivity extends BirinaActivity {
 
 
-    private EditText mEdtTrackPwd, mEdtPhone,mEdtOtp;
+    private EditText mEdtTrackPwd;
 
    private LinearLayout mRegParent;
    private RelativeLayout mReSetParent ;
@@ -71,7 +72,7 @@ public class TrackActivity extends BirinaActivity {
                 && !intent.getStringExtra(Constant.TRACK_INTENT_KEY).isEmpty()){
 
             getSupportActionBar().setTitle(intent.getStringExtra(Constant.TRACK_INTENT_KEY));
-
+            ((TextView)findViewById(R.id.textDeviceStorage)).setText(intent.getStringExtra(Constant.TRACK_INTENT_DEC_KEY));
         }else {
             getSupportActionBar().setTitle(R.string.app_name);
 
@@ -111,8 +112,6 @@ public class TrackActivity extends BirinaActivity {
 
        // mCountryCode = (Spinner) findViewById(R.id.phone_cc);
         mEdtTrackPwd = (EditText) findViewById(R.id.trackPwd);
-        mEdtPhone = (EditText) findViewById(R.id.trackPhone);
-        mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
         mRegParent = (LinearLayout)findViewById(R.id.reg_parent) ;
         mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
 
@@ -141,22 +140,9 @@ public class TrackActivity extends BirinaActivity {
 
     private void validateNo() {
 
-        if (!Validation.isFieldEmpty(mEdtPhone)) {
-
-            if (Validation.isMobileValid(mEdtPhone.getText().toString())) {
                 if (!Validation.isFieldEmpty(mEdtTrackPwd)) {
 
-                    if(Validation.isFieldEmpty(mEdtOtp)){
-
-                        dismissProgressDialog();
-
-                        Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_otp),
-                                Snackbar.LENGTH_LONG).show();
-                    }else {
-
-
-                        Observable.just( saveTrackData(mEdtTrackPwd.getText().toString(),
-                                mEdtPhone.getText().toString(), mEdtOtp.getText().toString()) )
+                        Observable.just( saveTrackData(mEdtTrackPwd.getText().toString()) )
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribeOn(Schedulers.io())
                                 .subscribe( obj ->
@@ -166,7 +152,7 @@ public class TrackActivity extends BirinaActivity {
                                             displayTrackDataSetView();
                                         }
                                 );
-                    }
+
 
                 } else {
 
@@ -177,26 +163,7 @@ public class TrackActivity extends BirinaActivity {
 
                 }
 
-            }  else {
 
-                dismissProgressDialog();
-
-                Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.reg_invalid_mobile),
-                        Snackbar.LENGTH_LONG).show();
-
-
-            }
-
-
-        } else {
-
-            dismissProgressDialog();
-
-            Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_mobile_number),
-                     Snackbar.LENGTH_LONG).show();
-
-
-        }
 
     }
 
@@ -230,10 +197,8 @@ public class TrackActivity extends BirinaActivity {
 
 
 
-private boolean saveTrackData(String siNo, String phone, String otp){
+private boolean saveTrackData(String siNo){
 
-    BirinaPrefrence.saveTrackingNumber(TrackActivity.this, phone);
-    BirinaPrefrence.saveTrackingOtp(TrackActivity.this, otp);
     BirinaPrefrence.saveTrackingPwd(TrackActivity.this, siNo);
     BirinaPrefrence.saveTrackingStatus(TrackActivity.this, true);
 

@@ -151,7 +151,7 @@ public class CaptureService extends HiddenCameraService {
 
 
         UploadImageRequest uploadImageRequest = new UploadImageRequest(encodedImage,
-                BirinaPrefrence.getTrackingNumber(CaptureService.this));
+                BirinaPrefrence.getRegisteredNumber(CaptureService.this));
 
 
         RestClient restClient = new RestClient();

@@ -17,6 +17,7 @@ import com.birina.bsecure.login.LoginActivity;
 import com.birina.bsecure.login.TempLoginActivity;
 import com.birina.bsecure.registration.RegistrationActivity;
 import com.birina.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.Constant;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -73,7 +74,7 @@ public class PhoneBoosterActivity extends AppCompatActivity {
         findViewById(R.id.btn_boost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(PhoneBoosterActivity.this, CleanerActivity.class));
+               startActivityForResult(new Intent(PhoneBoosterActivity.this, CleanerActivity.class), 100);
             }
         });
 
@@ -266,4 +267,12 @@ public class PhoneBoosterActivity extends AppCompatActivity {
  public void onCancelClick(View v){
      finish();
  }
+
+
+       @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            if (resultCode == Constant.CLEANER_ACTIVITY_RESULT_CODE) {
+                finish();
+            }
+    }
 }

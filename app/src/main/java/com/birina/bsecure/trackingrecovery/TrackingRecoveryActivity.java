@@ -37,10 +37,8 @@ import rx.schedulers.Schedulers;
 public class TrackingRecoveryActivity extends BirinaActivity {
 
 
-    private EditText mEdtPhone,mEdtOtp;
     TextView mActiveInactive;
-    private RelativeLayout mRegParent;
-    private RelativeLayout mReSetParent ;
+
 
 
 
@@ -57,8 +55,6 @@ public class TrackingRecoveryActivity extends BirinaActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.tracking_recover);
         initializeClick();
-
-        navigateFlow();
 
     }
 
@@ -83,15 +79,9 @@ public class TrackingRecoveryActivity extends BirinaActivity {
     // Method to initialize id & ClickListener
     private void initializeClick() {
 
-        // mCountryCode = (Spinner) findViewById(R.id.phone_cc);
-        mEdtPhone = (EditText) findViewById(R.id.trackPhone);
-        mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
-        mRegParent = (RelativeLayout)findViewById(R.id.reg_parent) ;
-        mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
-
-
+         findViewById(R.id.back_parent).setVisibility(View.GONE);
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
-        desc.setText(R.string.tracking_recovery_description);
+        desc.setText(R.string.track_warning);
 
         ((Switch)findViewById(R.id.pocket_theft_on)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -109,24 +99,6 @@ public class TrackingRecoveryActivity extends BirinaActivity {
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
        // findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
 
-
-        findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                showProgressDialog();
-                validateNo();
-            }
-        });
-
-
-        findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                displayTrackingRecoveryNotSetView();
-            }
-        });
 
         setInitialActiveValue();
     }
@@ -147,98 +119,6 @@ public class TrackingRecoveryActivity extends BirinaActivity {
         ((Switch)findViewById(R.id.pocket_theft_on)).setChecked(initialValue);
     }
 
-
-
-
-    private void validateNo() {
-
-        if (!Validation.isFieldEmpty(mEdtPhone)) {
-
-            if (Validation.isMobileValid(mEdtPhone.getText().toString())) {
-
-                    if(Validation.isFieldEmpty(mEdtOtp)){
-
-                        dismissProgressDialog();
-
-                        Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_otp),
-                                Snackbar.LENGTH_LONG).show();
-                    }else {
-
-
-                        Observable.just( saveTrackingRecovery(mEdtPhone.getText().toString(), mEdtOtp.getText().toString()) )
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribeOn(Schedulers.io())
-                                .subscribe( obj ->
-                                        {
-                                            Toast.makeText(TrackingRecoveryActivity.this, "Details save successfully", Toast.LENGTH_LONG).show();
-                                            dismissProgressDialog();
-                                            displayTrackingRecoverySetView();
-                                        }
-                                );
-                    }
-
-            }  else {
-
-                dismissProgressDialog();
-
-                Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.reg_invalid_mobile),
-                        Snackbar.LENGTH_LONG).show();
-
-
-            }
-
-
-        } else {
-
-            dismissProgressDialog();
-
-            Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_mobile_number),
-                    Snackbar.LENGTH_LONG).show();
-
-
-        }
-
-    }
-
-    /*
-     * This method check is tracking data is set or not.
-     * Already set open reset view.
-     *
-     * */
-
-    public void navigateFlow(){
-
-        if(BirinaPrefrence.isTrackingRecoveryDataSet(TrackingRecoveryActivity.this)){
-            displayTrackingRecoverySetView();
-        }
-    }
-
-
-
-
-    private void displayTrackingRecoverySetView(){
-        mReSetParent.setVisibility(View.VISIBLE);
-        mRegParent.setVisibility(View.GONE);
-    }
-
-
-
-    private void displayTrackingRecoveryNotSetView(){
-        mReSetParent.setVisibility(View.GONE);
-        mRegParent.setVisibility(View.VISIBLE);
-    }
-
-
-
-    private boolean saveTrackingRecovery( String phone, String otp){
-
-        BirinaPrefrence.saveTrackingRecoveryNumber(TrackingRecoveryActivity.this, phone);
-        BirinaPrefrence.saveTrackingRecoveryOtp(TrackingRecoveryActivity.this, otp);
-        BirinaPrefrence.saveTrackingRecoveryDataStatus(TrackingRecoveryActivity.this, true);
-
-
-        return true;
-    }
 
 
     private void handleTrackingRecoveryActiveListener(){

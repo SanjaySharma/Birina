@@ -189,11 +189,11 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
                 break;
 
             case R.id.textDataWipe:
-                startTrackActivity(getResources().getString(R.string.data_wipe));
+                startTrackActivity(getResources().getString(R.string.data_wipe),getResources().getString(R.string.remote_wipe_description));
                 break;
 
             case R.id.textAntitheft:
-                startTrackActivity(getResources().getString(R.string.antitheft));
+                startTrackActivity(getResources().getString(R.string.antitheft),getResources().getString(R.string.remote_lock_description));
                 break;
 
             case R.id.textBackup:
@@ -240,7 +240,7 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         startActivity(new Intent(DeshBoardActivity.this, AntivirusActivity.class));
     }
 
-    private void startTrackActivity(String title) {
+    private void startTrackActivity(String title, String desc) {
 
 
         //ContactUtility contactUtility = new ContactUtility(this);
@@ -249,6 +249,7 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         Intent intent = new Intent(DeshBoardActivity.this, TrackActivity.class);
         intent.putExtra(Constant.TRACK_INTENT_KEY, title);
+        intent.putExtra(Constant.TRACK_INTENT_DEC_KEY, desc);
         startActivity(intent);
     }
 

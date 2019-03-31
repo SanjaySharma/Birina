@@ -32,13 +32,8 @@ import rx.schedulers.Schedulers;
 
 public class RemoteScreamingActivity extends BirinaActivity {
 
-
-    private EditText  mEdtOtp;
-
     TextView mActiveInactive;
 
-   private RelativeLayout mRegParent;
-   private RelativeLayout mReSetParent ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +50,6 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
         initializeClick();
 
-        navigateFlow();
     }
 
     @Override
@@ -76,11 +70,7 @@ public class RemoteScreamingActivity extends BirinaActivity {
 
 
     private void initializeClick(){
-
-        mEdtOtp  = (EditText) findViewById(R.id.trackOtp);
-        mRegParent = (RelativeLayout)findViewById(R.id.alert_form) ;
-        mReSetParent = (RelativeLayout) findViewById(R.id.reset_parent);
-
+        findViewById(R.id.back_parent).setVisibility(View.GONE);
         TextView desc = (TextView) findViewById(R.id.pocket_theft_description);
         desc.setText(R.string.remote_screaming_description);
 
@@ -99,32 +89,6 @@ public class RemoteScreamingActivity extends BirinaActivity {
         mActiveInactive = (TextView) findViewById(R.id.pocket_theft_active_inactive);
 
         findViewById(R.id.pocket_theft_alarm).setOnClickListener(v ->stopRemoteScreamingAlarm());
-      //  findViewById(R.id.pocket_theft_back).setOnClickListener(v ->finish());
-
-
-
-
-
-
-        findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                showProgressDialog();
-                validateNo();
-            }
-        });
-
-
-        findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                displayRemoteScreamingDataNotSetView();
-            }
-        });
-
-
 
         setInitialActiveValue();
 
@@ -150,72 +114,6 @@ public class RemoteScreamingActivity extends BirinaActivity {
     }
 
 
-
-
-
-
-    private void validateNo() {
-                    if(Validation.isFieldEmpty(mEdtOtp)){
-
-                        dismissProgressDialog();
-
-                        Snackbar.make(findViewById(R.id.loginperant), getResources().getString(R.string.fill_otp),
-                                Snackbar.LENGTH_LONG).show();
-                    }else {
-
-
-                        Observable.just( saveRemoteScreamingData(
-                                 mEdtOtp.getText().toString()) )
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribeOn(Schedulers.io())
-                                .subscribe( obj ->
-                                        {
-                                            Toast.makeText(RemoteScreamingActivity.this, "Details save successfully", Toast.LENGTH_LONG).show();
-                                            dismissProgressDialog();
-                                            displayRemoteStreamingDataSetView();
-                                        }
-                                );
-                    }
-
-    }
-
-/*
-* This method check is tracking data is set or not.
-* Already set open reset view.
-*
-* */
-
-    public void navigateFlow(){
-
-        if(BirinaPrefrence.isRemoteScreamingDataSet(RemoteScreamingActivity.this)){
-            displayRemoteStreamingDataSetView();
-        }
-    }
-
-
-
-
-    private void displayRemoteStreamingDataSetView(){
-        mReSetParent.setVisibility(View.VISIBLE);
-        mRegParent.setVisibility(View.GONE);
-    }
-
-
-
-    private void displayRemoteScreamingDataNotSetView(){
-        mReSetParent.setVisibility(View.GONE);
-        mRegParent.setVisibility(View.VISIBLE);
-    }
-
-
-
-private boolean saveRemoteScreamingData( String otp){
-
-    BirinaPrefrence.saveRemoteScreamingPwd(RemoteScreamingActivity.this, otp);
-    BirinaPrefrence.setRemoteScreamingDataStatus(RemoteScreamingActivity.this, true);
-
-    return true;
-}
 
 
 

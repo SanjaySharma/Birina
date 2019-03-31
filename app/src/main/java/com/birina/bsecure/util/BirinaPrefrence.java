@@ -2,6 +2,7 @@ package com.birina.bsecure.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * Created by Admin on 2/28/2018.
@@ -17,9 +18,9 @@ public class BirinaPrefrence {
 
     private static final String PREF_REGISTERED_NUMBER = "RegisteredNumber";
     private static final String PREF_LOGIN_PWD = "loginPwd";
-    private static final String PREF_TRACKING_NUMBER = "TrackingNumber";
     private static final String PREF_TRACKING_PWD = "TrackingPwd";
     private static final String PREF_TRACKING_OTP = "TrackingOtp";
+    private static final String PREF_WIPE_OTP = "WipeOtp";
 
     private static final String PREF_IS_TRACKING_DATA_SET = "TrackingDataSet";
 
@@ -34,22 +35,18 @@ public class BirinaPrefrence {
     private static final String PREF_POCKET_THEFT = "pocketTheft";
     private static final String PREF_UNPLUG_CHARGER = "unplugCharger";
     private static final String PREF_REMOTE_SCREAMING = "remoteScreaming";
-    private static final String PREF_REMOTE_SCREAMING_NUMBER = "remoteScreamingNumber";
     private static final String PREF_REMOTE_SCREAMING_PWD = "remoteScreamingPwd";
-    private static final String PREF_IS_REMOTE_SCREAMING_DATA_SET = "remoteScreamingDataSet";
+
     private static final String PREF_LAST_LOCATION = "lastLocation";
     private static final String PREF_LONGITUDE = "longitude";
     private static final String PREF_LATITUDE = "latitude";
 
     private static final String PREF_SIM_CHANGE_NUMBER = "simChangeNumber";
-    private static final String PREF_SIM_CHANGE_OTP = "simChangeOtp";
     private static final String PREF_IS_SIM_CHANGE_DATA_SET = "simChangeDataSet";
     private static final String PREF_IS_SIM_CHANGE_ACTIVE = "simChangeActive";
 
-
     private static final String PREF_TRACKING_RECOVERY_NUMBER = "trackingRecoveryNumber";
-    private static final String PREF_TRACKING_RECOVERY_OTP = "trackingRecoveryOtp";
-    private static final String PREF_IS_TRACKING_RECOVERY_DATA_SET = "trackingRecoveryDataSet";
+    private static final String PREF_TRACKING_RECOVERY_PWD = "trackingRecoveryPwd";
     private static final String PREF_IS_TRACKING_RECOVERY_ACTIVE = "trackingRecoveryActive";
 
 
@@ -215,30 +212,6 @@ public class BirinaPrefrence {
 
 
 
-    public static void saveTrackingNumber( Context context, String number){
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_TRACKING_NUMBER, number);
-        editor.commit();
-    }
-
-
-    public static String getTrackingNumber( Context context){
-
-        String trackingNumber = null;
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        if(preferences.contains(PREF_TRACKING_NUMBER) )
-        {
-            trackingNumber = preferences.getString(PREF_TRACKING_NUMBER, null);
-        }
-
-        return trackingNumber;
-    }
-
-
 
     public static void saveTrackingPwd( Context context, String password){
 
@@ -285,6 +258,32 @@ public class BirinaPrefrence {
         if(preferences.contains(PREF_TRACKING_OTP) )
         {
             trackingPwd = preferences.getString(PREF_TRACKING_OTP, null);
+        }
+
+        return trackingPwd;
+    }
+
+
+
+    public static void saveWipeOtp( Context context, String otp){
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PREF_WIPE_OTP, otp);
+        editor.commit();
+    }
+
+
+
+    public static String getWipeOtp( Context context){
+
+        String trackingPwd = null;
+
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+
+        if(preferences.contains(PREF_WIPE_OTP) )
+        {
+            trackingPwd = preferences.getString(PREF_WIPE_OTP, null);
         }
 
         return trackingPwd;
@@ -610,28 +609,28 @@ public class BirinaPrefrence {
 
 
 
-  /*  public static void saveRemoteScreamingNumber( Context context, String number){
+    public static void saveTrackingRecoveryNumber( Context context, String number){
 
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_REMOTE_SCREAMING_NUMBER, number);
+        editor.putString(PREF_TRACKING_RECOVERY_NUMBER, number);
         editor.commit();
     }
 
 
-    public static String getRemoteScreamingNumber( Context context){
+    public static String getTrackingRecoveryNumber( Context context){
 
         String trackingNumber = null;
 
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
-        if(preferences.contains(PREF_REMOTE_SCREAMING_NUMBER) )
+        if(preferences.contains(PREF_TRACKING_RECOVERY_NUMBER) )
         {
-            trackingNumber = preferences.getString(PREF_REMOTE_SCREAMING_NUMBER, null);
+            trackingNumber = preferences.getString(PREF_TRACKING_RECOVERY_NUMBER, null);
         }
 
         return trackingNumber;
-    }*/
+    }
 
 
 
@@ -659,39 +658,6 @@ public class BirinaPrefrence {
         return trackingPwd;
     }
 
-
-
-    /*
-     * This method check RemoteStreaming data set or not
-     * */
-
-    public static boolean isRemoteScreamingDataSet(Context context){
-
-        boolean isRemoteStreamingDataSet = false;
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        if(preferences.contains(PREF_IS_REMOTE_SCREAMING_DATA_SET) && preferences.getBoolean(PREF_IS_REMOTE_SCREAMING_DATA_SET, false))
-        {
-            isRemoteStreamingDataSet = true;
-        }else{
-            isRemoteStreamingDataSet = false;
-        }
-        return isRemoteStreamingDataSet;
-    }
-
-
-
-    /*
-     * This method update RemoteStreaming status.
-     * */
-
-    public static void setRemoteScreamingDataStatus( Context context, boolean isRemoteStreamingDataSet ){
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(PREF_IS_REMOTE_SCREAMING_DATA_SET, isRemoteStreamingDataSet);
-        editor.commit();
-    }
 
 
 
@@ -791,33 +757,6 @@ public class BirinaPrefrence {
         return trackingNumber;
     }
 
-
-
-    public static void saveSimChangeOtp( Context context, String otp){
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_SIM_CHANGE_OTP, otp);
-        editor.commit();
-    }
-
-
-
-    public static String getSimChangeOtp( Context context){
-
-        String trackingPwd = null;
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        if(preferences.contains(PREF_SIM_CHANGE_OTP) )
-        {
-            trackingPwd = preferences.getString(PREF_SIM_CHANGE_OTP, null);
-        }
-
-        return trackingPwd;
-    }
-
-
     /*
      * This method check tracking data set or not
      * */
@@ -882,87 +821,34 @@ public class BirinaPrefrence {
     }
 
 
-    public static void saveTrackingRecoveryNumber( Context context, String number){
+    public static void saveTrackingRecoveryPwd( Context context, String number){
 
+        Log.e(" saveTrackingPwd "," TrackingRecoveryPwd "+number);
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_TRACKING_RECOVERY_NUMBER, number);
+        editor.putString(PREF_TRACKING_RECOVERY_PWD, number);
         editor.commit();
     }
 
 
-    public static String getTrackingRecoveryNumber( Context context){
+    public static String getTrackingRecoveryPwd( Context context){
 
         String trackingNumber = null;
 
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 
-        if(preferences.contains(PREF_TRACKING_RECOVERY_NUMBER) )
+        if(preferences.contains(PREF_TRACKING_RECOVERY_PWD) )
         {
-            trackingNumber = preferences.getString(PREF_TRACKING_RECOVERY_NUMBER, null);
+            trackingNumber = preferences.getString(PREF_TRACKING_RECOVERY_PWD, null);
         }
+        Log.e(" getTrackingPwd "," TrackingRecoveryPwd "+trackingNumber);
 
         return trackingNumber;
     }
 
 
 
-    public static void saveTrackingRecoveryOtp( Context context, String otp){
 
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREF_TRACKING_RECOVERY_OTP, otp);
-        editor.commit();
-    }
-
-
-
-    public static String getTrackingRecoveryOtp( Context context){
-
-        String trackingPwd = null;
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        if(preferences.contains(PREF_TRACKING_RECOVERY_OTP) )
-        {
-            trackingPwd = preferences.getString(PREF_TRACKING_RECOVERY_OTP, null);
-        }
-
-        return trackingPwd;
-    }
-
-
-    /*
-     * This method check tracking data set or not
-     * */
-
-    public static boolean isTrackingRecoveryDataSet(Context context){
-
-        boolean isTrackingDataSet = false;
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        if(preferences.contains(PREF_IS_TRACKING_RECOVERY_DATA_SET) && preferences.getBoolean(PREF_IS_TRACKING_RECOVERY_DATA_SET, false))
-        {
-            isTrackingDataSet = true;
-        }else{
-            isTrackingDataSet = false;
-        }
-        return isTrackingDataSet;
-    }
-
-
-
-    /*
-     * This method update tracking status.
-     * */
-
-    public static void saveTrackingRecoveryDataStatus( Context context, boolean isTrackingDataSet ){
-
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(PREF_IS_TRACKING_RECOVERY_DATA_SET, isTrackingDataSet);
-        editor.commit();
-    }
     /*
      * This method check TrackingRecovery active or not
      * */

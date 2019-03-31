@@ -1,6 +1,8 @@
 package com.birina.bsecure.login.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * FileName : ForgotPwdRequestModel
  * Description :  User Login - request
@@ -8,7 +10,7 @@ package com.birina.bsecure.login.model;
  */
 
 public class LogInRequestModel {
-
+    @SerializedName("password")
     private String pwd;
     private String phone;
     private String deviceId;

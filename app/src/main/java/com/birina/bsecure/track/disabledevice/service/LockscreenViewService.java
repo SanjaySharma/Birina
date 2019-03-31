@@ -60,7 +60,7 @@ public class LockscreenViewService extends Service {
     private SendMassgeHandler mMainHandler = null;
 //    private boolean sIsSoftKeyEnable = false;
     private int mWrongPwd =0;
-    private final int PERMIT_WRONG_ATTEMPT =0;
+    private final int PERMIT_WRONG_ATTEMPT =2;
 
     private class SendMassgeHandler extends android.os.Handler {
         @Override

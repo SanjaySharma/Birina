@@ -17,6 +17,7 @@ public class Constant {
     public static final String TAG_RESTORE = "restoreContact";
     public static final String TAG_TRACK = "track";
     public static final String TRACK_INTENT_KEY = "trackIntentKey";
+    public static final String TRACK_INTENT_DEC_KEY = "trackIntentDecKey";
 
     public static final String HELP = "Help";
     public static final String ABOUT = "About";
@@ -64,5 +65,8 @@ public class Constant {
 
     //SignUp variables
     public static final String RESET_PWD_KEY = "resetPwdKey";
+    public static final int CLEANER_ACTIVITY_RESULT_CODE = 100090;
+
+
 
 }

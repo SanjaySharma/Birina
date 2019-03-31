@@ -12,6 +12,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.birina.bsecure.R;
@@ -23,7 +24,6 @@ public class PocketTheftService extends Service {
 
    private BroadcastReceiver mReceiver;
    private MediaPlayer player;
-   private Ringtone ringtone;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -39,8 +39,8 @@ public class PocketTheftService extends Service {
 
             switch (screenState) {
                 case Constant.SCREEN_ON:
-                    if(ringtone != null){
-                        if(!ringtone.isPlaying()){
+                    if(player != null){
+                        if(!player.isPlaying()){
                             startAlarm();
                         }
                     }else{
@@ -84,72 +84,27 @@ public class PocketTheftService extends Service {
     }
 
 
+
+
+
     private void startAlarm(){
-        Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        if (alert == null){
-            // alert is null, using backup
-            alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            if (alert == null){
-                // alert backup is null, using 2nd backup
-                alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-            }
-        }
-        ringtone = RingtoneManager.getRingtone(getApplicationContext(), alert);
-
-        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        int volume = audioManager.getStreamVolume(AudioManager.STREAM_ALARM);
-        if(volume == 0){
-            volume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM);
-        }
-        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, volume,AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-        ringtone.setStreamType(AudioManager.STREAM_ALARM);
-
-        if(ringtone != null){
-            ringtone.play();
-        }
-
+        player = MediaPlayer.create(this, R.raw.themes_sound);
+        player.setLooping(true);
+        player.start();
     }
 
 
     private void stopAlarm(){
-        if(ringtone != null && ringtone.isPlaying()){
-            ringtone.stop();
-            ringtone = null;
-        }
-    }
-
-
-/*
-    private void startAlarm1(){
-
-        player = MediaPlayer.create(this, R.raw.themes_sound); *//* set tone or use setDataSource method *//*
-        AudioManager mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        final int originalVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
-        player.setVolume(100, 100);
-        // player.setLooping(true);
         try {
-            player.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        player.start();
-
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-            @Override
-            public void onCompletion(MediaPlayer player){
-                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, originalVolume, 0);
+            if (player != null && player.isPlaying()) {
+                player.stop();
                 player.release();
-                player.stop();  }
-        });
-    }
-
-
-    private void stopAlarm1(){
-        if (mReceiver != null) {
-            player.release();
-            player.stop();
+                player = null;
+            }
+        }catch (Exception e){
+            player = null;
+            Log.e("PocketTheftService ", "Exception in stopAlarm() of PocketTheftService"+e);
         }
-    }*/
+    }
 
 }

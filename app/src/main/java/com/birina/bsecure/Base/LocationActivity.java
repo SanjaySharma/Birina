@@ -149,9 +149,6 @@ public class LocationActivity extends AppCompatActivity {
             Log.d(TAG, "location is!"
                     +BirinaPrefrence.getLastLocation(this));
 
-            Toast.makeText(getApplicationContext(), "location is!"
-                    +BirinaPrefrence.getLastLocation(this), Toast.LENGTH_SHORT).show();
-
         }
 
     }
@@ -201,8 +198,6 @@ public class LocationActivity extends AppCompatActivity {
                     public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
                         Log.i(TAG, "All location settings are satisfied.");
 
-                        Toast.makeText(getApplicationContext(), "Started location updates!", Toast.LENGTH_SHORT).show();
-
                         //noinspection MissingPermission
                         mFusedLocationClient.requestLocationUpdates(mLocationRequest,
                                 mLocationCallback, Looper.myLooper());
@@ -232,7 +227,6 @@ public class LocationActivity extends AppCompatActivity {
                                         "fixed here. Fix in Settings.";
                                 Log.e(TAG, errorMessage);
 
-                                Toast.makeText(LocationActivity.this, errorMessage, Toast.LENGTH_LONG).show();
                         }
 
                         updateLocation();
@@ -251,7 +245,7 @@ public class LocationActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "Location updates stopped!", Toast.LENGTH_SHORT).show();
+                     //   Toast.makeText(getApplicationContext(), "Location updates stopped!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
