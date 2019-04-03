@@ -1,7 +1,10 @@
 package com.birina.bsecure.dashboard;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +20,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.Base.LocationActivity;
@@ -32,6 +36,8 @@ import com.birina.bsecure.remotescreaming.RemoteScreamingActivity;
 import com.birina.bsecure.restore.RestoreActivity;
 import com.birina.bsecure.simAlert.SimAlertActivity;
 import com.birina.bsecure.track.TrackActivity;
+import com.birina.bsecure.track.disabledevice.Lockscreen;
+import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
 import com.birina.bsecure.trackingrecovery.TrackingRecoveryActivity;
 import com.birina.bsecure.unplugcharger.UnPlugChargerActivity;
 import com.birina.bsecure.util.BirinaPrefrence;
@@ -42,12 +48,12 @@ import com.birina.bsecure.util.Constant;
 public class DeshBoardActivity extends BirinaActivity implements LoginView, View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener {
 
-
+private  final int OVERLAY_PERMISSION_CODE = 2456;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
+        addOverlay();
         checkExpireStatus();
 
         new LoginPresenterImp(this);
@@ -56,7 +62,6 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,10 +77,10 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         ((TextView) header.findViewById(R.id.navUserName)).setText(BirinaPrefrence.getUserName(this));
         ((TextView) header.findViewById(R.id.navSerial)).setText(BirinaPrefrence.getSiNo(this));
 
-        if(null != BirinaPrefrence.getExpireDate(this)
-                && !BirinaPrefrence.getExpireDate(this).isEmpty() ) {
+        if (null != BirinaPrefrence.getExpireDate(this)
+                && !BirinaPrefrence.getExpireDate(this).isEmpty()) {
 
-            String remainingTime = BirinaUtility.getDateDifference(BirinaPrefrence.getExpireDate(this) );
+            String remainingTime = BirinaUtility.getDateDifference(BirinaPrefrence.getExpireDate(this));
             ((TextView) header.findViewById(R.id.subcriptionValue)).setText(remainingTime);
         }
         setUpClickEvents();
@@ -168,7 +173,6 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         findViewById(R.id.textRealtimeProtection).setOnClickListener(this);
 
 
-
     }
 
 
@@ -189,11 +193,11 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
                 break;
 
             case R.id.textDataWipe:
-                startTrackActivity(getResources().getString(R.string.data_wipe),getResources().getString(R.string.remote_wipe_description));
+                startTrackActivity(getResources().getString(R.string.data_wipe), getResources().getString(R.string.remote_wipe_description));
                 break;
 
             case R.id.textAntitheft:
-                startTrackActivity(getResources().getString(R.string.antitheft),getResources().getString(R.string.remote_lock_description));
+                startTrackActivity(getResources().getString(R.string.antitheft), getResources().getString(R.string.remote_lock_description));
                 break;
 
             case R.id.textBackup:
@@ -207,7 +211,7 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
                 startRealTimeProtectionActivity();
                 break;
 
-             case R.id.textPocketTheft:
+            case R.id.textPocketTheft:
                 startPocketTheftActivity();
                 break;
 
@@ -218,9 +222,8 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
                 startRemoteScreamingActivity();
                 break;
             case R.id.textSimAlert:
-              startSimAlertActivity();
+                startSimAlertActivity();
                 break;
-
 
 
         }
@@ -329,7 +332,6 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
     }
 
 
-
     private void folderSelectionDialog() {
 
         LayoutInflater inflater = getLayoutInflater();
@@ -343,15 +345,15 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         okBtn = (TextView) alertLayout.findViewById(R.id.btnOk);
 
-        ((CheckBox)alertLayout.findViewById(R.id.checkAgree))
+        ((CheckBox) alertLayout.findViewById(R.id.checkAgree))
                 .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                    if(isChecked){
+                                                    if (isChecked) {
                                                         okBtn.setEnabled(true);
                                                         okBtn.setTextColor(getResources().getColor(R.color.apps_list_cache_memory));
                                                         //okBtn.setBackgroundColor();
-                                                    }else{
+                                                    } else {
                                                         okBtn.setEnabled(false);
                                                         okBtn.setTextColor(getResources().getColor(R.color.black_sub_header));
                                                     }
@@ -369,10 +371,8 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         });
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int)getResources().getDimension(R.dimen._210sdp));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen._210sdp));
     }
-
-
 
 
     private void backupDialog() {
@@ -388,21 +388,21 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         okBtn = (TextView) alertLayout.findViewById(R.id.btnOk);
 
-        ((CheckBox)alertLayout.findViewById(R.id.checkAgree))
+        ((CheckBox) alertLayout.findViewById(R.id.checkAgree))
                 .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                 @Override
-                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                     if(isChecked){
-                         okBtn.setEnabled(true);
-                         okBtn.setTextColor(getResources().getColor(R.color.apps_list_cache_memory));
-                         //okBtn.setBackgroundColor();
-                     }else{
-                         okBtn.setEnabled(false);
-                         okBtn.setTextColor(getResources().getColor(R.color.black_sub_header));
-                     }
-               }
-             }
-        );
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                    if (isChecked) {
+                                                        okBtn.setEnabled(true);
+                                                        okBtn.setTextColor(getResources().getColor(R.color.apps_list_cache_memory));
+                                                        //okBtn.setBackgroundColor();
+                                                    } else {
+                                                        okBtn.setEnabled(false);
+                                                        okBtn.setTextColor(getResources().getColor(R.color.black_sub_header));
+                                                    }
+                                                }
+                                            }
+                );
 
         alertLayout.findViewById(R.id.btnOk).setOnClickListener((v) -> {
             startBackUpActivity();
@@ -414,9 +414,8 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         });
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int)getResources().getDimension(R.dimen._210sdp));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen._210sdp));
     }
-
 
 
     private void restoreDialog() {
@@ -432,21 +431,21 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
 
         okBtn = (TextView) alertLayout.findViewById(R.id.btnOk);
 
-        ((CheckBox)alertLayout.findViewById(R.id.checkAgree))
+        ((CheckBox) alertLayout.findViewById(R.id.checkAgree))
                 .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                 @Override
-                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                     if(isChecked){
-                         okBtn.setEnabled(true);
-                         okBtn.setTextColor(getResources().getColor(R.color.apps_list_cache_memory));
-                         //okBtn.setBackgroundColor();
-                     }else{
-                         okBtn.setEnabled(false);
-                         okBtn.setTextColor(getResources().getColor(R.color.black_sub_header));
-                     }
-               }
-             }
-        );
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                    if (isChecked) {
+                                                        okBtn.setEnabled(true);
+                                                        okBtn.setTextColor(getResources().getColor(R.color.apps_list_cache_memory));
+                                                        //okBtn.setBackgroundColor();
+                                                    } else {
+                                                        okBtn.setEnabled(false);
+                                                        okBtn.setTextColor(getResources().getColor(R.color.black_sub_header));
+                                                    }
+                                                }
+                                            }
+                );
 
         alertLayout.findViewById(R.id.btnOk).setOnClickListener((v) -> {
             startRestoreActivity();
@@ -458,8 +457,45 @@ public class DeshBoardActivity extends BirinaActivity implements LoginView, View
         });
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int)getResources().getDimension(R.dimen._210sdp));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen._210sdp));
     }
 
 
+    public void addOverlay() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, OVERLAY_PERMISSION_CODE);
+            }else{
+                startLockView();
+            }
+        }
+    }
+
+
+    private void startLockView() {
+        BirinaPrefrence.saveTrackingPwd(DeshBoardActivity.this, "12345");
+        BirinaPrefrence.saveTrackingStatus(DeshBoardActivity.this, true);
+        BirinaPrefrence.updateTrackingStatus(this, true);
+
+        SharedPreferencesUtil.init(this);
+        SharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, true);
+        Lockscreen.getInstance(this).startLockscreenService();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == OVERLAY_PERMISSION_CODE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (Settings.canDrawOverlays(this)) {
+                    startLockView();
+
+                } else {
+                    Toast.makeText(DeshBoardActivity.this, "ACTION_MANAGE_OVERLAY_PERMISSION Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 import com.birina.bsecure.unplugcharger.UnPlugChargerService;
 import com.birina.bsecure.util.BirinaPrefrence;
@@ -14,10 +15,12 @@ import com.birina.bsecure.util.Constant;
 
 public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
 
- 
+    private final String TAG = "RemoteScreaming";
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.d(TAG,"Enter in onReceive of RemoteScreamingSmsReceiver ");
 
         if(BirinaPrefrence.isRemoteScreamingActive(context)) {
 
@@ -33,6 +36,7 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
                 //
                 //"AX-bytwoo".equalsIgnoreCase(sender)
                   String messageBody = smsMessage.getMessageBody();
+                Log.d(TAG," onReceive of RemoteScreamingSmsReceiver messageBody is:"+messageBody);
 
                     if (messageBody.contains(BirinaPrefrence.getRemoteScreamingPwd(context))) {
                         startRemoteScreamingService(context);
@@ -40,6 +44,8 @@ public class RemoteScreamingSmsReceiver extends BroadcastReceiver {
                     }
             }
         }
+        Log.d(TAG,"Exit from onReceive of RemoteScreamingSmsReceiver");
+
     }
 
 

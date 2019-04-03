@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity {
             supportActionBar.hide();
 
         initializeClick();
-
+        damiData();
     }
 
     // Method to initialize id & ClickListener
@@ -287,6 +287,22 @@ public class LoginActivity extends BaseActivity {
             default:
                 break;
         }
+    }
+
+
+
+    private void damiData(){
+        BirinaPrefrence.saveUserName(LoginActivity.this, "SANJAY");
+        BirinaPrefrence.updateLogInStatus(LoginActivity.this, true);
+        BirinaPrefrence.updateTempLogInStatus(LoginActivity.this, true);
+        BirinaPrefrence.saveRegisteredNumber(LoginActivity.this, "0601095233");
+        BirinaPrefrence.saveExpireDate(LoginActivity.this, "02-04-2020 02:02:04");
+        BirinaPrefrence.saveLoginPwd(LoginActivity.this, "sanjay");
+        BirinaPrefrence.saveDeviceId(LoginActivity.this, "1245678765");
+        BirinaPrefrence.saveSiNo(LoginActivity.this, "1348673801");
+        setFunctionPwd("sanjay");
+        startDashBoardActivity();
+
     }
 
 }

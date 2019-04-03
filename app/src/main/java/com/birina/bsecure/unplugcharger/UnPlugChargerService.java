@@ -20,12 +20,15 @@ import com.birina.bsecure.pockettheft.ScreenReceiver;
 import com.birina.bsecure.util.Constant;
 
 public class UnPlugChargerService extends Service {
-
+    private final String TAG = "UnPlugCharger";
    private BroadcastReceiver mReceiver;
    private MediaPlayer player;
     @Override
     public void onCreate() {
+        Log.d(TAG," onCreate of UnPlugChargerService: ");
+
         super.onCreate();
+        registerScreenReceiver();
     }
 
     @Override
@@ -34,6 +37,7 @@ public class UnPlugChargerService extends Service {
         if(null != intent){
 
         String screenState = intent.getStringExtra(Constant.UNPLUG_ALARM_STATE);
+            Log.d(TAG,"Enter in onStart of UnPlugChargerService screenState is: "+screenState);
 
         switch (screenState)
         {
@@ -56,6 +60,8 @@ public class UnPlugChargerService extends Service {
                 break;
         }
         }
+        Log.d(TAG,"Exit from in onStart of UnPlugChargerService");
+
     }
 
     @Nullable
@@ -65,10 +71,43 @@ public class UnPlugChargerService extends Service {
     }
 
 
+    @Override
+    public void onDestroy()
+    {
+        this.unRegisterScreenReceiver();
+    }
+
+    private void registerScreenReceiver(){
+        Log.d(TAG,"Enter in registerScreenReceiver of  UnPlugChargerService ");
+
+        // REGISTER RECEIVER THAT HANDLES SCREEN ON AND SCREEN OFF LOGIC
+        IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_DISCONNECTED);
+        mReceiver = new PlugInReceiver();
+        registerReceiver(mReceiver, filter);
+        Log.d(TAG,"Exit from registerScreenReceiver of  UnPlugChargerService");
+
+    }
+
+    private void unRegisterScreenReceiver(){
+        Log.d(TAG,"Enter in unRegisterScreenReceiver of  UnPlugChargerService ");
+
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+        Log.d(TAG,"Exit from unRegisterScreenReceiver of  UnPlugChargerService");
+
+    }
+
+
     private void startAlarm(){
+        Log.d(TAG,"Enter in startAlarm of  UnPlugChargerService ");
+
         player = MediaPlayer.create(this, R.raw.themes_sound);
         player.setLooping(true);
         player.start();
+        Log.d(TAG,"Exit from startAlarm of  UnPlugChargerService");
+
     }
 
 

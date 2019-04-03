@@ -54,7 +54,14 @@ public class Constant {
     public static final String SIM_CHANGE_KEY = "simChangeKey";
     public static final String TRACKING_RECOVERY_KEY = "trackingRecoveryKey";
 
+    public static final String TRACKING_RECOVERY_ALARM_STATE = "trackingRecoveryAlarmState";
+    public static final String START_TRACKING_RECOVERY_ALARM = "startTrackingRecoveryAlarm";
+    public static final String STOP_TRACKING_RECOVERYALARM = "stopTrackingRecoveryAlarm";
 
+    //WatchMan Service variables
+    public static final String WATCH_MAN_STATE = "watchManState";
+    public static final String START_WATCH_MAN_STATE = "startWatchMan";
+    public static final String STOP_WATCH_MAN_STATE = "stopWatchMan";
     //Notification variables
 
     public static final String IMAGE_URL_KEY = "image";

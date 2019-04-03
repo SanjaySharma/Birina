@@ -23,6 +23,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.PHONE_STATE_STATE" />
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
@@ -59,11 +60,11 @@
         <activity
             android:name="com.birina.bsecure.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-            </intent-filter>
+            </intent-filter>-->
 
         </activity>
 
@@ -80,6 +81,8 @@
                 <data android:scheme="mms" />
                 <data android:scheme="mmsto" />
 
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -173,11 +176,7 @@
 
 
 
-     <activity
-            android:name="com.birina.bsecure.track.simalert.StartLockScreen"
-            android:theme="@style/Theme.Transparent"></activity>
 
-        <service android:name="com.birina.bsecure.track.simalert.SaveMyAppsService"></service>
 
         <service android:name="com.birina.bsecure.simAlert.SimChangeService"></service>
 
@@ -204,6 +203,8 @@
         <service android:name="com.birina.bsecure.track.disabledevice.service.LockscreenService"></service>
         <service android:name="com.birina.bsecure.track.disabledevice.service.LockscreenViewService"
             ></service>
+
+        <service android:name="com.birina.bsecure.Base.WatchManService"></service>
 
 
         <service
@@ -355,12 +356,6 @@
         <activity
             android:name="com.birina.bsecure.unplugcharger.UnPlugChargerActivity"
             android:screenOrientation="portrait">
-
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>-->
         </activity>
 
         <service
@@ -389,12 +384,6 @@
         <activity
             android:name="com.birina.bsecure.remotescreaming.RemoteScreamingActivity"
             android:screenOrientation="portrait">
-
-        <!--    <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>-->
         </activity>
 
         <service
@@ -415,22 +404,6 @@
 
 
 
-        <!--*****************Antitheft declaration Start ************************************-->
-
-        <activity
-            android:name="com.birina.bsecure.antitheft.MakePhotoActivity"
-            android:screenOrientation="portrait">
-<!--
-             <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-              <category android:name="android.intent.category.LAUNCHER" />
-
-          </intent-filter>-->
-        </activity>
-
-
-
-        <!--*****************Antitheft declaration finish************************************-->
 
         <activity
             android:name="com.birina.bsecure.login.TempLoginActivity"
@@ -512,25 +485,6 @@
 
         <!--*****************Notification declaration finish************************************-->
 
-<!--
-
-
-        <activity
-            android:name="com.birina.bsecure.antitheft.DemoCameraActivity"
-            android:screenOrientation="portrait">
-
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-                    <category android:name="android.intent.category.LAUNCHER" />
-
-                </intent-filter>
-        </activity>
-
-        <service
-            android:name="com.birina.bsecure.antitheft.DemoCamService"
-            android:exported="false" />
-
--->
 
         <service
             android:name="com.birina.bsecure.track.disabledevice.CaptureService"

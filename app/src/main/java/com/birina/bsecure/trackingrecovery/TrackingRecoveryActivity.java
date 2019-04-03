@@ -3,6 +3,7 @@ package com.birina.bsecure.trackingrecovery;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -25,8 +26,10 @@ import android.widget.Toast;
 import com.birina.bsecure.Base.BirinaActivity;
 import com.birina.bsecure.R;
 import com.birina.bsecure.remotescreaming.RemoteScreamingActivity;
+import com.birina.bsecure.remotescreaming.RemoteScreamingService;
 import com.birina.bsecure.track.disabledevice.SharedPreferencesUtil;
 import com.birina.bsecure.util.BirinaPrefrence;
+import com.birina.bsecure.util.Constant;
 import com.birina.bsecure.util.Validation;
 
 import rx.Observable;
@@ -125,17 +128,30 @@ public class TrackingRecoveryActivity extends BirinaActivity {
 
         mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
         BirinaPrefrence.updateTrackingRecoveryActiveStatus(TrackingRecoveryActivity.this, true);
+        startTrackingRecoveryService();
     }
 
     private void handleTrackingRecoveryInActiveListener(){
 
         mActiveInactive.setTextColor(getResources().getColor(R.color.gray_stroke));
         BirinaPrefrence.updateTrackingRecoveryActiveStatus(TrackingRecoveryActivity.this, false);
-
+        stopTrackingRecoveryService();
     }
 
 
+    private void startTrackingRecoveryService(){
 
+        Intent i = new Intent(this, TrackingRecoveryService.class);
+        i.putExtra(Constant.TRACKING_RECOVERY_ALARM_STATE, "");
+        startService(i);
+    }
+
+    private void stopTrackingRecoveryService(){
+
+        Intent i = new Intent(this, TrackingRecoveryService.class);
+        i.putExtra(Constant.TRACKING_RECOVERY_ALARM_STATE, Constant.STOP_TRACKING_RECOVERYALARM);
+        startService(i);
+    }
 
     
 }

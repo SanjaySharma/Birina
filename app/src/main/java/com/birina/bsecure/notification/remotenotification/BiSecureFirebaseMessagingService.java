@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -149,6 +150,7 @@ public class BiSecureFirebaseMessagingService  extends FirebaseMessagingService 
     private void sendNotification( Bitmap bitmap) {
 
 
+
         Notification.Builder builder = new Notification .Builder(getApplicationContext());
 
         Intent myIntent = new Intent(getApplicationContext(), WebActivity.class);
@@ -186,10 +188,22 @@ public class BiSecureFirebaseMessagingService  extends FirebaseMessagingService 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId,
                     "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription("Channel description");
+            channel.enableLights(true);
+            channel.setLightColor(Color.RED);
+            channel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            channel.enableVibration(true);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
             notificationManager.createNotificationChannel(channel);
+
+                builder.setChannelId(channelId);
+                startForeground(17, builder.build());
+        }else{
+            notificationManager.notify(1,builder.build());
         }
-        notificationManager.notify(1,builder.build());
+
+
 
     }
 

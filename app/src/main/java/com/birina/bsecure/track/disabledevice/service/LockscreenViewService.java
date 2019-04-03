@@ -129,14 +129,24 @@ public class LockscreenViewService extends Service {
                     WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                     PixelFormat.TRANSLUCENT);
         } else {
-            mParams = new WindowManager.LayoutParams(
-                    WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.TYPE_PHONE,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                            | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                            | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD,
-                    PixelFormat.TRANSLUCENT);
+
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                mParams = new WindowManager.LayoutParams(
+                        WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.TYPE_PHONE,
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD,
+                        PixelFormat.TRANSLUCENT);
+            }else{
+                mParams = new WindowManager.LayoutParams(
+                        WindowManager.LayoutParams.WRAP_CONTENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT,
+                        WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                        PixelFormat.TRANSLUCENT);
+            }
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (mIsLockEnable && mIsSoftkeyEnable) {
@@ -229,7 +239,6 @@ public class LockscreenViewService extends Service {
         mBackgroundLockImageView = (ImageView) mLockscreenView.findViewById(R.id.lockscreen_background_image);
         mForgroundLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_forground_layout);
 
-       // mForgroundLayout.setOnTouchListener(mViewTouchListener);
 
         mPasswordET = (EditText)mLockscreenView.findViewById(R.id.password);
         mLockscreenView.findViewById(R.id.passwordBtn).setOnClickListener(onPasswordListener);
@@ -284,99 +293,6 @@ public class LockscreenViewService extends Service {
         }
     }
 
-
-    private View.OnTouchListener mViewTouchListener = new View.OnTouchListener() {
-        private float firstTouchX = 0;
-        private float layoutPrevX = 0;
-        private float lastLayoutX = 0;
-        private float layoutInPrevX = 0;
-        private boolean isLockOpen = false;
-        private int touchMoveX = 0;
-        private int touchInMoveX = 0;
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-
-            switch (event.getAction() & MotionEvent.ACTION_MASK) {
-                case MotionEvent.ACTION_DOWN: {// 0
-                    firstTouchX = event.getX();
-                    layoutPrevX = mForgroundLayout.getX();
-                    layoutInPrevX = mBackgroundLockImageView.getX();
-                    if (firstTouchX <= LOCK_OPEN_OFFSET_VALUE) {
-                        isLockOpen = true;
-                    }
-                }
-                break;
-                case MotionEvent.ACTION_MOVE: { // 2
-                    if (isLockOpen) {
-                        touchMoveX = (int) (event.getRawX() - firstTouchX);
-                        if (mForgroundLayout.getX() >= 0) {
-                            mForgroundLayout.setX((int) (layoutPrevX + touchMoveX));
-                            mBackgroundLockImageView.setX((int) (layoutInPrevX + (touchMoveX / 1.8)));
-                            mLastLayoutX = lastLayoutX;
-                            mMainHandler.sendEmptyMessage(0);
-                            if (mForgroundLayout.getX() < 0) {
-                                mForgroundLayout.setX(0);
-                            }
-                            lastLayoutX = mForgroundLayout.getX();
-                        }
-                    } else {
-                        return false;
-                    }
-                }
-                break;
-                case MotionEvent.ACTION_UP: { // 1
-                    if (isLockOpen) {
-                        mForgroundLayout.setX(lastLayoutX);
-                        mForgroundLayout.setY(0);
-                        optimizeForground(lastLayoutX);
-                    }
-                    isLockOpen = false;
-                    firstTouchX = 0;
-                    layoutPrevX = 0;
-                    layoutInPrevX = 0;
-                    touchMoveX = 0;
-                    lastLayoutX = 0;
-                }
-                break;
-                default:
-                    break;
-            }
-
-            return true;
-        }
-    };
-
-    private void optimizeForground(float forgroundX) {
-//        final int devideDeviceWidth = (mDeviceWidth / 2);
-        if (forgroundX < mDevideDeviceWidth) {
-            int startPostion = 0;
-            for (startPostion = mDevideDeviceWidth; startPostion >= 0; startPostion--) {
-                mForgroundLayout.setX(startPostion);
-            }
-        } else {
-            TranslateAnimation animation = new TranslateAnimation(0, mDevideDeviceWidth, 0, 0);
-            animation.setDuration(300);
-            animation.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    mForgroundLayout.setX(mDevideDeviceWidth);
-                    mForgroundLayout.setY(0);
-                    dettachLockScreenView();
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-                }
-            });
-
-            mForgroundLayout.startAnimation(animation);
-        }
-    }
 
 
     public View.OnClickListener onPasswordListener = new View.OnClickListener() {

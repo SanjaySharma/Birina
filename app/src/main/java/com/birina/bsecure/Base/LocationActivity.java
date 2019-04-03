@@ -296,10 +296,18 @@ public class LocationActivity extends AppCompatActivity {
                 break;
         } switch (mLocationKey){
             case Constant.TRACKING_RECOVERY_KEY:
-                startService(new Intent(this, TrackingRecoveryService.class));
+                startTrackingRecoveryService();
                 finish();
                 break;
         }
 
   }
+
+
+    private void startTrackingRecoveryService(){
+
+        Intent i = new Intent(this, TrackingRecoveryService.class);
+        i.putExtra(Constant.TRACKING_RECOVERY_ALARM_STATE, Constant.START_TRACKING_RECOVERY_ALARM);
+        startService(i);
+    }
 }

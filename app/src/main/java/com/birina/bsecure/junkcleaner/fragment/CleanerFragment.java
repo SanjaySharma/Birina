@@ -79,6 +79,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.d(TAG,"Enter in onServiceConnected of  CleanerFragment ");
             mCleanerService = ((CleanerService.CleanerServiceBinder) service).getService();
             mCleanerService.setOnActionListener(CleanerFragment.this);
 
@@ -92,12 +93,15 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
                     mCleanerService.scanCache();
                 }
             }
+            Log.d(TAG,"Exit from onServiceConnected of  CleanerFragment ");
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
             mCleanerService.setOnActionListener(null);
             mCleanerService = null;
+            Log.d(TAG,"Exit from onServiceDisconnected of  CleanerFragment ");
         }
     };
 
@@ -107,6 +111,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"Enter in onCreate of  CleanerFragment ");
 
         setHasOptionsMenu(true);
         setRetainInstance(true);
@@ -122,11 +127,14 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
 
         getActivity().getApplication().bindService(new Intent(getActivity(), CleanerService.class),
                 mServiceConnection, Context.BIND_AUTO_CREATE);
+        Log.d(TAG,"Exit from onCreate of  CleanerFragment ");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.cleaner_fragment, container, false);
+        Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
 
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -162,6 +170,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
         });
 
         deActivateScanningButton();
+        Log.d(TAG,"Exit from onCreate of  CleanerFragment ");
 
         return rootView;
     }
@@ -270,6 +279,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
 
     @Override
     public void onScanStarted(Context context) {
+        Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
 
         mProgressRate = 0;
         mProgressCount = 0;
@@ -277,6 +287,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
             hideCleanView();
             deActivateScanningButton();
         }
+        Log.d(TAG,"Exit from onScanStarted of  CleanerFragment ");
 
     }
 
@@ -285,6 +296,7 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
 
     @Override
     public void onScanProgressUpdated(Context context, List<AppsListItem> apps) {
+        Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
 
         if(null != getActivity()) {
             mProgressCount++;
@@ -292,6 +304,8 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
             manageScanProgress(apps);
             setCacheAmount();
         }
+        Log.d(TAG,"Exit from onScanProgressUpdated of  CleanerFragment ");
+
     }
 
     @Override
@@ -314,6 +328,8 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
 
     @Override
     public void onCleanStarted(Context context) {
+        Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
+
         if(null != getActivity()) {
 
             mProgressRate = 0;
@@ -344,6 +360,8 @@ public class CleanerFragment extends Fragment implements CleanerService.OnAction
 
     @Override
     public void onCleanCompleted(Context context, boolean succeeded) {
+        Log.d(TAG,"Enter in onServiceDisconnected of  CleanerFragment ");
+
         if(null != getActivity()) {
 
             if (succeeded) {

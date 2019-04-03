@@ -106,6 +106,7 @@ public class UnPlugChargerActivity extends BirinaActivity {
         mActiveInactive.setTextColor(getResources().getColor(R.color.colorAccent));
 
         BirinaPrefrence.updateUnplugChargerStatus(UnPlugChargerActivity.this, true);
+        startUnPlugChargerService();
     }
 
     private void handleUnPlugChargerInActiveListener(){
@@ -116,6 +117,12 @@ public class UnPlugChargerActivity extends BirinaActivity {
     }
 
 
+    private void startUnPlugChargerService(){
+
+        Intent i = new Intent(this, UnPlugChargerService.class);
+        i.putExtra(Constant.UNPLUG_ALARM_STATE, "");
+        startService(i);
+    }
 
     private void stopUnPlugChargerService(){
 

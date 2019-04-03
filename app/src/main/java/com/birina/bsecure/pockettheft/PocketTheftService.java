@@ -66,7 +66,11 @@ public class PocketTheftService extends Service {
         return null;
     }
 
-
+    @Override
+    public void onDestroy()
+    {
+        this.unRegisterScreenReceiver();
+    }
 
     private void registerScreenReceiver(){
         // REGISTER RECEIVER THAT HANDLES SCREEN ON AND SCREEN OFF LOGIC
