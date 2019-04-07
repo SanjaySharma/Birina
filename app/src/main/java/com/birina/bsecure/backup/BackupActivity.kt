@@ -128,10 +128,12 @@ class BackupActivity : BirinaActivity(), BackupContract.View {
 
     private fun backupContactAndSms() {
 
+        Log.d(Constant.TAG_RESTORE, "Enter in backupContactAndSms " )
 
         Observable.fromCallable { getContacts()}
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .map({ obj ->
+                    Log.d(Constant.TAG_RESTORE, "Enter in map of backupContactAndSms" )
 
                     var request = Request()
 
@@ -144,6 +146,7 @@ class BackupActivity : BirinaActivity(), BackupContract.View {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                 { obj ->
+                    Log.d(Constant.TAG_RESTORE, "Enter in subscribe of backupContactAndSms" )
 
                     mTxtContact?.setText(""+obj.contact.size)
                     mTxtSms?.setText(""+obj.sms.size)
@@ -160,6 +163,8 @@ class BackupActivity : BirinaActivity(), BackupContract.View {
 
 
     private fun getContacts(): List<Request.ContactBean>? {
+        Log.d(Constant.TAG_RESTORE, "Enter in getContacts() " )
+
         return ContactUtility(mContext).fetchAll()
     }
 

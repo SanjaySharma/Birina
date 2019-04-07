@@ -181,8 +181,6 @@ public class TrackActivity extends BirinaActivity {
     }
 
 
-
-
     private void displayTrackDataSetView(){
         mReSetParent.setVisibility(View.VISIBLE);
         mRegParent.setVisibility(View.GONE);
@@ -201,7 +199,6 @@ private boolean saveTrackData(String siNo){
 
     BirinaPrefrence.saveTrackingPwd(TrackActivity.this, siNo);
     BirinaPrefrence.saveTrackingStatus(TrackActivity.this, true);
-
 
     return true;
 }

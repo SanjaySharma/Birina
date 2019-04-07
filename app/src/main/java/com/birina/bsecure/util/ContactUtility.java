@@ -31,6 +31,7 @@ public class ContactUtility {
     }
 
     public ArrayList<Request.ContactBean> fetchAll() {
+        Log.d(Constant.TAG_RESTORE, "Enter in fetchAll " );
 
         ArrayList<Request.ContactBean> listContacts = new ArrayList<>();
         Cursor c;
@@ -71,7 +72,9 @@ public class ContactUtility {
         matchContactNumbers(contactsMap);
         matchContactEmails(contactsMap);
 
-        return listContacts;
+            Log.d(Constant.TAG_RESTORE, "Exit from  fetchAll listContacts: "+listContacts );
+
+            return listContacts;
         }catch (Exception e){
             Log.d(Constant.TAG_RESTORE, "Exception in fetchAll " + e);
 
@@ -88,6 +91,7 @@ public class ContactUtility {
         try{
         final String[] numberProjection = new String[]{
                 Phone.NUMBER,
+                Phone.DISPLAY_NAME,
                 Phone.TYPE,
                 Phone.CONTACT_ID,
         };
@@ -101,25 +105,29 @@ public class ContactUtility {
 
         if (phone.moveToFirst()) {
             final int contactNumberColumnIndex = phone.getColumnIndex(Phone.NUMBER);
+            final int contactNameColumnIndex = phone.getColumnIndex(Phone.DISPLAY_NAME);
             final int contactTypeColumnIndex = phone.getColumnIndex(Phone.TYPE);
             final int contactIdColumnIndex = phone.getColumnIndex(Phone.CONTACT_ID);
 
             while (!phone.isAfterLast()) {
                 final String number = phone.getString(contactNumberColumnIndex);
                 final String contactId = phone.getString(contactIdColumnIndex);
-                if(number.equals(number)){
+                final String name = phone.getString(contactNameColumnIndex);
+                Log.e(Constant.TAG_RESTORE, "name: "+name+"  number "+number );
+
+             /*   if(number.equals(number)){
                     int count=phone.getCount();
                 }
                 Request.ContactBean contact = contactsMap.get(contactId);
                 if (contact == null) {
                     Log.i("tag",""+contactId);
-                    continue;
+                   // continue;
                 }
                 final int type = phone.getInt(contactTypeColumnIndex);
                 String customLabel = "Custom";
                 CharSequence phoneType = Phone.getTypeLabel
                         (mContext.getResources(), type, customLabel);
-                contact.addNumber(number, phoneType.toString());
+                contact.addNumber(number, phoneType.toString());*/
                 phone.moveToNext();
             }
         }

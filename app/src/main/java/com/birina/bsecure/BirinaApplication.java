@@ -2,28 +2,37 @@ package com.birina.bsecure;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.util.Log;
 
 import com.birina.bsecure.Base.BaseService;
 import com.birina.bsecure.Base.WatchManService;
 import com.birina.bsecure.notification.localnotification.AlarmGenerator;
+import com.birina.bsecure.track.disabledevice.SmsReceiver;
 import com.birina.bsecure.trackingrecovery.TrackingRecoveryService;
 import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.Constant;
 
 public class BirinaApplication extends Application implements Application.ActivityLifecycleCallbacks {
+    private final String TAG = "BirinaApplication";
 
+    private BroadcastReceiver mReceiver;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d("BirinaActivity "," onCreate() called ");
 
-       // startService(new Intent(this, BaseService.class));
-      //  startWatchManService();
+        startService(new Intent(this, BaseService.class));
+
         new AlarmGenerator().startAlarm(this, true);
+        if ( Build.VERSION_CODES.O >= Build.VERSION.SDK_INT )
+            registerRemoteLockReceiver();
     }
 
     @Override
@@ -63,26 +72,29 @@ public class BirinaApplication extends Application implements Application.Activi
     public void onActivityDestroyed(Activity activity) {
         Log.d("BirinaApplication   ","onActivityDestroyed: ");
         BirinaPrefrence.updateTempLogInStatus(this, false);
-        stopWatchManService();
     }
 
 
-    private void startWatchManService(){
-        Log.d("BirinaApplication   ","Enter in startWatchManService: ");
-        Intent i = new Intent(this, WatchManService.class);
-        i.putExtra(Constant.WATCH_MAN_STATE, "");
-        startService(i);
-        Log.d("BirinaApplication   ","Exit from startWatchManService: ");
-    }
 
-    private void stopWatchManService(){
-        Log.d("BirinaApplication   ","Enter in stopWatchManService: ");
+    private void registerRemoteLockReceiver(){
+        Log.d(TAG,"Enter in registerRemoteLockReceiver of  WatchManService ");
 
-        Intent i = new Intent(this, WatchManService.class);
-        i.putExtra(Constant.WATCH_MAN_STATE, Constant.STOP_WATCH_MAN_STATE);
-        startService(i);
-        Log.d("BirinaApplication   ","Exit from stopWatchManService: ");
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Telephony.Sms.Intents.DATA_SMS_RECEIVED_ACTION);
+        mReceiver = new SmsReceiver();
+        registerReceiver(mReceiver, intentFilter);
+        Log.d(TAG,"Exit from registerRemoteLockReceiver of  WatchManService");
 
     }
 
+    private void unRegisterRemoteLockReceiver(){
+        Log.d(TAG,"Enter in unRegisterRemoteLockReceiver of  WatchManService ");
+
+        if (mReceiver != null) {
+            unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+        Log.d(TAG,"Exit from unRegisterRemoteLockReceiver of  WatchManService");
+
+    }
 }

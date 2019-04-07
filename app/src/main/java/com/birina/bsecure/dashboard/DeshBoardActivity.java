@@ -48,14 +48,11 @@ import com.birina.bsecure.util.Constant;
 public class DeshBoardActivity extends BirinaActivity implements LoginView, View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener {
 
-private  final int OVERLAY_PERMISSION_CODE = 2456;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        addOverlay();
         checkExpireStatus();
-
         new LoginPresenterImp(this);
 
         //   mLoginPresenter.getData();
@@ -460,42 +457,4 @@ private  final int OVERLAY_PERMISSION_CODE = 2456;
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen._210sdp));
     }
 
-
-    public void addOverlay() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(this)) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, OVERLAY_PERMISSION_CODE);
-            }else{
-                startLockView();
-            }
-        }
-    }
-
-
-    private void startLockView() {
-        BirinaPrefrence.saveTrackingPwd(DeshBoardActivity.this, "12345");
-        BirinaPrefrence.saveTrackingStatus(DeshBoardActivity.this, true);
-        BirinaPrefrence.updateTrackingStatus(this, true);
-
-        SharedPreferencesUtil.init(this);
-        SharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, true);
-        Lockscreen.getInstance(this).startLockscreenService();
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == OVERLAY_PERMISSION_CODE) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (Settings.canDrawOverlays(this)) {
-                    startLockView();
-
-                } else {
-                    Toast.makeText(DeshBoardActivity.this, "ACTION_MANAGE_OVERLAY_PERMISSION Permission Denied", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
 }

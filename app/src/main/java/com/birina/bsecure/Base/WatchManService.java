@@ -57,6 +57,8 @@ public class WatchManService extends Service {
     @Override
     public void onDestroy()
     {
+        Log.d(TAG,"Enter in onDestroy of  WatchManService ");
+
         this.unRegisterRemoteLockReceiver();
     }
 
