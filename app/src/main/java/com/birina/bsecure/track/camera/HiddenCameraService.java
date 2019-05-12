@@ -119,7 +119,7 @@ public abstract class HiddenCameraService extends Service implements CameraCallb
 
         mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(1, 1,
-                Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
                         WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
                         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,

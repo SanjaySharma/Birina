@@ -150,7 +150,6 @@ public class BiSecureFirebaseMessagingService  extends FirebaseMessagingService 
     private void sendNotification( Bitmap bitmap) {
 
 
-
         Notification.Builder builder = new Notification .Builder(getApplicationContext());
 
         Intent myIntent = new Intent(getApplicationContext(), WebActivity.class);

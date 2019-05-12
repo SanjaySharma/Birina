@@ -142,6 +142,7 @@ public class LockscreenActivity extends BaseActivity {
             }
         }
 
+        finish();
         Log.d(Constant.TAG, "Exit from setLockGuard of "+TAG);
 
     }

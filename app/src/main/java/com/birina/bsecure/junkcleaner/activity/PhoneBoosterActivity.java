@@ -1,10 +1,17 @@
 package com.birina.bsecure.junkcleaner.activity;
 
 import android.app.ActivityManager;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -27,7 +34,7 @@ public class PhoneBoosterActivity extends AppCompatActivity {
 
     private TextView mTxtRamUsage, mTxtRamPercentage, mTxtExternalUsage, mTxtExternalPercentage,
             mTxtInternalUsage, mTxtInternalPercentage;
-
+    private static final int REQUEST_USAGE_ACCESS_SETTINGS = 34;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +66,14 @@ public class PhoneBoosterActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!hasUsageStatsPermission(getApplicationContext())) {
+            showPopup();
+        }
+    }
 
 
     private void initializeView(){
@@ -274,5 +289,53 @@ public class PhoneBoosterActivity extends AppCompatActivity {
             if (resultCode == Constant.CLEANER_ACTIVITY_RESULT_CODE) {
                 finish();
             }
+           if (requestCode == REQUEST_USAGE_ACCESS_SETTINGS) {
+               if (!hasUsageStatsPermission(getApplicationContext())) {
+                   showPopup();
+               }
+           }
+    }
+
+
+    private boolean hasUsageStatsPermission(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+            return true;
+
+        boolean granted;
+        AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        if (appOps == null) {
+            return false;
+        }
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
+                android.os.Process.myUid(), context.getPackageName());
+
+        if (mode == AppOpsManager.MODE_DEFAULT) {
+            granted = (context.checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
+        } else {
+            granted = (mode == AppOpsManager.MODE_ALLOWED);
+        }
+        return granted;
+    }
+
+    private void showPopup() {
+        AlertDialog dialog = new AlertDialog.Builder(this).create();
+        dialog.setTitle("ACTION USAGE ACCESS SETTINGS");
+        dialog.setMessage("Please give permission to access cache setting");
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(android.R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivityForResult(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS), REQUEST_USAGE_ACCESS_SETTINGS);
+                        dialog.dismiss();
+                    }
+                });
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(android.R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        dialog.show();
     }
 }

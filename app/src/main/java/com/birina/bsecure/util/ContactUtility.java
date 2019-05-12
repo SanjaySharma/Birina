@@ -115,15 +115,24 @@ public class ContactUtility {
                 final String name = phone.getString(contactNameColumnIndex);
                 Log.e(Constant.TAG_RESTORE, "name: "+name+"  number "+number );
 
-             /*   if(number.equals(number)){
+                if(number.equals(number)){
                     int count=phone.getCount();
                 }
                 Request.ContactBean contact = contactsMap.get(contactId);
-                if (contact == null) {
+               /* if (contact == null) {
                     Log.i("tag",""+contactId);
                    // continue;
+                }*/
+
+                if (contact != null) {
+                    Log.i("tag",""+contactId);
+                    final int type = phone.getInt(contactTypeColumnIndex);
+                    String customLabel = "Custom";
+                    CharSequence phoneType = Phone.getTypeLabel
+                            (mContext.getResources(), type, customLabel);
+                    contact.addNumber(number, phoneType.toString());
                 }
-                final int type = phone.getInt(contactTypeColumnIndex);
+                /*final int type = phone.getInt(contactTypeColumnIndex);
                 String customLabel = "Custom";
                 CharSequence phoneType = Phone.getTypeLabel
                         (mContext.getResources(), type, customLabel);

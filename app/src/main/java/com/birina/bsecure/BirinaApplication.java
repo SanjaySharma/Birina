@@ -13,10 +13,15 @@ import android.util.Log;
 import com.birina.bsecure.Base.BaseService;
 import com.birina.bsecure.Base.WatchManService;
 import com.birina.bsecure.notification.localnotification.AlarmGenerator;
+import com.birina.bsecure.track.disabledevice.LockBootReciver;
 import com.birina.bsecure.track.disabledevice.SmsReceiver;
 import com.birina.bsecure.trackingrecovery.TrackingRecoveryService;
 import com.birina.bsecure.util.BirinaPrefrence;
 import com.birina.bsecure.util.Constant;
+
+import static android.content.Intent.ACTION_BOOT_COMPLETED;
+import static android.content.Intent.ACTION_LOCKED_BOOT_COMPLETED;
+import static android.content.Intent.ACTION_REBOOT;
 
 public class BirinaApplication extends Application implements Application.ActivityLifecycleCallbacks {
     private final String TAG = "BirinaApplication";
@@ -28,11 +33,14 @@ public class BirinaApplication extends Application implements Application.Activi
         super.onCreate();
         Log.d("BirinaActivity "," onCreate() called ");
 
-        startService(new Intent(this, BaseService.class));
+
+        if ( Build.VERSION_CODES.O >= Build.VERSION.SDK_INT ) {
+            registerRemoteLockReceiver();
+        }
+
+       //  startService(new Intent(this, BaseService.class));
 
         new AlarmGenerator().startAlarm(this, true);
-        if ( Build.VERSION_CODES.O >= Build.VERSION.SDK_INT )
-            registerRemoteLockReceiver();
     }
 
     @Override
@@ -77,13 +85,13 @@ public class BirinaApplication extends Application implements Application.Activi
 
 
     private void registerRemoteLockReceiver(){
-        Log.d(TAG,"Enter in registerRemoteLockReceiver of  WatchManService ");
+        Log.d(TAG,"Enter in registerRemoteLockReceiver of  BirinaApplication ");
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Telephony.Sms.Intents.DATA_SMS_RECEIVED_ACTION);
         mReceiver = new SmsReceiver();
         registerReceiver(mReceiver, intentFilter);
-        Log.d(TAG,"Exit from registerRemoteLockReceiver of  WatchManService");
+        Log.d(TAG,"Exit from registerRemoteLockReceiver of  BirinaApplication");
 
     }
 

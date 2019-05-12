@@ -16,11 +16,6 @@ import java.util.Calendar;
 
 public class AlarmGenerator {
 
-
-
-
-
-
     public void startAlarm(Context context, boolean isRepeat) {
         AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent myIntent;
@@ -28,9 +23,8 @@ public class AlarmGenerator {
 
         // SET TIME HERE
         Calendar calendar= Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,20);
-        calendar.set(Calendar.MINUTE,01);
-
+         calendar.set(Calendar.HOUR_OF_DAY,20);
+         calendar.set(Calendar.MINUTE,01);
 
         myIntent = new Intent(context,AlarmNotificationReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context,0,myIntent,0);

@@ -64,113 +64,7 @@ public class CleanerService extends Service {
 
     private CleanerServiceBinder mBinder = new CleanerServiceBinder();
 
-    private class TaskScan extends AsyncTask<Void, List<AppsListItem> , List<AppsListItem>> {
 
-        private int mAppCount = 0;
-
-        @Override
-        protected void onPreExecute() {
-            if (mOnActionListener != null) {
-                mOnActionListener.onScanStarted(CleanerService.this);
-            }
-        }
-
-        @Override
-        protected List<AppsListItem> doInBackground(Void... params) {
-            mCacheSize = 0;
-
-            final List<ApplicationInfo> packages = getPackageManager().getInstalledApplications(
-                    PackageManager.GET_META_DATA);
-
-           // publishProgress(0, packages.size());
-
-            final CountDownLatch countDownLatch = new CountDownLatch(packages.size());
-
-            final List<AppsListItem> apps = new ArrayList<>();
-
-            try {
-                for (ApplicationInfo pkg : packages) {
-                    mGetPackageSizeInfoMethod.invoke(getPackageManager(), pkg.packageName,
-                            new IPackageStatsObserver.Stub() {
-
-                                @Override
-                                public void onGetStatsCompleted(PackageStats pStats,
-                                                                boolean succeeded)
-                                        throws RemoteException {
-                                    synchronized (apps) {
-
-                                        mCacheSize += addPackage(apps, pStats, succeeded, ++mAppCount, packages.size());
-
-                                       // publishProgress(++mAppCount, packages.size());
-
-                                        publishProgress(new ArrayList<>(apps));
-                                    }
-
-                                    synchronized (countDownLatch) {
-                                        countDownLatch.countDown();
-                                    }
-                                }
-                            }
-                    );
-                }
-
-                countDownLatch.await();
-            } catch (InvocationTargetException | InterruptedException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-
-            return new ArrayList<>(apps);
-        }
-
-        @Override
-        protected void onProgressUpdate(List<AppsListItem>...result) {
-            if (mOnActionListener != null) {
-                mOnActionListener.onScanProgressUpdated(CleanerService.this, result[0]);
-
-                // mOnActionListener.onScanProgressUpdated(CleanerService.this, values[0], values[1]);
-            }
-        }
-
-        @Override
-        protected void onPostExecute(List<AppsListItem> result) {
-            if (mOnActionListener != null) {
-                mOnActionListener.onScanCompleted(CleanerService.this, result);
-            }
-
-            mIsScanning = false;
-        }
-
-        private long addPackage(List<AppsListItem> apps, PackageStats pStats, boolean succeeded, int current, int max) {
-            long cacheSize = 0;
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                cacheSize += pStats.cacheSize;
-            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                cacheSize += pStats.externalCacheSize;
-            }
-
-            if (!succeeded || cacheSize <= 0) {
-                return 0;
-            }
-
-            try {
-                PackageManager packageManager = getPackageManager();
-                ApplicationInfo info = packageManager.getApplicationInfo(pStats.packageName,
-                        PackageManager.GET_META_DATA);
-
-                apps.add(new AppsListItem(pStats.packageName,
-                        packageManager.getApplicationLabel(info).toString(),
-                        packageManager.getApplicationIcon(pStats.packageName),
-                        cacheSize, current, max));
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            return cacheSize;
-        }
-    }
 
     private class TaskClean extends AsyncTask<Void, int[], Boolean> {
 
@@ -398,7 +292,11 @@ public class CleanerService extends Service {
     public void scanCache() {
         mIsScanning = true;
 
-        new TaskScan().execute();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            new TaskScan(mOnActionListener, this).execute();
+        }else {
+            new TaskScanO(mOnActionListener, this).execute();
+        }
     }
 
     public void cleanCache() {
@@ -434,5 +332,25 @@ public class CleanerService extends Service {
 
     public static boolean canCleanExternalCache(Context context) {
         return hasPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
+
+    public boolean ismIsScanning() {
+        return mIsScanning;
+    }
+
+    public void setmIsScanning(boolean mIsScanning) {
+        this.mIsScanning = mIsScanning;
+    }
+
+    public long getmCacheSize() {
+        return mCacheSize;
+    }
+
+    public void setmCacheSize(long mCacheSize) {
+        this.mCacheSize = mCacheSize;
+    }
+
+    public Method getmGetPackageSizeInfoMethod() {
+        return mGetPackageSizeInfoMethod;
     }
 }
